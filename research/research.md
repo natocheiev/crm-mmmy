@@ -1,0 +1,185 @@
+# Дослідження CRM-MMMY — зведення кроків 03–06
+
+Зібрано з `research/notes/` 2026-11-01:
+- [03-competitors](notes/03-competitors.md) — список конкурентів;
+- [04-matrix](notes/04-matrix.md) — матриця;
+- [05-benchmark](notes/05-benchmark.md) — бенчмарк;
+- [06-patterns](notes/06-patterns.md) — UX-патерни.
+
+Бриф продукту — [CLAUDE.md](../CLAUDE.md).
+
+## Звідки дані
+
+| Походження | Що взято |
+|---|---|
+| **Власний акаунт автора** | **Нічого.** Теки `research/screens/own/` немає, у кабінети конкурентів не заходили. |
+| **Публічні сторінки** | Усе інше: лендинги, документація, App Store, відгуки, публічні скріни (`research/screens/04-*.png`, `05-*.png`, 1440×900). |
+| **Бриф і JTBD** | Контекст продукту, болі й рішення — [CLAUDE.md](../CLAUDE.md), зі слів автора. |
+
+**Позначки:**
+- `[A1]` тощо — джерело зі списку в кінці файлу.
+- `скрін:` — файл у `research/screens/`.
+- «дані не підтверджені» — джерела немає.
+- `~` — оцінка частково спирається на непрямі дані.
+
+---
+
+## 1. КОНКУРЕНТИ
+
+П'ятеро з трьох груп (вибір — [04-matrix](notes/04-matrix.md), групи — [03-competitors](notes/03-competitors.md)):
+- **хард:** Akiflow, Sunsama;
+- **софт:** Trello;
+- **аспіраційні:** Linear, Things 3.
+
+### Матриця
+
+| Вісь | Akiflow | Sunsama | Trello | Linear | Things 3 |
+|---|---|---|---|---|---|
+| **Перший екран** | «One app for tasks & calendars powered by AI»; макет: Inbox, тижневий календар, асистент Aki; 7-денний trial [A1, скрін: `04-akiflow-home.png`] | «Start Calm. Stay Focused. End Confident.»; колонки днів з картками і календар; 14 днів без картки [S6, скрін: `04-sunsama-home.png`] | «Capture, organize, and tackle your to-dos from anywhere»; телефон з Inbox та іконками Slack, Gmail, Teams [T1, скрін: `04-trello-home.png`] | «The product development system for teams and agents»; темна тема, одразу скрін продукту [скрін: `04-linear-home.png`] | Іконка, назва, один рядок опису, «Watch Introduction Video» [Th1, скрін: `04-things-home.png`] |
+| **«Не губити жодної задачі»** | Universal Inbox з 19 featured-інтеграцій, зокрема Trello, Slack, Gmail; **Telegram немає** [A1, A2, скрін: `04-akiflow-integrations.png`] | Ранковий план: Dump → оцінка часу і Work/Personal → Defer з попередженням про перевантаження → розклад; Trello-картки перетягуються в день [S1, S5, S7, скрін: `04-sunsama-trello.png`] | Inbox: email, Slack/Teams, фото, віджет → картка в Inbox → на дошки [T1, T2] | Triage: вхідні з Slack, Sentry, Intercom, Front, Zendesk переглядаються до потрапляння в роботу [L1, скрін: `04-linear-triage-docs.png`] | Magic Plus, Share extension, Siri, Mail to Things → Inbox [Th2, Th3] |
+| **«Хто і звідки»** | Звідки — іконка джерела в Inbox; хто — тільки в тексті задачі [скрін: `04-akiflow-home.png`] | Звідки — іконка джерела, тег каналу й оцінка часу на картці; хто — не видно [скріни: `04-sunsama-home.png`, `04-sunsama-trello.png`] | Звідки — іконки джерела на картках Inbox; хто — на першому екрані не видно [скрін: `04-trello-home.png`] | Обидва, але всередині задачі: «created the issue via Slack on behalf of Karri» [скрін: `04-linear-home.png`] | Ні — джерело й людину не показує [Th3, Th4] |
+| **Як задача завершується** | Галочка; для Gmail зняти зірочку = done [A3]. Чи синхронізується завершення назад у Trello — **дані не підтверджені** | Daily shutdown: огляд дня, перенесення незакритого, «Done for the day»; галочка синхронізується в Trello [S1, S2, S5] | Вручну: колонка «Done» або архів [T2] | Accept / Decline / Duplicate / Snooze у Triage [L1] | Чекбокс → Logbook, зберігається безстроково [Th5] |
+| **Мова інтерфейсу** | Сайт англійською [A1]; мова застосунку — **дані не підтверджені** | iOS: тільки English [S4] | **21 мова, зокрема українська** [T1, T2] | Мобільний застосунок: тільки English [L2] | 9 мов, української немає [Th2, скрін: `04-things-appstore.png`] |
+
+### Три спільні патерни ринку
+
+1. **Inbox-воронка.** Усі п'ятеро спершу складають вхідне в окреме місце, а вже потім розподіляють [A1, S1, T1, L1, Th2].
+2. **Захоплення з будь-якого місця**: email, Slack, share-меню, віджет, голос [T1, T2, Th2, A3].
+3. **Джерело показують іконкою на картці**: Akiflow, Sunsama, Trello [скріни: `04-akiflow-home.png`, `04-sunsama-trello.png`, `04-trello-home.png`].
+
+### Три відмінності
+
+1. **«Хто» майже ніхто не показує.** Джерело видно в Akiflow, Sunsama і Trello, людину — тільки в Linear, і то всередині задачі [скріни вище].
+2. **Завершення відчувається по-різному.** Від сухого (Trello, Things) до ритуалу (Sunsama shutdown). Ніхто з п'яти не дає нагород і ачівок [T2, Th5, S1, S6]. Відсутність гейміфікації в цих продуктах — висновок з відкритих сторінок, а не повний аудит.
+3. **Мова і джерела.** Українську має тільки Trello [T1]. Telegram як джерело не підтримує жоден з п'яти [A2, S5]. Для Trello, Linear і Things 3 це висновок з того, що Telegram не згаданий на їхніх сторінках.
+
+---
+
+## 2. БЕНЧМАРК
+
+**Вимір: «Хто і звідки»** — найслабша вісь ринку щодо головного для аудиторії з брифу [CLAUDE.md §1].
+
+Людина бачить на картці, з якого сервісу прийшла задача, але не бачить, хто її поставив і чому вона адресована їй [05-benchmark](notes/05-benchmark.md).
+
+### Оцінка (8 критеріїв, шкала 1–5, сума з 40)
+
+| Продукт | Ніша | Сума | Найсильніше | Джерела |
+|---|---|---|---|---|
+| Linear | розробка | 32 | профіль клієнта, шлях до оригіналу, фільтри | [L3, L4, скрін: `05-linear-customer-requests.png`, `05-linear-asks-slack.png`] |
+| GitHub Notifications | сповіщення | 31 | групування за репозиторієм, мітка причини | [G1, G2, скрін: `05-github-notifications-docs.png`] |
+| Missive | командна пошта | 30 | відправник першим рядком | [M1, M2, скрін: `05-missive-home.png`, `05-missive-channels.png`] |
+| Zendesk | підтримка | 30 | хто, коли і через який канал — під заголовком | [Z1, Z2, скрін: `05-zendesk-lesson.png`] |
+| Telegram (згадки) | месенджер | 26 | індикатор @, перехід по згадках | [TG1] |
+
+Повна таблиця з балами за кожним критерієм — у [05-benchmark](notes/05-benchmark.md).
+
+**Що не підтверджено:**
+- **Missive, Zendesk, Linear:** чи видно канал або джерело прямо в списку — дані не підтверджені, ці оцінки позначені `~`.
+- **GitHub:** фільтр `author:` описаний тільки в документації Enterprise [G3], для github.com дані не підтверджені.
+
+### Топ-3 механізми для MVP
+
+1. **Рядок походження на картці:** аватар людини, іконка джерела і назва чату чи дошки.
+   - **Звідки взято:** Zendesk показує requester і «via email» під заголовком [Z1]; Linear — «via Slack on behalf of Karri» [скрін: `04-linear-home.png`].
+   - **Чому:** обидва роблять це тільки всередині задачі. Винести на картку означає закрити прогалину ринку з розділу 1, відмінність 1.
+2. **Мітка «чому це мені»:** «тебе відмітили», «відповідь на твоє», «без відмітки — можливо задача», «призначено в Trello».
+   - **Звідки взято:** GitHub ставить мітку причини на кожен рядок [G1]; Telegram показує @ як «тебе відмітили» [TG1].
+   - **Чому:** мітка відділяє автоматичні задачі від «Можливих задач» і закриває біль «задачі губились у Telegram» [CLAUDE.md §2].
+3. **Сторінка людини:** клік по аватару відкриває всі задачі від цієї людини з обох робіт, плюс фільтр дошки за людиною.
+   - **Звідки взято:** Linear Customer pages [L3]; панель запитувача в Zendesk [Z1].
+   - **Чому:** задачі ставлять 2–4 людини, плюс незаплановані прохання [CLAUDE.md §2].
+
+### Що не спрацює
+
+**Автоматична задача з кожного повідомлення.** Так роблять Linear Advanced Asks «auto-create on every new message» [L4] і Zendesk «all requests … become tickets» [Z1].
+
+У них канал існує тільки для запитів. Робочий Telegram-чат — жива розмова, тому автостворення засмітить дошку шумом. Це висновок з контексту брифу [CLAUDE.md §2–3]; на реальному чаті автора не перевіряли, тобто дані не підтверджені.
+
+---
+
+## 3. ПАТЕРНИ
+
+**Обраний патерн ключової задачі: єдина статусна дошка (Kanban)** з вхідною зоною «Можливі задачі» перед колонкою `Tasks` [06-patterns](notes/06-patterns.md).
+
+Чому саме він під наш контекст:
+1. **Це ментальна модель автора.** «В моїх думках має бути CRM, де задачі на дошці і з ТГ, і з Трело»; перший пункт MVP — спільна Kanban-дошка [CLAUDE.md §2, §5].
+2. **Статуси `In Review → Approved` відображають роботу дизайнера, яка залежить від інших.** Перехід в `Approved` — природна точка для XP і конфеті [CLAUDE.md §4, §6].
+3. **Колонки CRM мапляться на колонки Trello**, тож двостороння синхронізація — той самий жест [CLAUDE.md §3]. Картка — полотно для рядка походження з розділу 2.
+
+**Чому вхідна зона обов'язкова:** дошка змішує нерозібране з прийнятим. Усі п'ять конкурентів використовують inbox-воронку (розділ 1, патерн 1).
+
+**Другий за умови — план дня «Сьогодні»** (як у Sunsama [S1, S7]). Він має сенс, коли з'являться оцінки часу і таймер [CLAUDE.md §5, друга черга].
+
+**Не підходить — розмовний інтерфейс (чат-бот).** Задачі губились саме в стрічці Telegram [CLAUDE.md §2]. Бот лишається тільки як канал захоплення і нагадувань.
+
+---
+
+## 4. ВИСНОВКИ: прогалини → гіпотези
+
+Гіпотези — це припущення для перевірки на прототипі й у використанні. Жодна поки не перевірена.
+
+| # | Прогалина | Гіпотеза | Звідки випливає |
+|---|---|---|---|
+| 1 | На картці не видно, **хто** поставив задачу: на ринку тільки джерело | Якщо на картці є аватар людини поруч з іконкою джерела, автор визначає, від кого задача, без відкриття і швидше вирішує, з чого почати день | Розділ 1 (відмінність 1), розділ 2 (механізм 1) |
+| 2 | **Telegram** як джерело задач не підтримує жоден з п'яти | Якщо бот збирає повідомлення з відміткою автоматично, а без відмітки — в «Можливі задачі» з лічильником, то з Telegram не загубиться жодна задача (болю «просіли по дедлайну» більше не буде) | Розділ 1 (відмінність 3), розділ 2 (механізм 2) |
+| 3 | Ніхто не пояснює, **чому** задача адресована саме тобі (окрім GitHub і Telegram) | Якщо кожна задача має мітку причини, автор довіряє дошці й не перевіряє чат вручну | Розділ 2 (механізм 2) |
+| 4 | Немає **місця, де зібрано все від однієї людини** серед агрегаторів задач | Якщо є сторінка людини, автор бачить навантаження від кожного замовника і незаплановані прохання (наприклад, від програміста) | Розділ 2 (механізм 3) |
+| 5 | **Завершення не святкують**: ні нагород, ні ачівок | Якщо перехід в `Approved` дає XP і анімацію, а день закривається підсумком, у автора зникає відчуття «день пройшов, а я нічого не зробив» | Розділ 1 (відмінність 2), розділ 3 (причина 2) |
+| 6 | **Українську мову** має тільки Trello | Якщо інтерфейс українською, продукт відчувається «своїм». Цінність для одного користувача низька, але вона важлива, якщо ділитися CRM з іншими | Розділ 1 (відмінність 3) |
+| 7 | На дошці **вхідне змішується з прийнятим** | Якщо перед `Tasks` є зона «Можливі задачі», дошка лишається чистою, а нерозібране не губиться | Розділ 3 |
+
+---
+
+## Джерела
+
+Усі — публічні сторінки. Перелік за кроками — у [04-matrix](notes/04-matrix.md) і [05-benchmark](notes/05-benchmark.md); тут ідентифікатори перенумеровано, щоб не повторювались.
+
+**Akiflow**
+- [A1] https://akiflow.com/
+- [A2] https://akiflow.com/integrations
+- [A3] https://www.usecarly.com/blog/akiflow-review/ — огляд, опублікований конкурентом Carly
+
+**Sunsama**
+- [S1] https://thesweetsetup.com/how-to-startup-and-shutdown-your-day-with-sunsama/
+- [S2] https://roadmap.sunsama.com/changelog/daily-shutdown
+- [S4] https://apps.apple.com/us/app/sunsama/id1475755747
+- [S5] https://www.sunsama.com/integrations/trello
+- [S6] https://www.sunsama.com/
+- [S7] https://www.sunsama.com/features/daily-planning-and-shutdown
+
+**Trello**
+- [T1] https://trello.com/home
+- [T2] https://apps.apple.com/us/app/trello-organize-anything/id461504587
+
+**Linear**
+- [L1] https://linear.app/docs/triage
+- [L2] https://apps.apple.com/us/app/linear-mobile/id1645587184
+- [L3] https://linear.app/docs/customer-requests
+- [L4] https://linear.app/docs/linear-asks-slack
+
+**Things 3**
+- [Th1] https://culturedcode.com/things/
+- [Th2] https://apps.apple.com/us/app/things-3/id904237743
+- [Th3] https://culturedcode.com/things/blog/2017/12/mail-to-things/
+- [Th4] https://culturedcode.com/things/features/
+- [Th5] https://culturedcode.com/things/support/articles/4001304/
+
+**Missive**
+- [M1] https://missiveapp.com/
+- [M2] https://missiveapp.com/features
+
+**Zendesk**
+- [Z1] https://support.zendesk.com/hc/en-us/articles/4408881925786
+- [Z2] https://developer.zendesk.com/api-reference/ticketing/tickets/ticket-requests/
+
+**GitHub**
+- [G1] https://docs.github.com/en/subscriptions-and-notifications/concepts/about-notifications
+- [G2] https://docs.github.com/en/enterprise-server@3.19/subscriptions-and-notifications/reference/inbox-filters
+- [G3] https://docs.github.com/fr/github-ae@latest/account-and-profile/managing-subscriptions-and-notifications-on-github/viewing-and-triaging-notifications/managing-notifications-from-your-inbox
+
+**Telegram**
+- [TG1] https://core.telegram.org/api/mentions
+
+**Скріни** (`research/screens/`, усі з публічних сторінок):
+- **04:** `04-akiflow-home`, `04-akiflow-integrations`, `04-sunsama-home`, `04-sunsama-planning-shutdown`, `04-sunsama-trello`, `04-trello-home`, `04-trello-templates`, `04-linear-home`, `04-linear-triage-docs`, `04-things-home`, `04-things-appstore`.
+- **05:** `05-missive-home`, `05-missive-channels`, `05-linear-customer-requests`, `05-linear-asks-slack`, `05-github-notifications-docs`, `05-zendesk-lesson`.

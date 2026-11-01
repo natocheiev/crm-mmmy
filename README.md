@@ -20,6 +20,8 @@ Vercel Hobby + Supabase Free: **$0/міс**. Проєкт self-hostable: фор�
 - [index.html](./index.html) — стартова сторінка ([на сайті](https://natocheiev.github.io/crm-mmmy/))
 - [_nav/tree.js](./_nav/tree.js) — дерево сторінок навігатора
 - [research/](./research/) — дослідження
+- [research/research.md](./research/research.md) — зведення дослідження: конкуренти, бенчмарк, патерни, гіпотези
+- [research/research.html](./research/research.html) — те саме односторінковою HTML-сторінкою ([на сайті](https://natocheiev.github.io/crm-mmmy/research/research.html))
 - [research/notes/03-competitors.md](./research/notes/03-competitors.md) — конкуренти: хард, софт, аспіраційні
 - [research/notes/04-matrix.md](./research/notes/04-matrix.md) — матриця 5 конкурентів за осями брифу
 - [research/notes/05-benchmark.md](./research/notes/05-benchmark.md) — бенчмарк виміру «Хто і звідки»: критерії, оцінка 5 продуктів, механізми для MVP

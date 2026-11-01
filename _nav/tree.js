@@ -4,4 +4,10 @@
 // Додавай лише сторінки, які вже існують; гілка з'являється разом зі своєю першою сторінкою.
 window.NAV_TREE = [
   { title: "Головна", href: "index.html" },
+  {
+    branch: "Ресерч",
+    items: [
+      { title: "Дослідження", href: "research/research.html" },
+    ],
+  },
 ];

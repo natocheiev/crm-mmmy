@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дослідження — CRM-MMMY</title>
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js"></script>
+  <script src="../_nav/nav.js"></script>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --surface: #171a21;
+      --surface-2: #1e222b;
+      --border: #2a2f3a;
+      --text: #e6e8ec;
+      --muted: #9aa1ad;
+      --accent: #8ab4ff;
+      --good: #7ddca0;
+      --warn: #f2c66d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    main { max-width: 1100px; padding: 40px 32px 80px; }
+    h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: -0.01em; }
+    h2 {
+      font-size: 22px;
+      margin: 56px 0 16px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    h3 { font-size: 16px; margin: 28px 0 10px; color: var(--text); }
+    p, li { color: var(--text); }
+    .muted { color: var(--muted); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-size: 13px; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+    .lead { color: var(--muted); max-width: 760px; }
+    .toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; list-style: none; }
+    .toc a {
+      display: inline-block; padding: 6px 12px; border: 1px solid var(--border);
+      border-radius: 999px; color: var(--text); font-size: 13px;
+    }
+    .toc a:hover { background: var(--surface-2); text-decoration: none; }
+
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px 20px; margin: 16px 0;
+    }
+    .note { border-left: 3px solid var(--warn); }
+    .key { border-left: 3px solid var(--accent); }
+
+    .table-wrap { overflow-x: auto; margin: 12px 0; border: 1px solid var(--border); border-radius: 10px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+    th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    th { background: var(--surface-2); font-weight: 600; white-space: nowrap; }
+    tr:last-child td { border-bottom: 0; }
+    td:first-child { font-weight: 600; white-space: nowrap; }
+    td { background: var(--surface); }
+    .src { color: var(--muted); font-size: 12px; }
+    .unconfirmed { color: var(--warn); }
+    .score { text-align: center; font-variant-numeric: tabular-nums; }
+    .best { color: var(--good); font-weight: 700; }
+
+    ol.clean, ul.clean { padding-left: 20px; }
+    ol.clean li, ul.clean li { margin: 8px 0; }
+
+    .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin: 14px 0; }
+    .shots figure { margin: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .shots img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+    .shots figcaption { padding: 8px 10px; font-size: 12px; color: var(--muted); }
+
+    .sources { columns: 2; column-gap: 32px; font-size: 13px; }
+    .sources p { break-inside: avoid; margin: 0 0 12px; }
+    .sources a { word-break: break-all; }
+
+    @media (max-width: 720px) {
+      main { padding: 24px 16px 60px; }
+      .sources { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Дослідження CRM-MMMY</h1>
+  <p class="lead">Зведення кроків 03–06. Джерело тексту — <a href="research.md">research/research.md</a>, бриф — <a href="https://github.com/natocheiev/crm-mmmy/blob/main/CLAUDE.md">CLAUDE.md</a>. Дата збору: 2026-11-01.</p>
+  <ul class="toc">
+    <li><a href="#competitors">Конкуренти</a></li>
+    <li><a href="#benchmark">Бенчмарк</a></li>
+    <li><a href="#patterns">Патерни</a></li>
+    <li><a href="#conclusions">Висновки</a></li>
+    <li><a href="#sources">Джерела</a></li>
+  </ul>
+
+  <div class="card note">
+    <b>Звідки дані.</b> З <b>власного акаунта автора — нічого</b>: теки <code>research/screens/own/</code> немає, у кабінети не заходили. Усе інше — <b>публічні сторінки</b>: лендинги, документація, App Store, відгуки, скріни. Контекст продукту — з брифу.
+    <br><span class="muted">[A1] — джерело зі списку внизу. <span class="unconfirmed">Жовтим</span> — дані не підтверджені. ~ — оцінка частково на непрямих даних.</span>
+  </div>
+
+  <!-- 1. КОНКУРЕНТИ -->
+  <h2 id="competitors">1. Конкуренти</h2>
+  <p>П'ятеро з трьох груп: <b>хард</b> — Akiflow, Sunsama; <b>софт</b> — Trello; <b>аспіраційні</b> — Linear, Things 3.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Вісь</th><th>Akiflow</th><th>Sunsama</th><th>Trello</th><th>Linear</th><th>Things 3</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Перший екран</td>
+          <td>«One app for tasks &amp; calendars powered by AI»; Inbox, тижневий календар, асистент Aki; trial 7 днів <span class="src">[A1]</span></td>
+          <td>«Start Calm. Stay Focused. End Confident.»; колонки днів і календар; 14 днів без картки <span class="src">[S6]</span></td>
+          <td>«Capture, organize, and tackle your to-dos from anywhere»; телефон з Inbox та іконками Slack, Gmail, Teams <span class="src">[T1]</span></td>
+          <td>«The product development system for teams and agents»; темна тема, одразу скрін продукту <span class="src">[скрін]</span></td>
+          <td>Іконка, назва, один рядок опису, «Watch Introduction Video» <span class="src">[Th1]</span></td>
+        </tr>
+        <tr>
+          <td>«Не губити жодної задачі»</td>
+          <td>Universal Inbox з 19 інтеграцій (Trello, Slack, Gmail…); <b>Telegram немає</b> <span class="src">[A1, A2]</span></td>
+          <td>Ранковий план: Dump → оцінка часу → Defer → розклад; Trello-картки перетягуються в день <span class="src">[S1, S5, S7]</span></td>
+          <td>Inbox: email, Slack/Teams, фото, віджет → картка → на дошки <span class="src">[T1, T2]</span></td>
+          <td>Triage: вхідні з Slack, Sentry, Intercom, Zendesk переглядаються до роботи <span class="src">[L1]</span></td>
+          <td>Magic Plus, Share, Siri, Mail to Things → Inbox <span class="src">[Th2, Th3]</span></td>
+        </tr>
+        <tr>
+          <td>«Хто і звідки»</td>
+          <td>Звідки — іконка в Inbox; хто — тільки в тексті задачі <span class="src">[скрін]</span></td>
+          <td>Звідки — іконка, тег каналу, оцінка часу; хто — не видно <span class="src">[скріни]</span></td>
+          <td>Звідки — іконки на картках Inbox; хто — не видно <span class="src">[скрін]</span></td>
+          <td>Обидва, але всередині задачі: «via Slack on behalf of Karri» <span class="src">[скрін]</span></td>
+          <td>Ні <span class="src">[Th3, Th4]</span></td>
+        </tr>
+        <tr>
+          <td>Завершення</td>
+          <td>Галочка; Gmail — зняти зірочку <span class="src">[A3]</span>. <span class="unconfirmed">Синхронізація назад у Trello — дані не підтверджені</span></td>
+          <td>Daily shutdown: огляд дня, перенесення, «Done for the day»; галочка синхронізується в Trello <span class="src">[S1, S2, S5]</span></td>
+          <td>Вручну: колонка «Done» або архів <span class="src">[T2]</span></td>
+          <td>Accept / Decline / Duplicate / Snooze <span class="src">[L1]</span></td>
+          <td>Чекбокс → Logbook <span class="src">[Th5]</span></td>
+        </tr>
+        <tr>
+          <td>Мова інтерфейсу</td>
+          <td>Сайт англійською <span class="src">[A1]</span>; <span class="unconfirmed">мова застосунку — дані не підтверджені</span></td>
+          <td>iOS: тільки English <span class="src">[S4]</span></td>
+          <td><b>21 мова, є українська</b> <span class="src">[T1, T2]</span></td>
+          <td>Тільки English <span class="src">[L2]</span></td>
+          <td>9 мов, без української <span class="src">[Th2]</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Три спільні патерни ринку</h3>
+  <ol class="clean">
+    <li><b>Inbox-воронка</b> — усе вхідне спершу в окреме місце, потім розподіл <span class="src">[A1, S1, T1, L1, Th2]</span>.</li>
+    <li><b>Захоплення з будь-якого місця</b> — email, Slack, share-меню, віджет, голос <span class="src">[T1, T2, Th2, A3]</span>.</li>
+    <li><b>Джерело — іконка на картці</b> — Akiflow, Sunsama, Trello <span class="src">[скріни]</span>.</li>
+  </ol>
+
+  <h3>Три відмінності</h3>
+  <ol class="clean">
+    <li><b>«Хто» майже ніхто не показує.</b> Людину — тільки Linear, і то всередині задачі.</li>
+    <li><b>Завершення</b> — від сухого (Trello, Things) до ритуалу (Sunsama). Нагород і ачівок немає ні в кого <span class="src">[T2, Th5, S1, S6]</span>. <span class="unconfirmed">Висновок з відкритих сторінок, не повний аудит.</span></li>
+    <li><b>Мова і джерела.</b> Українську має тільки Trello <span class="src">[T1]</span>. Telegram не підтримує ніхто <span class="src">[A2, S5]</span>; <span class="unconfirmed">для Trello, Linear і Things — висновок з того, що Telegram не згаданий.</span></li>
+  </ol>
+
+  <div class="shots">
+    <figure><a href="screens/04-akiflow-home.png"><img src="screens/04-akiflow-home.png" alt="Akiflow: перший екран" loading="lazy"></a><figcaption>Akiflow — іконки джерел в Inbox</figcaption></figure>
+    <figure><a href="screens/04-akiflow-integrations.png"><img src="screens/04-akiflow-integrations.png" alt="Akiflow: інтеграції" loading="lazy"></a><figcaption>Akiflow — інтеграції</figcaption></figure>
+    <figure><a href="screens/04-sunsama-home.png"><img src="screens/04-sunsama-home.png" alt="Sunsama: перший екран" loading="lazy"></a><figcaption>Sunsama — перший екран</figcaption></figure>
+    <figure><a href="screens/04-sunsama-trello.png"><img src="screens/04-sunsama-trello.png" alt="Sunsama: інтеграція з Trello" loading="lazy"></a><figcaption>Sunsama — Trello-картки в плані дня</figcaption></figure>
+    <figure><a href="screens/04-sunsama-planning-shutdown.png"><img src="screens/04-sunsama-planning-shutdown.png" alt="Sunsama: планування і shutdown" loading="lazy"></a><figcaption>Sunsama — планування і завершення дня</figcaption></figure>
+    <figure><a href="screens/04-trello-home.png"><img src="screens/04-trello-home.png" alt="Trello: перший екран" loading="lazy"></a><figcaption>Trello — Inbox з іконками джерел</figcaption></figure>
+    <figure><a href="screens/04-trello-templates.png"><img src="screens/04-trello-templates.png" alt="Trello: шаблони" loading="lazy"></a><figcaption>Trello — галерея шаблонів</figcaption></figure>
+    <figure><a href="screens/04-linear-home.png"><img src="screens/04-linear-home.png" alt="Linear: перший екран" loading="lazy"></a><figcaption>Linear — «via Slack on behalf of Karri»</figcaption></figure>
+    <figure><a href="screens/04-linear-triage-docs.png"><img src="screens/04-linear-triage-docs.png" alt="Linear: Triage" loading="lazy"></a><figcaption>Linear — документація Triage</figcaption></figure>
+    <figure><a href="screens/04-things-home.png"><img src="screens/04-things-home.png" alt="Things: перший екран" loading="lazy"></a><figcaption>Things 3 — перший екран</figcaption></figure>
+    <figure><a href="screens/04-things-appstore.png"><img src="screens/04-things-appstore.png" alt="Things: App Store" loading="lazy"></a><figcaption>Things 3 — App Store</figcaption></figure>
+  </div>
+
+  <!-- 2. БЕНЧМАРК -->
+  <h2 id="benchmark">2. Бенчмарк: «Хто і звідки»</h2>
+  <div class="card key">
+    Найслабша вісь ринку щодо головного для аудиторії з брифу. Людина бачить, <b>з якого сервісу</b> прийшла задача, але не бачить, <b>хто</b> її поставив і <b>чому</b> вона адресована їй.
+  </div>
+
+  <p>8 критеріїв за шкалою 1–5:</p>
+  <ul class="clean">
+    <li><b>К1 Звідки:</b> джерело видно в списку.</li>
+    <li><b>К2 Хто:</b> автор видно в списку.</li>
+    <li><b>К3 Чому це мені:</b> видно причину.</li>
+    <li><b>К4 Оригінал:</b> один клік до першоджерела.</li>
+    <li><b>К5 Профіль людини:</b> усі запити від неї в одному місці.</li>
+    <li><b>К6 Фільтр:</b> за людиною і джерелом.</li>
+    <li><b>К7 Нічого не губиться:</b> повідомлення без відмітки теж у полі зору.</li>
+    <li><b>К8 Читабельність</b> списку.</li>
+  </ul>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Критерій</th><th class="score">Missive</th><th class="score">Zendesk</th><th class="score">Linear</th><th class="score">GitHub Notif.</th><th class="score">Telegram</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>К1 Звідки</td><td class="score">3~</td><td class="score">3~</td><td class="score">3~</td><td class="score best">5</td><td class="score">4</td></tr>
+        <tr><td>К2 Хто</td><td class="score best">5</td><td class="score">3~</td><td class="score">3</td><td class="score">2</td><td class="score">2</td></tr>
+        <tr><td>К3 Чому це мені</td><td class="score">3</td><td class="score">3</td><td class="score">3</td><td class="score best">5</td><td class="score best">5</td></tr>
+        <tr><td>К4 Оригінал</td><td class="score">4</td><td class="score">4</td><td class="score best">5</td><td class="score best">5</td><td class="score best">5</td></tr>
+        <tr><td>К5 Профіль людини</td><td class="score">4</td><td class="score best">5</td><td class="score best">5</td><td class="score">2</td><td class="score">1</td></tr>
+        <tr><td>К6 Фільтр</td><td class="score">3</td><td class="score">3~</td><td class="score best">5</td><td class="score best">5</td><td class="score">2</td></tr>
+        <tr><td>К7 Нічого не губиться</td><td class="score">4</td><td class="score best">5</td><td class="score">4</td><td class="score">3</td><td class="score">2</td></tr>
+        <tr><td>К8 Читабельність</td><td class="score">4~</td><td class="score">4~</td><td class="score">4~</td><td class="score">4</td><td class="score best">5</td></tr>
+        <tr><td>Сума з 40</td><td class="score"><b>30</b></td><td class="score"><b>30</b></td><td class="score best">32</td><td class="score"><b>31</b></td><td class="score"><b>26</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="src">Джерела: Missive [M1, M2], Zendesk [Z1, Z2], Linear [L3, L4], GitHub [G1, G2], Telegram [TG1]. Обґрунтування кожного балу — у <a href="notes/05-benchmark.md">05-benchmark.md</a>.
+    <span class="unconfirmed">Не підтверджено: чи видно канал або джерело прямо в списку в Missive, Zendesk і Linear (оцінки з ~); чи працює фільтр <code>author:</code> на github.com [G3].</span></p>
+
+  <h3>Топ-3 механізми для MVP</h3>
+  <ol class="clean">
+    <li><b>Рядок походження на картці</b>: аватар, іконка джерела і назва чату чи дошки. Zendesk і Linear показують це тільки всередині задачі <span class="src">[Z1, скрін Linear]</span>, а винести на картку означає закрити прогалину ринку.</li>
+    <li><b>Мітка «чому це мені»</b>: «тебе відмітили», «відповідь на твоє», «без відмітки — можливо задача». Як reason labels у GitHub <span class="src">[G1]</span> і @ у Telegram <span class="src">[TG1]</span>. Закриває біль «задачі губились у Telegram» з брифу.</li>
+    <li><b>Сторінка людини</b>: усі задачі від неї з обох робіт, плюс фільтр дошки за людиною. Як Linear Customer pages <span class="src">[L3]</span> і панель запитувача в Zendesk <span class="src">[Z1]</span>. Задачі ставлять 2–4 людини, плюс незаплановані прохання.</li>
+  </ol>
+  <div class="card note">
+    <b>Не спрацює — автоматична задача з кожного повідомлення</b> (Linear Advanced Asks <span class="src">[L4]</span>, Zendesk <span class="src">[Z1]</span>). У них канал призначений тільки для запитів, а робочий Telegram-чат — жива розмова, і дошка заповниться шумом. <span class="unconfirmed">На реальному чаті автора не перевірено — дані не підтверджені.</span>
+  </div>
+
+  <div class="shots">
+    <figure><a href="screens/05-missive-home.png"><img src="screens/05-missive-home.png" alt="Missive: список розмов" loading="lazy"></a><figcaption>Missive — відправник першим рядком</figcaption></figure>
+    <figure><a href="screens/05-missive-channels.png"><img src="screens/05-missive-channels.png" alt="Missive: фічі" loading="lazy"></a><figcaption>Missive — unified inbox, контакти</figcaption></figure>
+    <figure><a href="screens/05-zendesk-lesson.png"><img src="screens/05-zendesk-lesson.png" alt="Zendesk: анатомія тікета" loading="lazy"></a><figcaption>Zendesk — анатомія тікета</figcaption></figure>
+    <figure><a href="screens/05-linear-customer-requests.png"><img src="screens/05-linear-customer-requests.png" alt="Linear: Customer Requests" loading="lazy"></a><figcaption>Linear — Customer Requests</figcaption></figure>
+    <figure><a href="screens/05-linear-asks-slack.png"><img src="screens/05-linear-asks-slack.png" alt="Linear: Asks with Slack" loading="lazy"></a><figcaption>Linear — Asks with Slack</figcaption></figure>
+    <figure><a href="screens/05-github-notifications-docs.png"><img src="screens/05-github-notifications-docs.png" alt="GitHub: About notifications" loading="lazy"></a><figcaption>GitHub — About notifications</figcaption></figure>
+  </div>
+
+  <!-- 3. ПАТЕРНИ -->
+  <h2 id="patterns">3. Патерн ключової задачі</h2>
+  <div class="card key">
+    <b>Єдина статусна дошка (Kanban)</b> з вхідною зоною «Можливі задачі» перед колонкою <code>Tasks</code>.
+  </div>
+  <ol class="clean">
+    <li><b>Це ментальна модель автора</b>: «в моїх думках має бути CRM, де задачі на дошці і з ТГ, і з Трело»; перший пункт MVP — спільна дошка <span class="src">[CLAUDE.md §2, §5]</span>.</li>
+    <li><b>Статуси <code>In Review → Approved</code> відображають роботу дизайнера, яка залежить від інших.</b> Перехід в Approved — природна точка для XP і конфеті <span class="src">[CLAUDE.md §4, §6]</span>.</li>
+    <li><b>Колонки CRM мапляться на колонки Trello</b>, тож синхронізація — той самий жест. Картка — полотно для рядка походження <span class="src">[CLAUDE.md §3]</span>.</li>
+  </ol>
+  <p class="muted">Вхідна зона обов'язкова, бо дошка змішує нерозібране з прийнятим, а всі п'ять конкурентів використовують inbox-воронку.</p>
+  <p class="muted"><b>Другий за умови</b> — план дня «Сьогодні», коли з'являться оцінки часу і таймер <span class="src">[S1, S7]</span>.</p>
+  <p class="muted"><b>Не підходить</b> — чат-бот: задачі губились саме в стрічці Telegram <span class="src">[CLAUDE.md §2]</span>.</p>
+
+  <!-- 4. ВИСНОВКИ -->
+  <h2 id="conclusions">4. Висновки: прогалини → гіпотези</h2>
+  <p class="muted">Гіпотези — припущення для перевірки на прототипі. Жодна поки не перевірена.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Прогалина</th><th>Гіпотеза</th><th>Звідки</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>На картці не видно, хто поставив задачу</td><td>Аватар людини поруч з іконкою джерела → автор без відкриття знає, від кого задача, і швидше вирішує, з чого почати</td><td class="src">Конкуренти (відм. 1), Бенчмарк (мех. 1)</td></tr>
+        <tr><td>2</td><td>Telegram не підтримує жоден з п'яти</td><td>Бот + «Можливі задачі» з лічильником → жодна задача з Telegram не губиться</td><td class="src">Конкуренти (відм. 3), Бенчмарк (мех. 2)</td></tr>
+        <tr><td>3</td><td>Ніхто не пояснює, чому задача адресована тобі</td><td>Мітка причини → автор довіряє дошці й не перевіряє чат вручну</td><td class="src">Бенчмарк (мех. 2)</td></tr>
+        <tr><td>4</td><td>Немає місця, де зібрано все від однієї людини</td><td>Сторінка людини → видно навантаження від кожного замовника і незаплановані прохання</td><td class="src">Бенчмарк (мех. 3)</td></tr>
+        <tr><td>5</td><td>Завершення не святкують</td><td>XP і анімація на Approved + підсумок дня → зникає відчуття «день пройшов дарма»</td><td class="src">Конкуренти (відм. 2), Патерни (причина 2)</td></tr>
+        <tr><td>6</td><td>Українську має тільки Trello</td><td>Інтерфейс українською → продукт відчувається «своїм»; важливо, якщо ділитися CRM</td><td class="src">Конкуренти (відм. 3)</td></tr>
+        <tr><td>7</td><td>На дошці вхідне змішується з прийнятим</td><td>Зона «Можливі задачі» перед Tasks → дошка чиста, а нерозібране не губиться</td><td class="src">Патерни</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ДЖЕРЕЛА -->
+  <h2 id="sources">Джерела</h2>
+  <p class="muted">Усе — публічні сторінки. Скріни — <code>research/screens/</code>, 1440×900.</p>
+  <div class="sources">
+    <p><b>Akiflow</b><br>[A1] <a href="https://akiflow.com/">akiflow.com</a><br>[A2] <a href="https://akiflow.com/integrations">akiflow.com/integrations</a><br>[A3] <a href="https://www.usecarly.com/blog/akiflow-review/">usecarly.com/blog/akiflow-review</a> — огляд конкурента Carly</p>
+    <p><b>Sunsama</b><br>[S1] <a href="https://thesweetsetup.com/how-to-startup-and-shutdown-your-day-with-sunsama/">thesweetsetup.com — startup &amp; shutdown</a><br>[S2] <a href="https://roadmap.sunsama.com/changelog/daily-shutdown">roadmap.sunsama.com — daily shutdown</a><br>[S4] <a href="https://apps.apple.com/us/app/sunsama/id1475755747">App Store</a><br>[S5] <a href="https://www.sunsama.com/integrations/trello">sunsama.com/integrations/trello</a><br>[S6] <a href="https://www.sunsama.com/">sunsama.com</a><br>[S7] <a href="https://www.sunsama.com/features/daily-planning-and-shutdown">sunsama.com — planning &amp; shutdown</a></p>
+    <p><b>Trello</b><br>[T1] <a href="https://trello.com/home">trello.com/home</a><br>[T2] <a href="https://apps.apple.com/us/app/trello-organize-anything/id461504587">App Store</a></p>
+    <p><b>Linear</b><br>[L1] <a href="https://linear.app/docs/triage">docs/triage</a><br>[L2] <a href="https://apps.apple.com/us/app/linear-mobile/id1645587184">App Store</a><br>[L3] <a href="https://linear.app/docs/customer-requests">docs/customer-requests</a><br>[L4] <a href="https://linear.app/docs/linear-asks-slack">docs/linear-asks-slack</a></p>
+    <p><b>Things 3</b><br>[Th1] <a href="https://culturedcode.com/things/">culturedcode.com/things</a><br>[Th2] <a href="https://apps.apple.com/us/app/things-3/id904237743">App Store</a><br>[Th3] <a href="https://culturedcode.com/things/blog/2017/12/mail-to-things/">blog — Mail to Things</a><br>[Th4] <a href="https://culturedcode.com/things/features/">features</a><br>[Th5] <a href="https://culturedcode.com/things/support/articles/4001304/">support — Today, Inbox, Logbook</a></p>
+    <p><b>Missive</b><br>[M1] <a href="https://missiveapp.com/">missiveapp.com</a><br>[M2] <a href="https://missiveapp.com/features">missiveapp.com/features</a></p>
+    <p><b>Zendesk</b><br>[Z1] <a href="https://support.zendesk.com/hc/en-us/articles/4408881925786">Lesson 1: From support requests to tickets</a><br>[Z2] <a href="https://developer.zendesk.com/api-reference/ticketing/tickets/ticket-requests/">API — ticket requests</a></p>
+    <p><b>GitHub</b><br>[G1] <a href="https://docs.github.com/en/subscriptions-and-notifications/concepts/about-notifications">About notifications</a><br>[G2] <a href="https://docs.github.com/en/enterprise-server@3.19/subscriptions-and-notifications/reference/inbox-filters">Inbox filters (Enterprise Server)</a><br>[G3] <a href="https://docs.github.com/fr/github-ae@latest/account-and-profile/managing-subscriptions-and-notifications-on-github/viewing-and-triaging-notifications/managing-notifications-from-your-inbox">Managing notifications (Enterprise)</a></p>
+    <p><b>Telegram</b><br>[TG1] <a href="https://core.telegram.org/api/mentions">core.telegram.org/api/mentions</a></p>
+  </div>
+</main>
+</body>
+</html>

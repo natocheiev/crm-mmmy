@@ -6,6 +6,8 @@
 
 **Репо:** https://github.com/natocheiev/crm-mmmy · **Сайт (GitHub Pages):** https://natocheiev.github.io/crm-mmmy/
 
+**Висновки ресерчу** — у `research/research.md`.
+
 ---
 
 ## 1. Продукт

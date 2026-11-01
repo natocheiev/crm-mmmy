@@ -22,4 +22,6 @@ Vercel Hobby + Supabase Free: **$0/міс**. Проєкт self-hostable: фор�
 - [research/](./research/) — дослідження
 - [research/notes/03-competitors.md](./research/notes/03-competitors.md) — конкуренти: хард, софт, аспіраційні
 - [research/notes/04-matrix.md](./research/notes/04-matrix.md) — матриця 5 конкурентів за осями брифу
-- [research/screens/](./research/screens/) — скріни перших екранів конкурентів (`04-*.png`)
+- [research/notes/05-benchmark.md](./research/notes/05-benchmark.md) — бенчмарк виміру «Хто і звідки»: критерії, оцінка 5 продуктів, механізми для MVP
+- [research/notes/06-patterns.md](./research/notes/06-patterns.md) — 5 UX-патернів для ключової задачі і вибір під наш контекст
+- [research/screens/](./research/screens/) — скріни конкурентів (`04-*.png`) і бенчмарку (`05-*.png`)

@@ -85,6 +85,20 @@ tbody th small { display: block; color: var(--faint); font-weight: 400; font-siz
 .hyp td.n { color: var(--accent); font-weight: 700; width: 36px; }
 .hyp td:nth-child(2) { color: var(--muted); min-width: 220px; }
 .hyp td:nth-child(3) { min-width: 280px; }
+.jobmap td:nth-child(2) { color: var(--muted); min-width: 220px; }
+.jobmap td:nth-child(3) { min-width: 260px; }
+.stories { margin: 0; padding-left: 22px; max-width: 900px; }
+.stories li { margin: 0 0 10px; color: var(--muted); }
+.stories li b { color: var(--text); }
+.stories li::marker { color: var(--accent); font-weight: 700; }
+.forces .card.push { border-color: rgba(255, 107, 107, .35); }
+.forces .card.push .k { color: var(--no); }
+.forces .card.pull .k { color: var(--yes); }
+.forces .card.pull { border-color: rgba(110, 231, 183, .35); }
+.forces .card.anx .k { color: var(--warn); }
+.forces .card.habit .k { color: var(--muted); }
+.cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 700px) { .cards.two { grid-template-columns: 1fr; } }
 .chip { display: inline-block; margin: 0 6px 6px 0; padding: 2px 9px; border: 1px solid var(--border); border-radius: 999px; font-size: 12px; color: var(--muted); text-decoration: none; white-space: nowrap; background: var(--surface-2); }
 .chip:hover { color: var(--accent); border-color: var(--accent); }
 
@@ -139,7 +153,7 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
   <h1>Ринок показує, звідки прийшла задача, але не показує, хто її поставив</h1>
   <p class="lead">Конкуренти, вимір, де ринок найслабший, патерн ключової задачі і гіпотези для MVP. Джерело тексту — <a href="https://github.com/natocheiev/crm-mmmy/blob/main/research/research.md" target="_blank" rel="noopener">research.md</a>, матеріал зібрано 01.11.2026.</p>
   <nav class="toc" aria-label="Розділи">
-    <a href="#competitors">01 · Конкуренти</a><a href="#benchmark">02 · Бенчмарк</a><a href="#patterns">03 · Патерни</a><a href="#conclusions">04 · Висновки</a><a href="#screens">Скріни</a><a href="#sources">Джерела</a>
+    <a href="#jtbd">00 · JTBD</a><a href="#competitors">01 · Конкуренти</a><a href="#benchmark">02 · Бенчмарк</a><a href="#patterns">03 · Патерни</a><a href="#conclusions">04 · Висновки</a><a href="#screens">Скріни</a><a href="#sources">Джерела</a>
   </nav>
   <div class="cards three prov">
     <div class="card"><h3>Власний акаунт</h3><p>Нічого. Теки <code>research/screens/own/</code> немає, в кабінети за логіном не заходили.</p></div>
@@ -147,6 +161,58 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
     <div class="card"><h3>Не бачили наживо 🔒</h3><p>Робочі екрани після входу: як джерело і людина виглядають у самому продукті. Де джерела немає — <span class="nd">дані не підтверджені</span>.</p></div>
   </div>
 </header>
+
+<section id="jtbd">
+  <h2><span class="num">00</span> JTBD</h2>
+  <p class="sub">Робота, заради якої існує продукт, — з інтерв'ю автора про робочий день. Цитати в лапках — слова автора. Повна версія — <a href="https://github.com/natocheiev/crm-mmmy/blob/main/JTBD.md" target="_blank" rel="noopener">JTBD.md</a>.</p>
+  <div class="callout"><b>Головна робота:</b> коли задачі прилітають з різних місць — Trello основної роботи, Telegram-чату другої роботи і особистого життя, — я хочу бачити їх усі разом і одразу розрізняти, <i>з якої групи</i> кожна, щоб нічого не загубити, знати, з чого почати, і в кінці дня відчувати, що день пройшов не дарма. <span class="ref">JTBD.md · бриф, §2</span></div>
+  <p class="note"><span class="concl-inline">Оновлення 01.11.2026:</span> «хто саме поставив задачу» для автора не ключове — це давно є всюди. Важливо лише, з якої групи прийшла задача. Розділи 02 і 04 нижче ще спираються на «хто» як на головну прогалину, тож їх варто перечитувати з цією поправкою.</p>
+
+  <h3>Карта роботи</h3>
+  <div class="table-wrap"><table class="jobmap">
+    <thead><tr><th>Етап</th><th>Що робить зараз</th><th>Де болить</th></tr></thead>
+    <tbody>
+      <tr><th>1. Зібрати</th><td>Відкриває Trello, Telegram і Figma разом</td><td>Три вкладки; задачі в чаті не відрізняються від розмови</td></tr>
+      <tr><th>2. Розрізнити</th><td>Тримає в голові, що з якої роботи</td><td>Немає єдиного погляду «робота 1 / робота 2 / особисте»</td></tr>
+      <tr><th>3. З чого почати</th><td>Пріоритет роботи + задачі «на око»</td><td>Не видно розміру задачі й приблизного часу</td></tr>
+      <tr><th>4. Зафіксувати нове</th><td>Пам'ять; задачі з чату просто «прописані» в групі</td><td>Задачі губляться; особисте нема куди швидко записати</td></tr>
+      <tr><th>5. Виконати</th><td>Працює у Figma, матеріали в Trello й Telegram</td><td>Відволікають особисті справи; матеріали розкидані</td></tr>
+      <tr><th>6. Здати</th><td>Файли в Telegram або Trello, чекає правок і апруву</td><td>Статус «на рев'ю» ніде не зведений</td></tr>
+      <tr><th>7. Завершити день</th><td>Нічого</td><td>«Ніби нічого такого не зробив, а день пройшов, і я засмучений»</td></tr>
+      <tr><th>8. Відчути прогрес</th><td>Колись — стікери на холодильнику</td><td>«Важко було міряти їх по величині»</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Сили прогресу</h3>
+  <div class="cards two forces">
+    <div class="card push"><div class="k">Поштовх ситуації</div><p>«Я забув декілька задач в Telegram, і на жаль ми просіли по дедлайну». Відчуття, що день пройшов без результату. Перемикання між трьома інструментами.</p></div>
+    <div class="card pull"><div class="k">Притягання нового</div><p>Усі задачі життя разом і розрізнені. «Дуже гарний і зручний», дає «емоційну розрядку і мотивацію». Ачівки, нагороди, «Настрій дня». Усе — в телефоні.</p></div>
+    <div class="card anx"><div class="k">Тривога нового</div><p>Чи не стане CRM ще однією вкладкою, яку треба вести вручну. Чи надійна синхронізація з Trello і бот. Чи не доведеться платити — проєкт «без вкладень».</p></div>
+    <div class="card habit"><div class="k">Звичка теперішнього</div><p>Зранку відкривати Trello і Telegram напряму. Тримати задачі в голові. Здавати роботу в чат і Trello, як звикла команда.</p></div>
+  </div>
+  <p class="note"><span class="concl-inline">Висновок:</span> CRM переможе звичку, тільки якщо збиратиме задачі сама, без ручного перенесення, і буде приємнішою за звичні інструменти.</p>
+
+  <h3>Job stories</h3>
+  <ol class="stories">
+    <li><b>Ранок:</b> одним поглядом побачити всі задачі з обох робіт і особисті справи, розділені за групами й упорядковані за пріоритетом — щоб одразу знати, з чого почати.</li>
+    <li><b>Telegram:</b> задача з чату, навіть без відмітки, гарантовано потрапляє в список — щоб ми не просідали по дедлайнах.</li>
+    <li><b>Голос:</b> надиктувати задачу прямо в CRM — щоб зафіксувати за секунду, навіть з телефона на ходу.</li>
+    <li><b>Прохання:</b> швидко зафіксувати незаплановане прохання і час на нього — щоб бачити, куди йде день.</li>
+    <li><b>Фокус:</b> бачити таймер і приблизний час задачі — щоб не відволікатись.</li>
+    <li><b>Матеріали:</b> усі матеріали задачі поруч — щоб не шукати їх по різних місцях.</li>
+    <li><b>Кінець дня:</b> побачити, скільки реально зроблено з урахуванням розміру задач — щоб відчувати гордість, а не провину.</li>
+    <li><b>Поганий стан:</b> сказати CRM про настрій і отримати план під нього — щоб рухатись і не вигорати.</li>
+    <li><b>Похвала:</b> зберегти й відсвяткувати класний момент — щоб пам'ятати, «який я красава».</li>
+    <li><b>У дорозі:</b> усі задачі життя в телефоні — щоб нічого не забувати.</li>
+  </ol>
+
+  <h3>Що з цього випливає</h3>
+  <div class="cards three">
+    <div class="card"><div class="k">Розрізнення</div><h4>Група — головна вісь</h4><p>Основна робота, друга робота, особисте: колір, іконка і фільтр. Хто поставив — лише всередині задачі.</p></div>
+    <div class="card"><div class="k">Захоплення</div><h4>Без ручного перенесення</h4><p>Бот збирає задачі з чату сам, «Можливі задачі» з лічильником, власні задачі — голосом у CRM, безкоштовно.</p></div>
+    <div class="card"><div class="k">Емоції</div><h4>Прогрес видно</h4><p>Розмір задачі з MVP, щоб велика задача важила більше за маленьку. XP і ачівки, підсумок дня.</p></div>
+  </div>
+</section>
 
 <section id="competitors">
   <h2><span class="num">01</span> Конкуренти</h2>

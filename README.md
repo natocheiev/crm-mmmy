@@ -16,10 +16,12 @@ Next.js · TypeScript · Tailwind · Motion · Supabase · Drizzle · grammY · 
 Vercel Hobby + Supabase Free: **$0/міс**. Проєкт self-hostable: форкаєш, підключаєш свої Trello і Telegram, і в тебе власна CRM.
 
 ## Індекс артефактів
-- [CLAUDE.md](./CLAUDE.md) — повний продуктовий бриф, JTBD і правила роботи з репо
+- [CLAUDE.md](./CLAUDE.md) — повний продуктовий бриф і правила роботи з репо
+- [JTBD.md](./JTBD.md) — Jobs-to-be-Done: головна робота, карта роботи, сили прогресу, job stories, бажані результати
 - [index.html](./index.html) — стартова сторінка ([на сайті](https://natocheiev.github.io/crm-mmmy/))
 - [_nav/tree.js](./_nav/tree.js) — дерево сторінок навігатора
 - [research/](./research/) — дослідження
+- [research/notes/people.md](./research/notes/people.md) — що research.md знає про людей і чого не знає
 - [research/research.md](./research/research.md) — зведення дослідження: конкуренти, бенчмарк, патерни, гіпотези
 - [research/research.html](./research/research.html) — те саме односторінковою HTML-сторінкою ([на сайті](https://natocheiev.github.io/crm-mmmy/research/research.html))
 - [research/notes/03-competitors.md](./research/notes/03-competitors.md) — конкуренти: хард, софт, аспіраційні

@@ -1,0 +1,75 @@
+/* Навігатор репо — нейтральний службовий стиль, не частина продукту. */
+.repo-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 16px 12px;
+  background: #f6f6f6;
+  border-right: 1px solid #e2e2e2;
+  font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #333;
+  z-index: 1000;
+}
+
+.repo-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.repo-nav ul ul {
+  padding-left: 14px;
+}
+
+.repo-nav li {
+  margin: 1px 0;
+}
+
+.repo-nav a {
+  display: block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #333;
+  text-decoration: none;
+}
+
+.repo-nav a:hover {
+  background: #e9e9e9;
+}
+
+.repo-nav a.nav-current {
+  background: #dcdcdc;
+  font-weight: 600;
+}
+
+.repo-nav .nav-branch {
+  display: block;
+  margin-top: 12px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #888;
+}
+
+body.has-repo-nav {
+  margin-left: 240px;
+}
+
+@media (max-width: 720px) {
+  .repo-nav {
+    position: static;
+    width: auto;
+    border-right: 0;
+    border-bottom: 1px solid #e2e2e2;
+  }
+
+  body.has-repo-nav {
+    margin-left: 0;
+  }
+}

@@ -2,6 +2,8 @@
 
 Особистий CRM для дизайнера. Задачі з **Trello** і **Telegram** плюс особисті справи в одному яскравому, анімованому інтерфейсі з **ачівками, XP і реальними нагородами**.
 
+**Репо:** https://github.com/natocheiev/crm-mmmy · **Сайт (GitHub Pages):** https://natocheiev.github.io/crm-mmmy/
+
 ## Що вміє (план)
 - **MVP**: єдиний список і Kanban задач (Tasks → In Progress → In Review → Approved), дві роботи плюс «Особисте» з пріоритетами й розміром задач, двостороння синхронізація з Trello, збір задач з Telegram-чату через бота, особисті задачі й нагадування, ачівки та XP, «Настрій дня», кастомізація кольорів.
 - **Далі**: таймер часу, підсумок дня, календар задач, нотатки, статистика й графіки, нагадування в Telegram, мобільний адаптив.
@@ -13,4 +15,9 @@ Next.js · TypeScript · Tailwind · Motion · Supabase · Drizzle · grammY · 
 ## Хостинг
 Vercel Hobby + Supabase Free: **$0/міс**. Проєкт self-hostable: форкаєш, підключаєш свої Trello і Telegram, і в тебе власна CRM.
 
-Повний бриф: [CLAUDE.md](./CLAUDE.md).
+## Індекс артефактів
+- [CLAUDE.md](./CLAUDE.md) — повний продуктовий бриф, JTBD і правила роботи з репо
+- [index.html](./index.html) — стартова сторінка ([на сайті](https://natocheiev.github.io/crm-mmmy/))
+- [_nav/tree.js](./_nav/tree.js) — дерево сторінок навігатора
+- [research/](./research/) — дослідження (поки порожньо)
+- [research/screens/](./research/screens/) — скріни для досліджень (поки порожньо)

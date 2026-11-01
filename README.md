@@ -19,6 +19,7 @@ Vercel Hobby + Supabase Free: **$0/міс**. Проєкт self-hostable: фор�
 - [CLAUDE.md](./CLAUDE.md) — повний продуктовий бриф, JTBD і правила роботи з репо
 - [index.html](./index.html) — стартова сторінка ([на сайті](https://natocheiev.github.io/crm-mmmy/))
 - [_nav/tree.js](./_nav/tree.js) — дерево сторінок навігатора
-- [research/](./research/) — дослідження (поки порожньо)
-- [research/screens/](./research/screens/) — скріни для досліджень (поки порожньо)
+- [research/](./research/) — дослідження
 - [research/notes/03-competitors.md](./research/notes/03-competitors.md) — конкуренти: хард, софт, аспіраційні
+- [research/notes/04-matrix.md](./research/notes/04-matrix.md) — матриця 5 конкурентів за осями брифу
+- [research/screens/](./research/screens/) — скріни перших екранів конкурентів (`04-*.png`)

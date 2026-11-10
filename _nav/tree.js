@@ -10,4 +10,10 @@ window.NAV_TREE = [
       { title: "Дослідження", href: "research/research.html" },
     ],
   },
+  {
+    branch: "Структура",
+    items: [
+      { title: "Інформаційна архітектура", href: "ia.html" },
+    ],
+  },
 ];

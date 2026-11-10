@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="uk" data-root="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Інформаційна архітектура — CRM-MMMY</title>
+<link rel="stylesheet" href="_nav/nav.css">
+<script src="_nav/tree.js" defer></script>
+<script src="_nav/nav.js" defer></script>
+<style>
+:root {
+  --bg: #0d0d10; --surface: #16161b; --surface-2: #1d1d23; --border: #2a2a32;
+  --text: #ececf0; --muted: #a0a0aa; --faint: #6e6e78;
+  --accent: #ff8fab; --accent-soft: rgba(255, 143, 171, .12);
+  --yes: #6ee7b7; --yes-soft: rgba(110, 231, 183, .08);
+  --no: #ff6b6b; --no-soft: rgba(255, 107, 107, .14);
+  --warn: #f5c46b; --warn-soft: rgba(245, 196, 107, .10);
+  --blue: #6b93ff;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+main { max-width: 1120px; padding: 56px 48px 96px; }
+a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+code { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--text); }
+b { font-weight: 600; }
+.hero { margin-bottom: 72px; }
+.eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 14px; }
+h1 { font-size: 44px; line-height: 1.12; letter-spacing: -.02em; margin: 0 0 16px; max-width: 900px; }
+.lead { color: var(--muted); font-size: 16px; max-width: 760px; margin: 0 0 24px; }
+.toc { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+.toc a { padding: 7px 14px; border: 1px solid var(--border); border-radius: 999px; color: var(--text); text-decoration: none; font-size: 13px; background: var(--surface); }
+.toc a:hover { border-color: var(--accent); }
+section { margin-bottom: 88px; scroll-margin-top: 24px; }
+h2 { font-size: 30px; letter-spacing: -.01em; margin: 0 0 10px; display: flex; align-items: baseline; gap: 12px; }
+h2 .num { color: var(--accent); font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.sub { color: var(--muted); max-width: 780px; margin: 0 0 28px; }
+h3 { font-size: 18px; margin: 48px 0 16px; scroll-margin-top: 24px; }
+.note { color: var(--muted); font-size: 14px; max-width: 860px; margin: 12px 0 0; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 18px 16px; }
+.card p { margin: 0; color: var(--muted); font-size: 14px; }
+.card .k { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .04em; margin-bottom: 6px; }
+.card .big { font-size: 34px; font-weight: 700; color: var(--text); line-height: 1.1; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.card.yes { border-color: rgba(110, 231, 183, .35); background: linear-gradient(var(--yes-soft), var(--yes-soft)), var(--surface); }
+.card.yes .k { color: var(--yes); }
+.chip { display: inline-block; margin: 0 6px 6px 0; padding: 4px 11px; border: 1px solid var(--border); border-radius: 999px; font-size: 12px; color: var(--muted); text-decoration: none; background: var(--surface-2); }
+.chip:hover { color: var(--accent); border-color: var(--accent); }
+
+/* tree */
+.tree, .tree ul { list-style: none; margin: 0; padding: 0; }
+.tree ul { margin-left: 14px; padding-left: 22px; border-left: 1px solid var(--border); }
+.tree li { position: relative; margin: 8px 0; }
+.tree ul > li::before { content: ""; position: absolute; left: -22px; top: 18px; width: 18px; border-top: 1px solid var(--border); }
+.node-root { display: inline-block; font-weight: 700; padding: 6px 14px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(255,143,171,.35); }
+.node-nav { display: inline-block; font-weight: 600; padding: 6px 12px; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border); }
+.hint { color: var(--faint); font-size: 12px; margin-left: 10px; }
+.scr { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; max-width: 820px; }
+.scr.main { border-color: var(--accent); background: linear-gradient(var(--accent-soft), var(--accent-soft)), var(--surface); }
+.scr-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.scr-name { font-weight: 600; }
+.file { color: var(--blue); font-size: 12px; }
+.type { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
+.t-глобальний { color: var(--yes); border-color: rgba(110,231,183,.35); }
+.t-контекстний { color: var(--warn); border-color: rgba(245,196,107,.35); }
+.t-глибокий { color: var(--faint); }
+.scr-job { color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+/* tables */
+.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--border); }
+thead th { background: var(--surface-2); color: var(--muted); font-size: 12px; font-weight: 600; }
+tbody tr:last-child > * { border-bottom: 0; }
+tbody th { font-weight: 600; }
+td { color: #d6d6dc; }
+.states td { min-width: 170px; font-size: 13px; }
+.states td:last-child { min-width: 260px; color: var(--muted); }
+.clk { white-space: nowrap; color: var(--yes); }
+
+/* matrix */
+.trace th, .trace td { padding: 9px 10px; }
+.trace thead th:not(:first-child) { text-align: center; }
+.trace thead th small { display: block; color: var(--faint); font-weight: 400; }
+.trace tbody th { font-weight: 400; min-width: 280px; }
+.trace td { text-align: center; }
+.dot { color: var(--accent); }
+.trace tr.thin > th { box-shadow: inset 3px 0 0 var(--warn); }
+.trace tr.orphan > *, .trace .orphan { background: var(--no-soft); }
+.trace tr.orphan > th { box-shadow: inset 3px 0 0 var(--no); }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.lg-orphan::before { background: var(--no); }
+.lg-thin::before { background: var(--warn); }
+.lg-dot::before { background: var(--accent); border-radius: 50% !important; }
+
+/* flows */
+.diagram { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; overflow-x: auto; }
+.diagram pre.mermaid { margin: 0; background: transparent; width: max-content; min-width: 100%; text-align: center; }
+.ends { margin: 14px 0 0; padding-left: 20px; color: var(--muted); font-size: 14px; }
+.flow-legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+.flow-legend span { font-size: 12px; padding: 3px 10px; border-radius: 6px; border: 1px solid; }
+.fl-screen { background: #1c2740; border-color: #6b93ff !important; }
+.fl-state { background: #2a2414; border-color: #f5c46b !important; border-radius: 999px !important; }
+.fl-err { background: #3a181c; border-color: #ff6b6b !important; border-radius: 999px !important; }
+.fl-ok { background: #11301f; border-color: #6ee7b7 !important; border-radius: 999px !important; }
+.fl-q { background: var(--surface-2); border-color: var(--muted) !important; }
+
+footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--border); padding-top: 18px; }
+@media (max-width: 700px) {
+  main { padding: 32px 16px 64px; }
+  h1 { font-size: 30px; }
+  h2 { font-size: 24px; }
+  .tree ul { margin-left: 6px; padding-left: 14px; }
+  .tree ul > li::before { left: -14px; width: 10px; }
+}
+</style>
+</head>
+<body>
+<main>
+
+<header class="hero">
+  <div class="eyebrow">CRM-MMMY · Структура · Знімок IA</div>
+  <h1>Одна дошка — головний екран: main job за 0 кліків</h1>
+  <p class="lead">Карта екранів, маршрути і трасування jobs → екрани для primary-персони (автора). Джерела правди — <a href="https://github.com/natocheiev/crm-mmmy/blob/main/sitemap.md" target="_blank" rel="noopener">sitemap.md</a> і <a href="https://github.com/natocheiev/crm-mmmy/blob/main/flows.md" target="_blank" rel="noopener">flows.md</a>; ця сторінка — їхнє подання.</p>
+  <nav class="toc" aria-label="Розділи">
+    <a href="#sitemap">01 · Sitemap</a><a href="#states">02 · Стани</a><a href="#flows">03 · Flows</a><a href="#trace">04 · Трасування</a>
+  </nav>
+  <div class="cards">
+    <div class="card"><div class="k">Екранів</div><div class="big">10</div><p>у 6 групах; вхід — стан дошки</p></div>
+    <div class="card"><div class="k">Main job</div><div class="big">0</div><p>кліків — це головний екран «Дошка»</p></div>
+    <div class="card"><div class="k">Найглибше</div><div class="big">2</div><p>кліки: перетворити повідомлення з Telegram на задачу</p></div>
+    <div class="card yes"><div class="k">Тупики і сироти</div><div class="big">0</div><p>після виправлень за критикою</p></div>
+  </div>
+</header>
+
+<section id="sitemap">
+  <h2><span class="num">01</span> Sitemap</h2>
+  <p class="sub">Дерево від глобальної навігації до екранів. Біля кожного екрана — файл, тип і job з <a href="https://github.com/natocheiev/crm-mmmy/blob/main/JTBD.md" target="_blank" rel="noopener">JTBD.md</a>. Десктоп — бічна панель, телефон — таб-бар з тими самими пунктами; кнопка з мікрофоном у таб-барі по центру.</p>
+  <ul class="tree"><li class="root"><span class="node-root">CRM-MMMY</span><ul>
+<li class="navi"><span class="node-nav">Дошка</span><ul>
+<li class="scr main"><div class="scr-head"><span class="scr-name">Дошка — <b>головний</b></span><code class="file">board.html</code><span class="type t-глобальний">глобальний</span></div><div class="scr-job">ГР; J1 (усе одним поглядом, за групами й пріоритетом); J2 (лічильник «Можливих задач»); J10 (у телефоні)</div></li>
+<li class="scr"><div class="scr-head"><span class="scr-name">Задача</span><code class="file">task.html</code><span class="type t-контекстний">контекстний</span></div><div class="scr-job">J5 (таймер і приблизний час); J6 (усі матеріали поруч); J4 (час на прохання)</div></li>
+<li class="scr"><div class="scr-head"><span class="scr-name">Швидке додавання (голос або поле)</span><code class="file">capture.html</code><span class="type t-глобальний">глобальний</span></div><div class="scr-job">J3 (надиктувати за секунду); J4 (зафіксувати прохання); J10 (з телефона)</div></li>
+</ul></li>
+<li class="navi"><span class="node-nav">Можливі задачі</span><ul>
+<li class="scr"><div class="scr-head"><span class="scr-name">Можливі задачі</span><code class="file">inbox.html</code><span class="type t-глобальний">глобальний</span></div><div class="scr-job">J2 (повідомлення без відмітки гарантовано в списку)</div></li>
+</ul></li>
+<li class="navi"><span class="node-nav">День</span><ul>
+<li class="scr"><div class="scr-head"><span class="scr-name">Підсумок дня</span><code class="file">day.html</code><span class="type t-глобальний">глобальний</span></div><div class="scr-job">J7 (скільки зроблено з урахуванням розміру); J9 (похвали за день); J11 (скільки роботи зроблено)</div></li>
+</ul></li>
+<li class="navi"><span class="node-nav">Мотивація</span><ul>
+<li class="scr"><div class="scr-head"><span class="scr-name">Нагороди і цілі</span><code class="file">rewards.html</code><span class="type t-глобальний">глобальний</span></div><div class="scr-job">J11 (винагородити себе за досягнуту ціль)</div></li>
+<li class="scr"><div class="scr-head"><span class="scr-name">Ачівки і Стіна пошани</span><code class="file">trophies.html</code><span class="type t-контекстний">контекстний</span></div><div class="scr-job">J11 (знати, що це добре зроблено)</div></li>
+<li class="scr"><div class="scr-head"><span class="scr-name">Похвали</span><code class="file">praise.html</code><span class="type t-контекстний">контекстний</span></div><div class="scr-job">J9 (зберегти й перечитати класний момент)</div></li>
+</ul></li>
+<li class="navi"><span class="node-nav">Кнопка «Додати» 🎤</span><span class="hint">дія, видна завжди</span><ul><li class="scr"><div class="scr-head"><span class="scr-name">Швидке додавання (голос або поле)</span><code class="file">capture.html</code><span class="type t-глобальний">глобальний</span></div><div class="scr-job">J3 (надиктувати за секунду); J4 (зафіксувати прохання); J10 (з телефона)</div></li></ul></li>
+<li class="navi"><span class="node-nav">Шестірня ⚙</span><ul>
+<li class="scr"><div class="scr-head"><span class="scr-name">Групи і джерела</span><code class="file">sources.html</code><span class="type t-глибокий">глибокий</span></div><div class="scr-job">ГР (задачі «з різних місць», розрізняти групи: колір, іконка, пріоритет); J1; J2 (без підключеного чату задачі з Telegram не прийдуть)</div></li>
+<li class="scr"><div class="scr-head"><span class="scr-name">Кольори і теми</span><code class="file">theme.html</code><span class="type t-глибокий">глибокий</span></div><div class="scr-job">E3 («дуже гарний», «мені подобається тут бути»); J8 (пресет теми для кожного настрою). Раніше [СИРОТА], прив'язано на кроці трасування</div></li>
+</ul></li>
+</ul></li></ul>
+  <h3>Глибина до main job</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Частина main job</th><th>Шлях</th><th>Кліків</th></tr></thead>
+    <tbody><tr><th>Бачити всі задачі разом і з якої групи кожна</th><td>Дошка — це головний екран</td><td class='clk'><b>0</b></td></tr><tr><th>Знати, з чого почати</th><td>Дошка впорядкована за пріоритетом групи й задачі. Уранці перший раз за день дошка просить вибрати настрій (стан, а не екран), і тоді показує план під нього</td><td class='clk'><b>0</b> (1 — вибір настрою вранці, його можна пропустити)</td></tr><tr><th>Нічого не загубити з Telegram</th><td>Лічильник «Можливих задач» → <code>inbox.html</code> → «Це задача» (перетворення на місці, розмір M за замовчуванням, без відкриття <code>task.html</code>)</td><td class='clk'><b>1</b>; перетворити повідомлення на задачу — <b>2</b> (ГЛ-1)</td></tr><tr><th>Зафіксувати нову задачу (J3)</th><td>Кнопка з мікрофоном (слухає одразу) → сказати → автозбереження через 3 с з «Скасувати»</td><td class='clk'><b>1</b> (ГЛ-2)</td></tr><tr><th>Змінити статус задачі</th><td>Перетягнути картку на дошці, без відкриття <code>task.html</code></td><td class='clk'><b>1</b> (ГЛ-3)</td></tr><tr><th>Відчути, що день не дарма</th><td>Пункт «День» → <code>day.html</code></td><td class='clk'><b>1</b></td></tr></tbody>
+  </table></div>
+  <p class="note"><b>Перемикач</b> — тільки для сутності «Група»: фішки «Усі · Робота 1 · Робота 2 · Особисте» зверху дошки і на підсумку дня. Це фільтр, а не окремі простори: JTBD вимагає одну спільну дошку.</p>
+</section>
+
+<section id="states">
+  <h2><span class="num">02</span> Стани екранів</h2>
+  <p class="sub">Empty, loading, error і підтвердження — стани екранів, а не окремі екрани. Назви збігаються з вузлами у flows.</p>
+  <div class="table-wrap"><table class="states">
+    <thead><tr><th>Екран</th><th>loading</th><th>empty</th><th>error</th><th>Інші стани</th></tr></thead>
+    <tbody><tr><th><code>board.html</code></th><td>Синхронізація з Trello і Telegram</td><td>Додай задачу або підключи джерело</td><td>Хибний email; посилання прострочене; джерело не відповідає (показано збережені задачі); настрій не збережено</td><td>Немає сесії; лист надіслано; настрій не вибрано, пропущено, план під настрій; лічильник можливих задач, акцент на ньому; бот не бачить чат; джерело відключено; картку перетягнуто; очікує синхронізації; In Review, «чекає апрув N днів»; Approved — XP і конфеті; XP донарахую пізніше; нова ачівка +1; задача «очікує відправки»; нова задача підсвічена</td></tr><tr><th><code>task.html</code></th><td>Матеріали з джерела</td><td>— (задача завжди має назву)</td><td>Вкладення недоступне, є посилання на оригінал; таймер забутий понад 8 год; ручний запис часу: кінець раніше за початок (СТ-12)</td><td>Таймер іде; ручний запис часу для прохання (J4); форма похвали</td></tr><tr><th><code>capture.html</code></th><td>Слухаю; зберігаю</td><td>Поле для диктовки клавіатурою (розпізнавання недоступне)</td><td>Мікрофон заборонено; не почув</td><td>Назва, група і дедлайн на перевірку; правка; збережено на пристрої; підтвердження і «Скасувати»</td></tr><tr><th><code>inbox.html</code></th><td>Завантаження</td><td>Усе розібрано</td><td>Не вдалося завантажити; немає зʼєднання при перетворенні</td><td>Вже є на дошці; відхилено зі «Скасувати»; фільтр «Відхилені»; введи назву (лише медіа); перетворення на місці; перетворено</td></tr><tr><th><code>day.html</code></th><td>Рахую вагу і XP</td><td>Закритого немає: показано час, прохання, похвали і маленьку задачу</td><td>Не вдалося порахувати</td><td>План на завтра збережено; фільтр за групою; форма похвали</td></tr><tr><th><code>rewards.html</code></th><td>Рахую баланс XP</td><td>Додай першу нагороду</td><td>Потрібні назва і ціна більше 0; XP не списано</td><td>Прогрес — лишилось N XP і M днів; змінити ціну або додати проміжну; нагороду отримано</td></tr><tr><th><code>trophies.html</code></th><td>Завантаження</td><td>Найближча ачівка і що для неї треба</td><td>Не вдалося завантажити (СТ-11)</td><td>Список ачівок; Стіна пошани з лічильниками</td></tr><tr><th><code>praise.html</code></th><td>Завантаження; зберігаю</td><td>Збережи першу похвалу</td><td>Додай текст або скрін; файл не завантажився; немає зʼєднання</td><td>Стрічка для перечитування; форма; збережено — святкування</td></tr><tr><th><code>sources.html</code></th><td>Підключаю; перевіряю бота</td><td>Ще нічого не підключено — Trello і Telegram</td><td>Хибний токен (інструкція); бот не в чаті або privacy mode увімкнено (інструкція)</td><td>Бот працює, перешли пропущене вручну; підключено</td></tr><tr><th><code>theme.html</code></th><td>— (локальне налаштування, без очікування)</td><td>— (завжди є стандартна тема)</td><td>Тему не збережено, повтор (СТ-11)</td><td>Пресет на кожен настрій; попередній перегляд; збережено</td></tr></tbody>
+  </table></div>
+</section>
+
+<section id="flows">
+  <h2><span class="num">03</span> User flows</h2>
+  <p class="sub">Main job повністю і чотири related jobs. Кожен error має вихід «повторити» і «назад»; тупиків без виходу немає.</p>
+  <div class="cards"><div class='card'><div class='k'><b>J2 — задача з Telegram без відмітки</b></div><p><b>Найризикованіший.</b> Тут уже був реальний збій: задачі загубились, і команда просіла по дедлайну. Втрата тиха</p></div><div class='card'><div class='k'><b>J3 — надиктувати задачу голосом</b></div><p><b>Найчастіший</b> спосіб фіксувати нове. До того ж технічний ризик: Web Speech API може не підтримувати українську (CLAUDE.md §9)</p></div><div class='card'><div class='k'><b>J11 — винагородити себе за досягнуту ціль</b></div><p><b>Ризикований емоційно:</b> це головна мотивація продукту</p></div><div class='card'><div class='k'><b>J9 — зберегти похвалу</b></div><p>Доданий за дефектом СР-4. Похвала — найсильніший мотиватор автора, а <code>praise.html</code> не був у жодному flow</p></div></div>
+  <h3>Легенда</h3>
+  <div class="flow-legend"><span class="fl-screen">Екран</span><span class="fl-q">Розвилка ◇</span><span class="fl-state">Стан</span><span class="fl-err">Error</span><span class="fl-ok">Job закрито</span></div>
+  <p class="note"><a class="chip" href="#flow-1">Main job</a><a class="chip" href="#flow-2">J2</a><a class="chip" href="#flow-3">J3</a><a class="chip" href="#flow-4">J11</a><a class="chip" href="#flow-5">J9</a></p>
+  
+  <h3 id="flow-1">Main job: бачити всі задачі разом, нічого не загубити, знати з чого почати і закрити день не дарма</h3>
+  <div class="diagram"><pre class="mermaid">flowchart TD
+    START([&quot;Ранок: автор відкриває CRM&quot;]) --&gt; Q_SESSION{&quot;Сесія є?&quot;}
+    Q_SESSION --&gt;|ні| LOGIN([&quot;Дошка: немає сесії — поле email&quot;])
+    LOGIN --&gt; Q_EMAIL{&quot;Email правильний?&quot;}
+    Q_EMAIL --&gt;|ні| LOGIN_ERR([&quot;Дошка: error — хибний email&quot;])
+    LOGIN_ERR --&gt; LOGIN
+    Q_EMAIL --&gt;|так| LOGIN_SENT([&quot;Дошка: лист надіслано — перевір пошту і спам&quot;])
+    LOGIN_SENT --&gt; Q_LINK{&quot;Посилання спрацювало?&quot;}
+    Q_LINK --&gt;|так| BOARD_LOADING
+    Q_LINK --&gt;|ні| LINK_ERR([&quot;Дошка: error — посилання прострочене або лист не прийшов&quot;])
+    LINK_ERR --&gt;|надіслати ще раз| LOGIN_SENT
+    LINK_ERR --&gt;|інший email| LOGIN
+    Q_SESSION --&gt;|так| BOARD_LOADING([&quot;Дошка: loading — синхронізація з Trello і Telegram&quot;])
+
+    BOARD_LOADING --&gt; Q_SYNC{&quot;Дані з джерел прийшли?&quot;}
+    Q_SYNC --&gt;|ні| BOARD_SYNC_ERR([&quot;Дошка: error — джерело не відповідає, показано збережені задачі&quot;])
+    BOARD_SYNC_ERR --&gt; Q_KEY{&quot;Причина в ключі доступу?&quot;}
+    Q_KEY --&gt;|ні, збій сервісу| BOARD
+    Q_KEY --&gt;|так| SOURCES[&quot;Групи і джерела&quot;]
+    SOURCES --&gt; SOURCES_LOADING([&quot;Групи і джерела: loading — підключаю&quot;])
+    SOURCES_LOADING --&gt; Q_RECONNECT{&quot;Перепідключення пройшло?&quot;}
+    Q_RECONNECT --&gt;|так| BOARD_LOADING
+    Q_RECONNECT --&gt;|ні| SOURCES_ERR([&quot;Групи і джерела: error — хибний токен, інструкція&quot;])
+    SOURCES_ERR --&gt;|повторити| SOURCES
+    SOURCES_ERR --&gt;|пізніше| BOARD_OFF([&quot;Дошка: джерело відключено, решта працює&quot;])
+    BOARD_OFF --&gt; BOARD
+
+    Q_SYNC --&gt;|так| Q_EMPTY{&quot;Є хоч одна задача?&quot;}
+    Q_EMPTY --&gt;|ні| BOARD_EMPTY([&quot;Дошка: empty — додай задачу або підключи джерело&quot;])
+    BOARD_EMPTY --&gt;|додати свою| CAPTURE[&quot;Швидке додавання&quot;]
+    CAPTURE --&gt;|flow J3| BOARD
+    BOARD_EMPTY --&gt;|підключити| SOURCES
+    Q_EMPTY --&gt;|так| Q_MOOD{&quot;Настрій на сьогодні вибрано?&quot;}
+    Q_MOOD --&gt;|ні| BOARD_MOOD([&quot;Дошка: стан «настрій не вибрано»&quot;])
+    BOARD_MOOD --&gt; Q_MOOD_PICK{&quot;Вибрав настрій?&quot;}
+    Q_MOOD_PICK --&gt;|ні, пропустив| BOARD_MOOD_SKIP([&quot;Дошка: настрій пропущено — звичайний план&quot;])
+    BOARD_MOOD_SKIP --&gt; BOARD
+    Q_MOOD_PICK --&gt;|так| Q_MOOD_SAVED{&quot;Настрій збережено?&quot;}
+    Q_MOOD_SAVED --&gt;|ні| MOOD_ERR([&quot;Дошка: error — настрій не збережено, тема стандартна&quot;])
+    MOOD_ERR --&gt;|повторити| BOARD_MOOD
+    MOOD_ERR --&gt;|далі| BOARD
+    Q_MOOD_SAVED --&gt;|так| BOARD_PLAN([&quot;Дошка: тема і план під настрій&quot;])
+    BOARD_PLAN --&gt; BOARD
+    Q_MOOD --&gt;|так| BOARD[&quot;Дошка&quot;]
+
+    BOARD --&gt; Q_INBOX{&quot;Є нерозібрані можливі задачі?&quot;}
+    Q_INBOX --&gt;|так| Q_INBOX_NOW{&quot;Розібрати зараз?&quot;}
+    Q_INBOX_NOW --&gt;|так| INBOX[&quot;Можливі задачі&quot;]
+    INBOX --&gt;|flow J2| BOARD
+    Q_INBOX_NOW --&gt;|пізніше| BOARD_COUNTER([&quot;Дошка: лічильник лишається видимим&quot;])
+    BOARD_COUNTER --&gt; BOARD_DRAG
+    Q_INBOX --&gt;|ні| BOARD_DRAG([&quot;Дошка: картку перетягнуто в In Progress&quot;])
+
+    BOARD_DRAG --&gt; Q_TRELLO{&quot;Задача з Trello?&quot;}
+    Q_TRELLO --&gt;|ні| TASK
+    Q_TRELLO --&gt;|так| Q_MOVE{&quot;Статус записано в Trello?&quot;}
+    Q_MOVE --&gt;|так| TASK
+    Q_MOVE --&gt;|ні| SYNC_PENDING([&quot;Дошка: зміну збережено в CRM, очікує синхронізації&quot;])
+    SYNC_PENDING --&gt; TASK
+
+    TASK[&quot;Задача&quot;] --&gt; TASK_LOADING([&quot;Задача: loading — матеріали з джерела&quot;])
+    TASK_LOADING --&gt; Q_MAT{&quot;Матеріали завантажились?&quot;}
+    Q_MAT --&gt;|ні| TASK_MAT_ERR([&quot;Задача: error — вкладення недоступне, є посилання на оригінал&quot;])
+    TASK_MAT_ERR --&gt; TASK_TIMER
+    Q_MAT --&gt;|так| TASK_TIMER([&quot;Задача: таймер іде&quot;])
+    TASK_TIMER --&gt; Q_TIMER_LONG{&quot;Таймер іде довше 8 годин?&quot;}
+    Q_TIMER_LONG --&gt;|так| TIMER_ERR([&quot;Задача: error — таймер, схоже, забутий, виправ час&quot;])
+    TIMER_ERR --&gt; BOARD_REVIEW
+    Q_TIMER_LONG --&gt;|ні| BOARD_REVIEW([&quot;Дошка: задача в In Review&quot;])
+    BOARD_REVIEW --&gt; Q_APPROVE{&quot;Апрув прийшов?&quot;}
+    Q_APPROVE --&gt;|правки| TASK_TIMER
+    Q_APPROVE --&gt;|ще ні| BOARD_WAITING([&quot;Дошка: на картці «чекає апрув N днів»&quot;])
+    BOARD_WAITING --&gt; BOARD
+    Q_APPROVE --&gt;|так| BOARD_APPROVED([&quot;Дошка: Approved — XP і конфеті&quot;])
+    BOARD_APPROVED --&gt; BOARD
+
+    BOARD --&gt;|пункт «День», будь-коли| DAY_LOADING([&quot;Підсумок дня: loading — рахую вагу і XP&quot;])
+    DAY_LOADING --&gt; Q_DAY_OK{&quot;Підсумок пораховано?&quot;}
+    Q_DAY_OK --&gt;|ні| DAY_ERR([&quot;Підсумок дня: error — не вдалося порахувати&quot;])
+    DAY_ERR --&gt;|повторити| DAY_LOADING
+    DAY_ERR --&gt;|назад| BOARD
+    Q_DAY_OK --&gt;|так| Q_DONE{&quot;Сьогодні щось закрито?&quot;}
+    Q_DONE --&gt;|ні| DAY_EMPTY([&quot;Підсумок дня: empty — показано час, прохання, похвали і маленьку задачу&quot;])
+    DAY_EMPTY --&gt; Q_SMALL{&quot;Взяти маленьку задачу?&quot;}
+    Q_SMALL --&gt;|так| BOARD
+    Q_SMALL --&gt;|ні| DAY_TOMORROW([&quot;Підсумок дня: план на завтра збережено&quot;])
+    DAY_TOMORROW --&gt; OK_SOFT((&quot;Job закрито: день не порожній — видно час, прохання і план&quot;))
+    Q_DONE --&gt;|так| DAY[&quot;Підсумок дня&quot;]
+    DAY --&gt; OK((&quot;Job закрито: усе видно, нічого не загублено, день не дарма&quot;))
+
+    classDef screen fill:#1c2740,stroke:#6b93ff,color:#ececf0
+    classDef state fill:#2a2414,stroke:#f5c46b,color:#ececf0
+    classDef err fill:#3a181c,stroke:#ff6b6b,color:#ececf0
+    classDef ok fill:#11301f,stroke:#6ee7b7,color:#ececf0
+    class SOURCES,BOARD,INBOX,TASK,DAY,CAPTURE screen
+    class START,LOGIN,LOGIN_SENT,BOARD_LOADING,SOURCES_LOADING,BOARD_OFF,BOARD_EMPTY,BOARD_MOOD,BOARD_MOOD_SKIP,BOARD_PLAN,BOARD_COUNTER,BOARD_DRAG,SYNC_PENDING,TASK_LOADING,TASK_TIMER,BOARD_REVIEW,BOARD_WAITING,BOARD_APPROVED,DAY_LOADING,DAY_EMPTY,DAY_TOMORROW state
+    class LOGIN_ERR,LINK_ERR,BOARD_SYNC_ERR,SOURCES_ERR,MOOD_ERR,TASK_MAT_ERR,TIMER_ERR,DAY_ERR err
+    class OK,OK_SOFT ok
+</pre></div>
+  <ul class='ends'><li><b>Успіх 1:</b> усе видно, нічого не загублено, день не дарма.</li><li><b>Успіх 2 («мʼякий»):</b> закритих задач немає, але день не порожній — видно час, прохання і план.</li></ul><p class='note'><b>Глибина (ГЛ-4):</b> «Підсумок дня» досяжний з дошки одним кліком у будь-який момент, як і обіцяє розділ «Навігація».</p>
+  <h3 id="flow-2">J2: задача з Telegram без відмітки гарантовано потрапляє в мій список</h3>
+  <div class="diagram"><pre class="mermaid">flowchart TD
+    START([&quot;У робочому чаті Telegram пишуть задачу&quot;]) --&gt; Q_BOT{&quot;Бот у чаті і бачить усі повідомлення?&quot;}
+    Q_BOT --&gt;|ні| BOARD_BOT_WARN([&quot;Дошка: попередження — бот не бачить чат, повідомлення можуть губитись&quot;])
+    BOARD_BOT_WARN --&gt; SOURCES[&quot;Групи і джерела&quot;]
+    SOURCES --&gt; SOURCES_LOADING([&quot;Групи і джерела: loading — перевіряю бота&quot;])
+    SOURCES_LOADING --&gt; Q_BOT_FIX{&quot;Бот знову бачить чат?&quot;}
+    Q_BOT_FIX --&gt;|ні| SOURCES_ERR([&quot;Групи і джерела: error — інструкція: додати бота, вимкнути privacy mode&quot;])
+    SOURCES_ERR --&gt;|повторити| SOURCES
+    SOURCES_ERR --&gt;|пізніше| BOARD_BOT_WARN
+    Q_BOT_FIX --&gt;|так| SOURCES_OK([&quot;Групи і джерела: бот працює — пропущене за період перешли боту вручну&quot;])
+    SOURCES_OK --&gt; BOARD
+
+    Q_BOT --&gt;|так| Q_MENTION{&quot;Є відмітка автора або відповідь на його повідомлення?&quot;}
+    Q_MENTION --&gt;|так| BOARD_NEW([&quot;Дошка: нова задача з Telegram&quot;])
+    BOARD_NEW --&gt; OK_AUTO((&quot;Job закрито: задача на дошці автоматично&quot;))
+    Q_MENTION --&gt;|ні| BOARD[&quot;Дошка&quot;]
+
+    BOARD --&gt; BOARD_COUNTER([&quot;Дошка: лічильник можливих задач +1&quot;])
+    BOARD_COUNTER --&gt; Q_OPEN{&quot;Автор відкрив Можливі задачі?&quot;}
+    Q_OPEN --&gt;|ні| BOARD_NUDGE([&quot;Дошка: акцент на лічильнику — повідомлення чекає понад 4 години&quot;])
+    BOARD_NUDGE --&gt; Q_OPEN
+    Q_OPEN --&gt;|так| INBOX_LOADING([&quot;Можливі задачі: loading&quot;])
+    INBOX_LOADING --&gt; Q_LOADED{&quot;Повідомлення завантажились?&quot;}
+    Q_LOADED --&gt;|ні| INBOX_ERR([&quot;Можливі задачі: error — не вдалося завантажити&quot;])
+    INBOX_ERR --&gt;|повторити| INBOX_LOADING
+    INBOX_ERR --&gt;|назад| BOARD
+    Q_LOADED --&gt;|так| Q_ANY{&quot;Є нерозібрані?&quot;}
+    Q_ANY --&gt;|ні| INBOX_EMPTY([&quot;Можливі задачі: empty — усе розібрано&quot;])
+    INBOX_EMPTY --&gt; OK_CLEAN((&quot;Job закрито: нічого не загублено&quot;))
+    Q_ANY --&gt;|так| INBOX[&quot;Можливі задачі&quot;]
+
+    INBOX --&gt; Q_DUP{&quot;Вже є на дошці?&quot;}
+    Q_DUP --&gt;|так| INBOX_DUP([&quot;Можливі задачі: вже є на дошці — посилання на задачу&quot;])
+    INBOX_DUP --&gt; Q_ANY
+    Q_DUP --&gt;|ні| Q_IS_TASK{&quot;Це задача?&quot;}
+    Q_IS_TASK --&gt;|ні| INBOX_REJECTED([&quot;Можливі задачі: відхилено — «Скасувати» і фільтр «Відхилені»&quot;])
+    INBOX_REJECTED --&gt; Q_UNDO{&quot;Відхилено помилково?&quot;}
+    Q_UNDO --&gt;|так| INBOX
+    Q_UNDO --&gt;|ні| Q_ANY
+    Q_IS_TASK --&gt;|так| Q_TEXT{&quot;Є текст для назви?&quot;}
+    Q_TEXT --&gt;|ні, лише медіа| INBOX_TITLE([&quot;Можливі задачі: введи назву&quot;])
+    INBOX_TITLE --&gt; INBOX_CONVERT
+    Q_TEXT --&gt;|так| INBOX_CONVERT([&quot;Можливі задачі: перетворення на місці — розмір M за замовчуванням&quot;])
+    INBOX_CONVERT --&gt; Q_SAVED{&quot;Збережено?&quot;}
+    Q_SAVED --&gt;|ні| CONVERT_ERR([&quot;Можливі задачі: error — немає зʼєднання, повідомлення лишилось новим&quot;])
+    CONVERT_ERR --&gt;|повторити| INBOX_CONVERT
+    CONVERT_ERR --&gt;|пізніше| Q_ANY
+    Q_SAVED --&gt;|так| INBOX_CONVERTED([&quot;Можливі задачі: перетворено — задача на дошці&quot;])
+    INBOX_CONVERTED --&gt; Q_ANY
+
+    classDef screen fill:#1c2740,stroke:#6b93ff,color:#ececf0
+    classDef state fill:#2a2414,stroke:#f5c46b,color:#ececf0
+    classDef err fill:#3a181c,stroke:#ff6b6b,color:#ececf0
+    classDef ok fill:#11301f,stroke:#6ee7b7,color:#ececf0
+    class BOARD,INBOX,SOURCES screen
+    class START,BOARD_BOT_WARN,SOURCES_LOADING,SOURCES_OK,BOARD_NEW,BOARD_COUNTER,BOARD_NUDGE,INBOX_LOADING,INBOX_EMPTY,INBOX_DUP,INBOX_REJECTED,INBOX_TITLE,INBOX_CONVERT,INBOX_CONVERTED state
+    class SOURCES_ERR,INBOX_ERR,CONVERT_ERR err
+    class OK_AUTO,OK_CLEAN ok
+</pre></div>
+  <ul class='ends'><li><b>Успіх 1:</b> задача автоматично з'явилась на дошці.</li><li><b>Успіх 2:</b> усе розібрано, нічого не загублено.</li></ul><p class='note'><b>Глибина (ГЛ-1):</b> лічильник → «Це задача» = <b>2 кліки</b>. Перетворення відбувається на місці, розмір M стоїть за замовчуванням. Окремий екран «Задача» не потрібен.</p>
+  <h3 id="flow-3">J3: надиктувати задачу голосом прямо в CRM</h3>
+  <div class="diagram"><pre class="mermaid">flowchart TD
+    BOARD[&quot;Дошка&quot;] --&gt;|кнопка з мікрофоном| CAPTURE[&quot;Швидке додавання&quot;]
+    CAPTURE --&gt; Q_SUPPORT{&quot;Браузер підтримує розпізнавання мови?&quot;}
+    Q_SUPPORT --&gt;|ні| CAPTURE_FALLBACK([&quot;Швидке додавання: поле для диктовки клавіатурою&quot;])
+    Q_SUPPORT --&gt;|так| Q_MIC{&quot;Є дозвіл на мікрофон?&quot;}
+    Q_MIC --&gt;|ні| CAPTURE_MIC_ERR([&quot;Швидке додавання: error — мікрофон заборонено, як дозволити&quot;])
+    CAPTURE_MIC_ERR --&gt; CAPTURE_FALLBACK
+    Q_MIC --&gt;|так| CAPTURE_LISTEN([&quot;Швидке додавання: loading — слухаю одразу після кліку&quot;])
+    CAPTURE_LISTEN --&gt;|скасувати| BOARD
+    CAPTURE_LISTEN --&gt; Q_HEARD{&quot;Текст розпізнано?&quot;}
+    Q_HEARD --&gt;|ні| CAPTURE_HEARD_ERR([&quot;Швидке додавання: error — не почув&quot;])
+    CAPTURE_HEARD_ERR --&gt;|ще раз| CAPTURE_LISTEN
+    CAPTURE_HEARD_ERR --&gt;|ввести текстом| CAPTURE_FALLBACK
+    CAPTURE_FALLBACK --&gt;|скасувати| BOARD
+    CAPTURE_FALLBACK --&gt;|додати| CAPTURE_PARSED
+    Q_HEARD --&gt;|так| CAPTURE_PARSED([&quot;Швидке додавання: назва, група і дедлайн на перевірку, автозбереження через 3 с&quot;])
+
+    CAPTURE_PARSED --&gt; Q_CHANGE{&quot;Людина натиснула «Змінити»?&quot;}
+    Q_CHANGE --&gt;|так| CAPTURE_EDIT([&quot;Швидке додавання: правка назви, групи чи дедлайну&quot;])
+    CAPTURE_EDIT --&gt;|готово| CAPTURE_SAVING
+    CAPTURE_EDIT --&gt;|скасувати| BOARD
+    Q_CHANGE --&gt;|ні| CAPTURE_SAVING([&quot;Швидке додавання: loading — зберігаю&quot;])
+    CAPTURE_SAVING --&gt; Q_SAVE{&quot;Задачу збережено?&quot;}
+    Q_SAVE --&gt;|ні| CAPTURE_OFFLINE([&quot;Швидке додавання: збережено на пристрої — відправлю, коли буде зʼєднання&quot;])
+    CAPTURE_OFFLINE --&gt; BOARD_PENDING([&quot;Дошка: задача з позначкою «очікує відправки»&quot;])
+    BOARD_PENDING --&gt; Q_NET{&quot;Зʼєднання повернулось?&quot;}
+    Q_NET --&gt;|так| CAPTURE_SAVING
+    Q_NET --&gt;|ні| OK_LOCAL((&quot;Job закрито: задачу зафіксовано на пристрої&quot;))
+    Q_SAVE --&gt;|так| CAPTURE_DONE([&quot;Швидке додавання: підтвердження і «Скасувати»&quot;])
+    CAPTURE_DONE --&gt; BOARD_NEW([&quot;Дошка: нова задача підсвічена&quot;])
+    BOARD_NEW --&gt; OK((&quot;Job закрито: задачу зафіксовано за секунди&quot;))
+
+    classDef screen fill:#1c2740,stroke:#6b93ff,color:#ececf0
+    classDef state fill:#2a2414,stroke:#f5c46b,color:#ececf0
+    classDef err fill:#3a181c,stroke:#ff6b6b,color:#ececf0
+    classDef ok fill:#11301f,stroke:#6ee7b7,color:#ececf0
+    class BOARD,CAPTURE screen
+    class CAPTURE_FALLBACK,CAPTURE_LISTEN,CAPTURE_PARSED,CAPTURE_EDIT,CAPTURE_SAVING,CAPTURE_OFFLINE,BOARD_PENDING,CAPTURE_DONE,BOARD_NEW state
+    class CAPTURE_MIC_ERR,CAPTURE_HEARD_ERR err
+    class OK,OK_LOCAL ok
+</pre></div>
+  <ul class='ends'><li><b>Успіх 1:</b> задачу зафіксовано й видно на дошці.</li><li><b>Успіх 2:</b> без зʼєднання задачу зафіксовано на пристрої, і вона відправиться пізніше.</li></ul><p class='note'><b>Глибина (ГЛ-2):</b> <b>1 клік.</b> Мікрофон слухає одразу після натискання кнопки, а збереження відбувається автоматично через 3 с. Поріг 3 с — моє припущення [?]. Дозвіл на мікрофон браузер питає лише перший раз.</p>
+  <h3 id="flow-4">J11: винагородити себе за досягнуту ціль</h3>
+  <div class="diagram"><pre class="mermaid">flowchart TD
+    BOARD[&quot;Дошка&quot;] --&gt; BOARD_APPROVED([&quot;Дошка: Approved — XP і конфеті&quot;])
+    BOARD_APPROVED --&gt; Q_XP{&quot;XP нараховано?&quot;}
+    Q_XP --&gt;|ні| BOARD_XP_PENDING([&quot;Дошка: XP донарахую пізніше — повтор у фоні&quot;])
+    BOARD_XP_PENDING --&gt; BOARD
+    Q_XP --&gt;|так| Q_ACH{&quot;Відкрито ачівку чи відзнаку?&quot;}
+    Q_ACH --&gt;|так| BOARD_ACH([&quot;Дошка: нова ачівка або відзнака +1 — анімація&quot;])
+    BOARD_ACH --&gt; Q_SEE{&quot;Подивитися?&quot;}
+    Q_SEE --&gt;|так| TROPHIES_LOADING
+    Q_SEE --&gt;|ні| BOARD
+    Q_ACH --&gt;|ні| BOARD_XP([&quot;Дошка: баланс XP на пункті «Мотивація» оновлено&quot;])
+    BOARD_XP --&gt; Q_GO{&quot;Відкрив «Мотивацію»?&quot;}
+    Q_GO --&gt;|ні| BOARD
+    Q_GO --&gt;|так| REWARDS_LOADING([&quot;Нагороди і цілі: loading — рахую баланс XP&quot;])
+
+    REWARDS_LOADING --&gt; Q_HAS_REWARDS{&quot;Є нагороди?&quot;}
+    Q_HAS_REWARDS --&gt;|ні| REWARDS_EMPTY([&quot;Нагороди і цілі: empty — додай свою першу нагороду&quot;])
+    REWARDS_EMPTY --&gt; Q_CREATE{&quot;Створити зараз?&quot;}
+    Q_CREATE --&gt;|пізніше| BOARD
+    Q_CREATE --&gt;|так| Q_INPUT{&quot;Назва і ціна в XP введені правильно?&quot;}
+    Q_INPUT --&gt;|ні| REWARDS_INPUT_ERR([&quot;Нагороди і цілі: error — потрібні назва і ціна більше 0&quot;])
+    REWARDS_INPUT_ERR --&gt; REWARDS_EMPTY
+    Q_INPUT --&gt;|так| REWARDS
+    Q_HAS_REWARDS --&gt;|так| REWARDS[&quot;Нагороди і цілі&quot;]
+
+    REWARDS --&gt;|вкладка «Ачівки»| TROPHIES_LOADING([&quot;Ачівки і Стіна пошани: loading&quot;])
+    TROPHIES_LOADING --&gt; Q_HAS_ACH{&quot;Є отримані ачівки чи відзнаки?&quot;}
+    Q_HAS_ACH --&gt;|ні| TROPHIES_EMPTY([&quot;Ачівки і Стіна пошани: empty — найближча ачівка і що для неї треба&quot;])
+    TROPHIES_EMPTY --&gt; BOARD
+    Q_HAS_ACH --&gt;|так| TROPHIES[&quot;Ачівки і Стіна пошани&quot;]
+    TROPHIES --&gt; OK_PROUD((&quot;Job закрито: видно, що це добре зроблено&quot;))
+
+    REWARDS --&gt; Q_ENOUGH{&quot;XP вистачає або ціль досягнута?&quot;}
+    Q_ENOUGH --&gt;|ні| REWARDS_PROGRESS([&quot;Нагороди і цілі: прогрес — лишилось N XP, приблизно M днів&quot;])
+    REWARDS_PROGRESS --&gt; Q_FAR{&quot;Нагорода надто далеко?&quot;}
+    Q_FAR --&gt;|ні| BOARD
+    Q_FAR --&gt;|так| REWARDS_EDIT([&quot;Нагороди і цілі: змінити ціну або додати проміжну нагороду&quot;])
+    REWARDS_EDIT --&gt; REWARDS
+    Q_ENOUGH --&gt;|так| Q_CLAIM{&quot;Отримання пройшло?&quot;}
+    Q_CLAIM --&gt;|ні| REWARDS_CLAIM_ERR([&quot;Нагороди і цілі: error — XP не списано, нагорода доступна&quot;])
+    REWARDS_CLAIM_ERR --&gt;|повторити| Q_CLAIM
+    REWARDS_CLAIM_ERR --&gt;|назад| REWARDS
+    Q_CLAIM --&gt;|так| REWARDS_DONE([&quot;Нагороди і цілі: нагороду отримано, святкування&quot;])
+    REWARDS_DONE --&gt; OK((&quot;Job закрито: знаю, скільки зробив, і що це добре&quot;))
+
+    classDef screen fill:#1c2740,stroke:#6b93ff,color:#ececf0
+    classDef state fill:#2a2414,stroke:#f5c46b,color:#ececf0
+    classDef err fill:#3a181c,stroke:#ff6b6b,color:#ececf0
+    classDef ok fill:#11301f,stroke:#6ee7b7,color:#ececf0
+    class BOARD,TROPHIES,REWARDS screen
+    class BOARD_APPROVED,BOARD_XP_PENDING,BOARD_ACH,BOARD_XP,REWARDS_LOADING,REWARDS_EMPTY,TROPHIES_LOADING,TROPHIES_EMPTY,REWARDS_PROGRESS,REWARDS_EDIT,REWARDS_DONE state
+    class REWARDS_INPUT_ERR,REWARDS_CLAIM_ERR err
+    class OK,OK_PROUD ok
+</pre></div>
+  <ul class='ends'><li><b>Успіх 1:</b> нагороду отримано.</li><li><b>Успіх 2:</b> видно, що зроблене — добре: ачівки й відзнаки.</li></ul>
+  <h3 id="flow-5">J9: зберегти похвалу і відсвяткувати момент</h3>
+  <div class="diagram"><pre class="mermaid">flowchart TD
+    START([&quot;Мене похвалили в Telegram, Trello або усно&quot;]) --&gt; Q_WHERE{&quot;Звідки зберігаю?&quot;}
+    Q_WHERE --&gt;|з задачі| TASK[&quot;Задача&quot;]
+    Q_WHERE --&gt;|з підсумку дня| DAY[&quot;Підсумок дня&quot;]
+    Q_WHERE --&gt;|з «Мотивації»| PRAISE[&quot;Похвали&quot;]
+    TASK --&gt; FORM([&quot;Стан відкритого екрана: форма похвали — текст або скрін&quot;])
+    DAY --&gt; FORM
+    PRAISE --&gt; PRAISE_LOADING([&quot;Похвали: loading&quot;])
+    PRAISE_LOADING --&gt; Q_HAS{&quot;Є збережені похвали?&quot;}
+    Q_HAS --&gt;|ні| PRAISE_EMPTY([&quot;Похвали: empty — збережи першу&quot;])
+    PRAISE_EMPTY --&gt; FORM
+    Q_HAS --&gt;|так| PRAISE_LIST([&quot;Похвали: стрічка для перечитування&quot;])
+    PRAISE_LIST --&gt; OK_READ((&quot;Job закрито: перечитав і згадав, «який я красава»&quot;))
+    PRAISE_LIST --&gt;|додати| FORM
+
+    FORM --&gt;|скасувати| Q_WHERE
+    FORM --&gt; Q_INPUT{&quot;Є текст або скрін?&quot;}
+    Q_INPUT --&gt;|ні| FORM_ERR([&quot;error — додай текст або скрін&quot;])
+    FORM_ERR --&gt; FORM
+    Q_INPUT --&gt;|так| Q_FILE{&quot;Скрін завантажився?&quot;}
+    Q_FILE --&gt;|ні| FILE_ERR([&quot;error — файл не завантажився, збережи як текст або спробуй ще&quot;])
+    FILE_ERR --&gt; FORM
+    Q_FILE --&gt;|так або без скріна| SAVING([&quot;loading — зберігаю&quot;])
+    SAVING --&gt; Q_SAVED{&quot;Збережено?&quot;}
+    Q_SAVED --&gt;|ні| SAVE_ERR([&quot;error — немає зʼєднання, чернетка лишилась у формі&quot;])
+    SAVE_ERR --&gt; FORM
+    Q_SAVED --&gt;|так| SAVED([&quot;похвалу збережено — святкування&quot;])
+    SAVED --&gt; OK((&quot;Job закрито: момент збережено&quot;))
+
+    classDef screen fill:#1c2740,stroke:#6b93ff,color:#ececf0
+    classDef state fill:#2a2414,stroke:#f5c46b,color:#ececf0
+    classDef err fill:#3a181c,stroke:#ff6b6b,color:#ececf0
+    classDef ok fill:#11301f,stroke:#6ee7b7,color:#ececf0
+    class TASK,DAY,PRAISE screen
+    class START,FORM,PRAISE_LOADING,PRAISE_EMPTY,PRAISE_LIST,SAVING,SAVED state
+    class FORM_ERR,FILE_ERR,SAVE_ERR err
+    class OK,OK_READ ok
+</pre></div>
+  <ul class='ends'><li><b>Успіх 1:</b> похвалу збережено.</li><li><b>Успіх 2:</b> перечитав збережені.</li></ul>
+  <h3>Повторна перевірка</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Перевірка</th><th>Результат</th></tr></thead>
+    <tbody><tr><th><b>Тупики</b></th><td><b>0 у п'яти flows.</b> Кожен error має «повторити» і «назад» або «пізніше». Цикли без виходу прибрано: ТП-4, 8, 11, 12, 16, 17, 18. Тупикові кінці замінено виходами: ТП-1, 2, 3, 5, 6, 7, 9, 10, 13, 14, 15, 19</td></tr><tr><th><b>Відсутні стани</b></th><td>Кожен екран-вузол тепер має loading, error і, де можливі порожні дані, empty. Залишки — у таблиці «Стани екранів» у sitemap.md: там описано й екрани без flow (<code>theme.html</code>, ручний запис часу в <code>task.html</code>)</td></tr><tr><th><b>Сироти</b></th><td>Див. sitemap.md, «Трасування»: порожніх рядків і колонок немає. Усі вузли-екрани flows є в реєстрі; нових екранів правки не вимагали</td></tr><tr><th><b>Глибина</b></th><td>Main job — 0 кліків; J2 — 2 (ГЛ-1); J3 — 1 (ГЛ-2); підсумок дня — 1 (ГЛ-4); статус — перетягування на дошці (ГЛ-3)</td></tr><tr><th><b>Mermaid</b></th><td>П'ять діаграм перевірено рендером Mermaid 11</td></tr></tbody>
+  </table></div>
+</section>
+
+<section id="trace">
+  <h2><span class="num">04</span> Матриця трасування</h2>
+  <p class="sub">Рядки — jobs, колонки — екрани. ● — екран реально бере участь у закритті job. Сироти (порожній рядок чи колонка) підсвічуються червоним, job з одним-єдиним екраном — жовтим.</p>
+  <div class="table-wrap"><table class="trace"><thead><tr><th>Job</th><th><code>board</code><small>10</small></th><th><code>task</code><small>7</small></th><th><code>capture</code><small>4</small></th><th><code>inbox</code><small>3</small></th><th><code>day</code><small>5</small></th><th><code>rewards</code><small>1</small></th><th><code>trophies</code><small>3</small></th><th><code>praise</code><small>2</small></th><th><code>sources</code><small>3</small></th><th><code>theme</code><small>2</small></th></tr></thead><tbody><tr class=""><th><b>ГР</b> — усе разом, нічого не загубити, день не дарма</th><td><span class=dot>●</span></td><td><span class=dot>●</span></td><td><span class=dot>●</span></td><td><span class=dot>●</span></td><td><span class=dot>●</span></td><td></td><td></td><td></td><td><span class=dot>●</span></td><td></td></tr><tr class=""><th><b>J1</b> — усі задачі одним поглядом за групами</th><td><span class=dot>●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><span class=dot>●</span></td><td></td></tr><tr class=""><th><b>J2</b> — задача з Telegram без відмітки не губиться</th><td><span class=dot>●</span></td><td><span class=dot>●</span></td><td></td><td><span class=dot>●</span></td><td></td><td></td><td></td><td></td><td><span class=dot>●</span></td><td></td></tr><tr class=""><th><b>J3</b> — надиктувати задачу голосом</th><td><span class=dot>●</span></td><td></td><td><span class=dot>●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr class=""><th><b>J4</b> — зафіксувати прохання і час на нього</th><td></td><td><span class=dot>●</span></td><td><span class=dot>●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr class="thin"><th><b>J5</b> — таймер і приблизний час</th><td></td><td><span class=dot>●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr class="thin"><th><b>J6</b> — усі матеріали задачі поруч</th><td></td><td><span class=dot>●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr class="thin"><th><b>J7</b> — скільки зроблено з урахуванням розміру</th><td></td><td></td><td></td><td></td><td><span class=dot>●</span></td><td></td><td></td><td></td><td></td><td></td></tr><tr class=""><th><b>J8</b> — план під настрій</th><td><span class=dot>●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><span class=dot>●</span></td></tr><tr class=""><th><b>J9</b> — зберегти похвалу</th><td></td><td><span class=dot>●</span></td><td></td><td></td><td><span class=dot>●</span></td><td></td><td></td><td><span class=dot>●</span></td><td></td><td></td></tr><tr class=""><th><b>J10</b> — усі задачі в телефоні</th><td><span class=dot>●</span></td><td></td><td><span class=dot>●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr class=""><th><b>J11</b> — винагородити себе за ціль</th><td><span class=dot>●</span></td><td></td><td></td><td></td><td><span class=dot>●</span></td><td><span class=dot>●</span></td><td><span class=dot>●</span></td><td></td><td></td><td></td></tr><tr class=""><th><b>E1</b> — гордість, а не провина</th><td></td><td></td><td></td><td></td><td><span class=dot>●</span></td><td></td><td><span class=dot>●</span></td><td></td><td></td><td></td></tr><tr class="thin"><th><b>E2</b> — не вигорати</th><td><span class=dot>●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr class=""><th><b>E3</b> — «мені подобається тут бути»</th><td><span class=dot>●</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><span class=dot>●</span></td></tr><tr class=""><th><b>S1</b> — не підвести команду</th><td><span class=dot>●</span></td><td><span class=dot>●</span></td><td></td><td><span class=dot>●</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr class=""><th><b>S2</b> — визнання колег і клієнтів</th><td></td><td></td><td></td><td></td><td></td><td></td><td><span class=dot>●</span></td><td><span class=dot>●</span></td><td></td><td></td></tr></tbody></table></div>
+  <div class="legend"><span class="lg-dot">участь у job</span><span class="lg-orphan">сирота</span><span class="lg-thin">тонке покриття: один екран</span></div>
+  <p class="note"><b>Сиріт немає:</b> кожен рядок і кожна колонка мають хоча б одну позначку. Колишні сироти: <code>login.html</code> став станом «Дошка: немає сесії»; <code>theme.html</code> прив'язано до E3 і J8.</p>
+  <h3>Коди jobs</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Код</th><th>Тип</th><th>Job</th><th>Звідки</th></tr></thead>
+    <tbody><tr><th>ГР</th><td>main</td><td>Бачити всі задачі разом, розрізняти групу, нічого не загубити, знати з чого почати, закрити день не дарма</td><td>JTBD.md, «Головна робота»</td></tr><tr><th>J1–J11</th><td>related</td><td>Job stories 1–11</td><td>JTBD.md, «Job stories»</td></tr><tr><th>E1 [?]</th><td>emotional</td><td>Відчувати гордість, а не провину</td><td>J7</td></tr><tr><th>E2 [?]</th><td>emotional</td><td>Рухатись уперед у поганому стані й не вигорати</td><td>J8</td></tr><tr><th>E3 [?]</th><td>emotional</td><td>«Мені подобається тут бути»: дуже гарно і зручно</td><td>Критерій успіху; CLAUDE.md §1</td></tr><tr><th>S1 [?]</th><td>social</td><td>Не підвести команду: «ми не просідали по дедлайнах»</td><td>J2; сили прогресу</td></tr><tr><th>S2 [?]</th><td>social</td><td>Мати визнання колег і клієнтів</td><td>J9</td></tr></tbody>
+  </table></div>
+  <p class="note">E1–E3 і S1–S2 позначені [?]: їх виписано з job stories і критерію успіху, автор ще не підтвердив.</p>
+</section>
+
+<footer>Сторінка — подання <a href="https://github.com/natocheiev/crm-mmmy/blob/main/sitemap.md" target="_blank" rel="noopener">sitemap.md</a> і <a href="https://github.com/natocheiev/crm-mmmy/blob/main/flows.md" target="_blank" rel="noopener">flows.md</a>. Джерело правди — markdown-файли.</footer>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: "dark",
+  securityLevel: "strict",
+  themeVariables: { background: "#16161b", fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif", lineColor: "#6e6e78" },
+  flowchart: { useMaxWidth: false, htmlLabels: true }
+});
+</script>
+</body>
+</html>

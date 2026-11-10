@@ -153,7 +153,7 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
   <h1>Ринок показує, звідки прийшла задача, але не показує, хто її поставив</h1>
   <p class="lead">Конкуренти, вимір, де ринок найслабший, патерн ключової задачі і гіпотези для MVP. Джерело тексту — <a href="https://github.com/natocheiev/crm-mmmy/blob/main/research/research.md" target="_blank" rel="noopener">research.md</a>, матеріал зібрано 01.11.2026.</p>
   <nav class="toc" aria-label="Розділи">
-    <a href="#jtbd">00 · JTBD</a><a href="#competitors">01 · Конкуренти</a><a href="#benchmark">02 · Бенчмарк</a><a href="#patterns">03 · Патерни</a><a href="#conclusions">04 · Висновки</a><a href="#screens">Скріни</a><a href="#sources">Джерела</a>
+    <a href="#jtbd">00 · JTBD</a><a href="#competitors">01 · Конкуренти</a><a href="#benchmark">02 · Бенчмарк</a><a href="#patterns">03 · Патерни</a><a href="#conclusions">04 · Висновки</a><a href="#ia-gaps">05 · Прогалини IA</a><a href="#screens">Скріни</a><a href="#sources">Джерела</a>
   </nav>
   <div class="cards three prov">
     <div class="card"><h3>Власний акаунт</h3><p>Нічого. Теки <code>research/screens/own/</code> немає, в кабінети за логіном не заходили.</p></div>
@@ -204,6 +204,7 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
     <li><b>Поганий стан:</b> сказати CRM про настрій і отримати план під нього — щоб рухатись і не вигорати.</li>
     <li><b>Похвала:</b> зберегти й відсвяткувати класний момент — щоб пам'ятати, «який я красава».</li>
     <li><b>У дорозі:</b> усі задачі життя в телефоні — щоб нічого не забувати.</li>
+    <li><b>Ціль досягнуто:</b> винагородити себе — щоб знати, скільки роботи зроблено і що це зроблено добре.</li>
   </ol>
 
   <h3>Що з цього випливає</h3>
@@ -368,6 +369,22 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
   </table></div>
 </section>
 
+<section id="ia-gaps">
+  <h2><span class="num">05</span> Прогалини, знайдені під час IA</h2>
+  <p class="sub">Додано 10.11.2026 під час роботи над <a href="../ia.html">інформаційною архітектурою</a>. Від цих питань залежать розвилки у flows, але даних під них немає.</p>
+  <div class="table-wrap"><table class="hyp">
+    <thead><tr><th>#</th><th>Прогалина</th><th>Де впливає</th><th>Статус</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td><b>Бот не бачить історію чату.</b> Bot API отримує лише нові оновлення, методу для історії немає — пропущене пересилати вручну <span class="srcs"><a class="src" href="https://core.telegram.org/bots/api" target="_blank" rel="noopener">TG2</a></span></td><td>J2: «бот знову бачить чат»</td><td><span class="nd">дані не підтверджені</span></td></tr>
+      <tr><td class="n">2</td><td><b>Web Speech API і українська</b> в Chrome на Mac і на телефоні автора</td><td>J3: «браузер підтримує?», «текст розпізнано?»</td><td><span class="nd">дані не підтверджені</span></td></tr>
+      <tr><td class="n">3</td><td><b>Скільки задача висить в In Review</b> і як часто приходить апрув</td><td>Main: «чекає апрув N днів»</td><td><span class="nd">дані не підтверджені</span></td></tr>
+      <tr><td class="n">4</td><td><b>Пороги часу:</b> таймер 8 год, акцент на можливих задачах 4 год, автозбереження голосу 3 с</td><td>Main, J2, J3</td><td><span class="nd">припущення</span></td></tr>
+      <tr><td class="n">5</td><td><b>Яка частка можливих задач — справжні задачі</b>, а яка — шум</td><td><code>inbox.html</code>; гіпотеза 2</td><td><span class="nd">дані не підтверджені</span></td></tr>
+      <tr><td class="n">6</td><td><b>Хто ставить ціль для нагороди</b> — автор чи CRM</td><td>J11; сутність «Ціль»</td><td><span class="nd">питання до автора</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
 <section id="screens">
   <h2>Скріни</h2>
   <p class="sub">Підписи збігаються з кодами джерел. Натисніть на скрін, щоб відкрити його повністю. Усі — з публічних сторінок; на скрінах Sunsama і Missive видно cookie-вікна, їх не приймали.</p>
@@ -471,6 +488,7 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
 </ul></div>
 <div class="src-group"><h4>Telegram</h4><ul>
 <li><a href="https://core.telegram.org/api/mentions" target="_blank" rel="noopener"><b>TG1</b></a> Telegram API — Mentions and replies <i>сторінка</i></li>
+<li><a href="https://core.telegram.org/bots/api" target="_blank" rel="noopener"><b>TG2</b></a> Telegram Bot API — оновлення без історії чату <i>сторінка</i></li>
 </ul></div></div>
 </section>
 

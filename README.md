@@ -18,6 +18,10 @@ Vercel Hobby + Supabase Free: **$0/міс**. Проєкт self-hostable: фор�
 ## Індекс артефактів
 - [CLAUDE.md](./CLAUDE.md) — повний продуктовий бриф і правила роботи з репо
 - [JTBD.md](./JTBD.md) — Jobs-to-be-Done: головна робота, карта роботи, сили прогресу, job stories, бажані результати
+- [personas.md](./personas.md) — реєстр персон: primary — автор
+- [sitemap.md](./sitemap.md) — реєстр сутностей, екранів і станів, навігація, матриця трасування
+- [flows.md](./flows.md) — user flows у Mermaid: main job, J2 (Telegram), J3 (голос), J11 (нагорода), J9 (похвала)
+- [ia.html](./ia.html) — знімок IA: sitemap деревом, flows у Mermaid, матриця трасування ([на сайті](https://natocheiev.github.io/crm-mmmy/ia.html))
 - [index.html](./index.html) — стартова сторінка ([на сайті](https://natocheiev.github.io/crm-mmmy/))
 - [_nav/tree.js](./_nav/tree.js) — дерево сторінок навігатора
 - [research/](./research/) — дослідження

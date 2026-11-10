@@ -155,7 +155,7 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
   <h1>Ринок показує, звідки прийшла задача, але не показує, хто її поставив</h1>
   <p class="lead">Конкуренти, вимір, де ринок найслабший, патерн ключової задачі і гіпотези для MVP. Джерело тексту — <a href="https://github.com/natocheiev/crm-mmmy/blob/main/research/research.md" target="_blank" rel="noopener">research.md</a>, матеріал зібрано 01.11.2026.</p>
   <nav class="toc" aria-label="Розділи">
-    <a href="#jtbd">00 · JTBD</a><a href="#competitors">01 · Конкуренти</a><a href="#benchmark">02 · Бенчмарк</a><a href="#patterns">03 · Патерни</a><a href="#conclusions">04 · Висновки</a><a href="#ia-gaps">05 · Прогалини IA</a><a href="#screens">Скріни</a><a href="#sources">Джерела</a>
+    <a href="#jtbd">00 · JTBD</a><a href="#competitors">01 · Конкуренти</a><a href="#benchmark">02 · Бенчмарк</a><a href="#patterns">03 · Патерни</a><a href="#conclusions">04 · Висновки</a><a href="#ia-gaps">05 · Прогалини IA</a><a href="#notchowl">06 · NotchOwl</a><a href="#screens">Скріни</a><a href="#sources">Джерела</a>
   </nav>
   <div class="cards three prov">
     <div class="card"><h3>Власний акаунт</h3><p>Нічого. Теки <code>research/screens/own/</code> немає, в кабінети за логіном не заходили.</p></div>
@@ -387,6 +387,28 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
   </table></div>
 </section>
 
+<section id="notchowl">
+  <h2><span class="num">06</span> Додатковий конкурент: NotchOwl</h2>
+  <p class="sub">Додано 10.11.2026. Планер для macOS у «чубчику» екрана: задачі, нотатки, таймер, календар. Деталі — <a href="https://github.com/natocheiev/crm-mmmy/blob/main/research/notes/03-competitors.md#notchowl" target="_blank" rel="noopener">03-competitors.md</a> і <a href="https://github.com/natocheiev/crm-mmmy/blob/main/research/notes/06-patterns.md" target="_blank" rel="noopener">06-patterns.md</a>.</p>
+  <div class="callout"><b>Непрямий конкурент (софт).</b> Та сама робота «зібрати день в одному місці», але без Trello і Telegram, без груп-робіт і без гейміфікації. Тільки macOS, ліцензія $12 — беремо лише патерни. <span class="srcs"><a class="src" href="https://www.notchowl.com/" target="_blank" rel="noopener">N1</a></span></div>
+  <h3>Що беремо</h3>
+  <div class="table-wrap"><table class="hyp">
+    <thead><tr><th>Наша задача</th><th>Що в NotchOwl</th><th>Що беремо</th></tr></thead>
+    <tbody>
+      <tr><td><b>J7 підсумок дня</b></td><td><b>Wrap up</b>: що зроблено, а решту — «на завтра» або в Inbox <span class="srcs"><a class="src" href="https://www.notchowl.com/" target="_blank" rel="noopener">N1</a></span></td><td>Кінець дня в <code>day.html</code>: спершу «ось що зроблено», потім куди діти решту</td></tr>
+      <tr><td><b>J1, J8 початок дня</b></td><td><b>Plan your day</b>: задачі без часу — у вільні проміжки <span class="srcs"><a class="src" href="https://www.notchowl.com/" target="_blank" rel="noopener">N1</a></span></td><td>План під настрій підбирає задачі за розміром, без розкладу по годинах</td></tr>
+      <tr><td><b>J3 голос</b></td><td>Розпізнавання на пристрої, «завтра о 17» → дата й час <span class="srcs"><a class="src" href="https://www.notchowl.com/" target="_blank" rel="noopener">N1</a></span></td><td>Підтверджує підхід: безкоштовне розпізнавання + витяг дедлайну</td></tr>
+      <tr><td><b>J5 таймер, біль 4</b></td><td>Таймер видно й у згорнутому стані; пауза, коли Mac спить; «+5 хв» <span class="srcs"><a class="src" href="https://www.notchowl.com/" target="_blank" rel="noopener">N1</a></span></td><td>Час у назві вкладки / міні-плашка; пауза при неактивності замість «забутого таймера»</td></tr>
+      <tr><td><b>J6, J9 матеріали й похвала</b></td><td><b>Clips</b>: скрін чи скопійоване → у задачу <span class="srcs"><a class="src" href="https://www.notchowl.com/" target="_blank" rel="noopener">N1</a></span></td><td>Вставити скрін з буфера в задачу або в похвалу</td></tr>
+      <tr><td><b>Можливі задачі</b></td><td><b>Week + Inbox</b>: недатовані задачі окремо, перетягуються на дні <span class="srcs"><a class="src" href="https://www.notchowl.com/" target="_blank" rel="noopener">N1</a></span></td><td>Перетягнути можливу задачу на дошку — ще один спосіб прийняти її</td></tr>
+      <tr><td><b>Нотатки [?]</b></td><td>Рядок нотатки → задача (⌘+Enter) <span class="srcs"><a class="src" href="https://www.notchowl.com/" target="_blank" rel="noopener">N1</a></span></td><td>Нотатка як ще один вхід для задач</td></tr>
+      <tr><td><b>Статистика</b></td><td>Insights: задачі, фокус-час, стрік, найпродуктивніші години <span class="srcs"><a class="src" href="https://www.notchowl.com/" target="_blank" rel="noopener">N1</a></span></td><td>Найпродуктивніші години поряд із настроєм</td></tr>
+      <tr><td><b>Нагадування</b></td><td>«Відкласти / готово» прямо в сповіщенні <span class="srcs"><a class="src" href="https://www.notchowl.com/" target="_blank" rel="noopener">N1</a></span></td><td>Inline-кнопки в нагадуваннях Telegram-бота</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note"><span class="concl-inline">Чого немає:</span> Telegram і чатів (J2), груп-робіт з кольорами, XP, нагород, ачівок, «Настрою дня», похвал (J8, J9, J11), веба і телефона без Apple. Це підтверджує нашу нішу з розділу 04.</p>
+</section>
+
 <section id="screens">
   <h2>Скріни</h2>
   <p class="sub">Підписи збігаються з кодами джерел. Натисніть на скрін, щоб відкрити його повністю. Усі — з публічних сторінок; на скрінах Sunsama і Missive видно cookie-вікна, їх не приймали.</p>
@@ -491,6 +513,9 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
 <div class="src-group"><h4>Telegram</h4><ul>
 <li><a href="https://core.telegram.org/api/mentions" target="_blank" rel="noopener"><b>TG1</b></a> Telegram API — Mentions and replies <i>сторінка</i></li>
 <li><a href="https://core.telegram.org/bots/api" target="_blank" rel="noopener"><b>TG2</b></a> Telegram Bot API — оновлення без історії чату <i>сторінка</i></li>
+</ul></div>
+<div class="src-group"><h4>NotchOwl</h4><ul>
+<li><a href="https://www.notchowl.com/" target="_blank" rel="noopener"><b>N1</b></a> NotchOwl — лендинг: фічі, ціна, FAQ <i>сторінка</i></li>
 </ul></div></div>
 </section>
 

@@ -8,36 +8,71 @@
   <script src="_nav/tree.js"></script>
   <script src="_nav/nav.js"></script>
   <style>
-    body {
-      font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: #222;
-      background: #fff;
-    }
-    main {
-      max-width: 720px;
-      padding: 32px 24px;
-    }
-    h1 { margin-top: 0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    .toc { display: flex; flex-wrap: wrap; }
+    .toc a { text-decoration: none; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .card .k { font-size: 12px; font-weight: 700; letter-spacing: .04em; margin-bottom: 10px; }
+    .card p { margin: 0; font-size: 15px; }
+    .mvp { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); border-top: 1px solid rgba(255, 255, 255, .1); margin: 0; padding: 0; list-style: none; }
+    .mvp li { padding: 22px 22px 22px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); color: #f6f7f9; font-size: 17px; font-weight: 500; display: flex; gap: 14px; }
+    .mvp li span { color: #b4fb83; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .pages .card { text-decoration: none; display: block; transition: border-color .15s, transform .15s; }
+    .pages .card:hover { border-color: #b4fb83; transform: translateY(-2px); }
+    .pages .card h3 { color: #2f3646; font-size: 22px; margin: 0 0 8px; }
+    .pages .card .go { display: inline-block; margin-top: 16px; font-size: 14px; font-weight: 700; color: #284b9b; }
+    .goal { font-size: 30px; line-height: 1.25; letter-spacing: -.02em; font-weight: 500; max-width: 920px; margin: 0; }
+    .goal b { color: #284b9b; }
+    @media (prefers-reduced-motion: reduce) { .pages .card { transition: none; } .pages .card:hover { transform: none; } }
+    @media (max-width: 700px) { .goal { font-size: 22px; } }
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="_nav/theme.css">
 </head>
 <body>
-  <main>
-    <h1>CRM-MMMY</h1>
-    <p>Особистий CRM для дизайнера. Задачі з <b>Trello</b> (основна робота) і <b>Telegram</b> (друга робота) плюс особисті справи на одній спільній дошці. Яскравий, анімований інтерфейс з ачівками, XP, «Настроєм дня», Стіною пошани і реальними нагородами.</p>
-    <h2>Мета</h2>
-    <p>Одне місце для всіх задач життя, де з першого погляду видно, <b>з якої групи</b> прийшла задача (основна робота, друга робота чи особисте), і жодна задача з Telegram не губиться.</p>
-    <h2>MVP</h2>
-    <ul>
-      <li>Спільна Kanban-дошка: Tasks → In Progress → In Review → Approved</li>
-      <li>Дві роботи плюс «Особисте», пріоритети й розмір задач</li>
-      <li>Двостороння синхронізація з Trello</li>
-      <li>Збір задач з Telegram-чату через бота</li>
-      <li>Особисті задачі й нагадування</li>
-      <li>Голосове додавання задачі</li>
-      <li>Ачівки, XP і «Настрій дня»</li>
-      <li>Кастомізація кольорів</li>
-    </ul>
-    <p>Повний бриф: <a href="https://github.com/natocheiev/crm-mmmy/blob/main/CLAUDE.md">CLAUDE.md</a></p>
-  </main>
+<main>
+
+<header class="hero">
+  <div class="eyebrow">Особистий CRM для дизайнера</div>
+  <h1>Усі задачі життя на одній яскравій дошці</h1>
+  <p class="lead">Задачі з <b>Trello</b> (основна робота) і <b>Telegram</b> (друга робота) плюс особисті справи разом. З ачівками, XP, «Настроєм дня», Стіною пошани і реальними нагородами.</p>
+  <nav class="toc" aria-label="Розділи">
+    <a href="ia.html">Інформаційна архітектура</a><a href="research/research.html">Дослідження</a><a href="https://github.com/natocheiev/crm-mmmy/blob/main/CLAUDE.md">Повний бриф</a>
+  </nav>
+</header>
+
+<section>
+  <h2><span class="num">МЕТА</span></h2>
+  <p class="goal">Одне місце для всіх задач, де з першого погляду видно, <b>з якої групи</b> прийшла задача, — основна робота, друга робота чи особисте, — і жодна задача з Telegram не губиться.</p>
+</section>
+
+<section class="band">
+  <h2><span class="num">MVP</span> Перша черга</h2>
+  <p class="sub">Що має бути в першій версії, за брифом.</p>
+  <ul class="mvp">
+    <li><span>01</span>Спільна Kanban-дошка: Tasks → In Progress → In Review → Approved</li>
+    <li><span>02</span>Дві роботи плюс «Особисте», пріоритети й розмір задач</li>
+    <li><span>03</span>Двостороння синхронізація з Trello</li>
+    <li><span>04</span>Збір задач з Telegram-чату через бота</li>
+    <li><span>05</span>Особисті задачі й нагадування</li>
+    <li><span>06</span>Голосове додавання задачі</li>
+    <li><span>07</span>Ачівки, XP і «Настрій дня»</li>
+    <li><span>08</span>Кастомізація кольорів</li>
+  </ul>
+</section>
+
+<section class="pages">
+  <h2><span class="num">СТОРІНКИ</span> Що вже зроблено</h2>
+  <p class="sub">Знімки робочих документів для зручного перегляду. Джерело правди — markdown-файли в репо.</p>
+  <div class="cards">
+    <a class="card" href="research/research.html"><div class="k">Ресерч</div><h3>Дослідження</h3><p>JTBD, конкуренти, бенчмарк, патерни, гіпотези і прогалини в даних.</p><span class="go">Відкрити ↵</span></a>
+    <a class="card" href="ia.html"><div class="k">Структура</div><h3>Інформаційна архітектура</h3><p>Sitemap деревом, стани екранів, user flows і матриця трасування.</p><span class="go">Відкрити ↵</span></a>
+  </div>
+</section>
+
+<footer>Бриф — <a href="https://github.com/natocheiev/crm-mmmy/blob/main/CLAUDE.md">CLAUDE.md</a> · репо — <a href="https://github.com/natocheiev/crm-mmmy">github.com/natocheiev/crm-mmmy</a></footer>
+
+</main>
 </body>
 </html>

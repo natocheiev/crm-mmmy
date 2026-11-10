@@ -116,6 +116,8 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
   .tree ul > li::before { left: -14px; width: 10px; }
 }
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="_nav/theme.css">
 </head>
 <body>
 <main>
@@ -277,10 +279,10 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
     Q_DONE --&gt;|так| DAY[&quot;Підсумок дня&quot;]
     DAY --&gt; OK((&quot;Job закрито: усе видно, нічого не загублено, день не дарма&quot;))
 
-    classDef screen fill:#1c2740,stroke:#6b93ff,color:#ececf0
-    classDef state fill:#2a2414,stroke:#f5c46b,color:#ececf0
-    classDef err fill:#3a181c,stroke:#ff6b6b,color:#ececf0
-    classDef ok fill:#11301f,stroke:#6ee7b7,color:#ececf0
+    classDef screen fill:#e9eef8,stroke:#284b9b,color:#2f3646,stroke-width:1.5px
+    classDef state fill:#ffffff,stroke:#abb8cd,color:#2f3646
+    classDef err fill:#fdecec,stroke:#e5484d,color:#2f3646
+    classDef ok fill:#e6fbd5,stroke:#5ba82c,color:#2f3646,stroke-width:1.5px
     class SOURCES,BOARD,INBOX,TASK,DAY,CAPTURE screen
     class START,LOGIN,LOGIN_SENT,BOARD_LOADING,SOURCES_LOADING,BOARD_OFF,BOARD_EMPTY,BOARD_MOOD,BOARD_MOOD_SKIP,BOARD_PLAN,BOARD_COUNTER,BOARD_DRAG,SYNC_PENDING,TASK_LOADING,TASK_TIMER,BOARD_REVIEW,BOARD_WAITING,BOARD_APPROVED,DAY_LOADING,DAY_EMPTY,DAY_TOMORROW state
     class LOGIN_ERR,LINK_ERR,BOARD_SYNC_ERR,SOURCES_ERR,MOOD_ERR,TASK_MAT_ERR,TIMER_ERR,DAY_ERR err
@@ -338,10 +340,10 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
     Q_SAVED --&gt;|так| INBOX_CONVERTED([&quot;Можливі задачі: перетворено — задача на дошці&quot;])
     INBOX_CONVERTED --&gt; Q_ANY
 
-    classDef screen fill:#1c2740,stroke:#6b93ff,color:#ececf0
-    classDef state fill:#2a2414,stroke:#f5c46b,color:#ececf0
-    classDef err fill:#3a181c,stroke:#ff6b6b,color:#ececf0
-    classDef ok fill:#11301f,stroke:#6ee7b7,color:#ececf0
+    classDef screen fill:#e9eef8,stroke:#284b9b,color:#2f3646,stroke-width:1.5px
+    classDef state fill:#ffffff,stroke:#abb8cd,color:#2f3646
+    classDef err fill:#fdecec,stroke:#e5484d,color:#2f3646
+    classDef ok fill:#e6fbd5,stroke:#5ba82c,color:#2f3646,stroke-width:1.5px
     class BOARD,INBOX,SOURCES screen
     class START,BOARD_BOT_WARN,SOURCES_LOADING,SOURCES_OK,BOARD_NEW,BOARD_COUNTER,BOARD_NUDGE,INBOX_LOADING,INBOX_EMPTY,INBOX_DUP,INBOX_REJECTED,INBOX_TITLE,INBOX_CONVERT,INBOX_CONVERTED state
     class SOURCES_ERR,INBOX_ERR,CONVERT_ERR err
@@ -381,10 +383,10 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
     CAPTURE_DONE --&gt; BOARD_NEW([&quot;Дошка: нова задача підсвічена&quot;])
     BOARD_NEW --&gt; OK((&quot;Job закрито: задачу зафіксовано за секунди&quot;))
 
-    classDef screen fill:#1c2740,stroke:#6b93ff,color:#ececf0
-    classDef state fill:#2a2414,stroke:#f5c46b,color:#ececf0
-    classDef err fill:#3a181c,stroke:#ff6b6b,color:#ececf0
-    classDef ok fill:#11301f,stroke:#6ee7b7,color:#ececf0
+    classDef screen fill:#e9eef8,stroke:#284b9b,color:#2f3646,stroke-width:1.5px
+    classDef state fill:#ffffff,stroke:#abb8cd,color:#2f3646
+    classDef err fill:#fdecec,stroke:#e5484d,color:#2f3646
+    classDef ok fill:#e6fbd5,stroke:#5ba82c,color:#2f3646,stroke-width:1.5px
     class BOARD,CAPTURE screen
     class CAPTURE_FALLBACK,CAPTURE_LISTEN,CAPTURE_PARSED,CAPTURE_EDIT,CAPTURE_SAVING,CAPTURE_OFFLINE,BOARD_PENDING,CAPTURE_DONE,BOARD_NEW state
     class CAPTURE_MIC_ERR,CAPTURE_HEARD_ERR err
@@ -437,10 +439,10 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
     Q_CLAIM --&gt;|так| REWARDS_DONE([&quot;Нагороди і цілі: нагороду отримано, святкування&quot;])
     REWARDS_DONE --&gt; OK((&quot;Job закрито: знаю, скільки зробив, і що це добре&quot;))
 
-    classDef screen fill:#1c2740,stroke:#6b93ff,color:#ececf0
-    classDef state fill:#2a2414,stroke:#f5c46b,color:#ececf0
-    classDef err fill:#3a181c,stroke:#ff6b6b,color:#ececf0
-    classDef ok fill:#11301f,stroke:#6ee7b7,color:#ececf0
+    classDef screen fill:#e9eef8,stroke:#284b9b,color:#2f3646,stroke-width:1.5px
+    classDef state fill:#ffffff,stroke:#abb8cd,color:#2f3646
+    classDef err fill:#fdecec,stroke:#e5484d,color:#2f3646
+    classDef ok fill:#e6fbd5,stroke:#5ba82c,color:#2f3646,stroke-width:1.5px
     class BOARD,TROPHIES,REWARDS screen
     class BOARD_APPROVED,BOARD_XP_PENDING,BOARD_ACH,BOARD_XP,REWARDS_LOADING,REWARDS_EMPTY,TROPHIES_LOADING,TROPHIES_EMPTY,REWARDS_PROGRESS,REWARDS_EDIT,REWARDS_DONE state
     class REWARDS_INPUT_ERR,REWARDS_CLAIM_ERR err
@@ -477,10 +479,10 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
     Q_SAVED --&gt;|так| SAVED([&quot;похвалу збережено — святкування&quot;])
     SAVED --&gt; OK((&quot;Job закрито: момент збережено&quot;))
 
-    classDef screen fill:#1c2740,stroke:#6b93ff,color:#ececf0
-    classDef state fill:#2a2414,stroke:#f5c46b,color:#ececf0
-    classDef err fill:#3a181c,stroke:#ff6b6b,color:#ececf0
-    classDef ok fill:#11301f,stroke:#6ee7b7,color:#ececf0
+    classDef screen fill:#e9eef8,stroke:#284b9b,color:#2f3646,stroke-width:1.5px
+    classDef state fill:#ffffff,stroke:#abb8cd,color:#2f3646
+    classDef err fill:#fdecec,stroke:#e5484d,color:#2f3646
+    classDef ok fill:#e6fbd5,stroke:#5ba82c,color:#2f3646,stroke-width:1.5px
     class TASK,DAY,PRAISE screen
     class START,FORM,PRAISE_LOADING,PRAISE_EMPTY,PRAISE_LIST,SAVING,SAVED state
     class FORM_ERR,FILE_ERR,SAVE_ERR err
@@ -515,9 +517,9 @@ footer { color: var(--faint); font-size: 13px; border-top: 1px solid var(--borde
 <script>
 mermaid.initialize({
   startOnLoad: true,
-  theme: "dark",
+  theme: "base",
   securityLevel: "strict",
-  themeVariables: { background: "#16161b", fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif", lineColor: "#6e6e78" },
+  themeVariables: { background: "#ffffff", primaryColor: "#f7f7f5", primaryBorderColor: "#5c708e", primaryTextColor: "#2f3646", lineColor: "#8a9ab3", edgeLabelBackground: "#f1f3f7", fontFamily: "Inter Tight, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif", fontSize: "15px" },
   flowchart: { useMaxWidth: false, htmlLabels: true }
 });
 </script>

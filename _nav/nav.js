@@ -29,7 +29,28 @@
       a.setAttribute("aria-current", "page");
     }
     li.appendChild(a);
-    if (page.children && page.children.length) li.appendChild(list(page.children));
+    if (page.children && page.children.length) {
+      // Діти сторінки — стани того самого екрана: показуємо їх як підфільтр під екраном, а не як окремі пункти.
+      var states = document.createElement("ul");
+      states.className = "nav-states";
+      states.setAttribute("aria-label", "Стани: " + page.title);
+      page.children.forEach(function (c) {
+        var sli = document.createElement("li");
+        var sa = document.createElement("a");
+        var su = new URL(root + c.href, location.href);
+        sa.href = root + c.href;
+        sa.textContent = c.title;
+        if (normalize(su.pathname) === here) {
+          sa.className = "nav-current";
+          sa.setAttribute("aria-current", "page");
+          a.classList.add("nav-current-parent");
+        }
+        sli.appendChild(sa);
+        states.appendChild(sli);
+      });
+      li.className = "nav-has-states";
+      li.appendChild(states);
+    }
     return li;
   }
 
@@ -62,6 +83,30 @@
 
     document.body.classList.add("has-repo-nav");
     document.body.insertBefore(nav, document.body.firstChild);
+
+    // Кнопка, що ховає і показує навігатор; вибір памʼятається між сторінками.
+    var KEY = "repoNavHidden";
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "repo-nav-toggle";
+    btn.setAttribute("aria-controls", "repo-nav");
+    nav.id = "repo-nav";
+    function apply(hidden) {
+      document.body.classList.toggle("repo-nav-hidden", hidden);
+      btn.setAttribute("aria-expanded", String(!hidden));
+      btn.textContent = hidden ? "Навігатор »" : "«";
+      btn.setAttribute("aria-label", hidden ? "Показати навігатор" : "Сховати навігатор");
+      btn.title = btn.getAttribute("aria-label");
+    }
+    var hidden = false;
+    try { hidden = localStorage.getItem(KEY) === "1"; } catch (e) {}
+    apply(hidden);
+    btn.addEventListener("click", function () {
+      hidden = !document.body.classList.contains("repo-nav-hidden");
+      apply(hidden);
+      try { localStorage.setItem(KEY, hidden ? "1" : "0"); } catch (e) {}
+    });
+    document.body.insertBefore(btn, nav.nextSibling);
   }
 
   if (document.readyState === "loading") {

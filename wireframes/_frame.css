@@ -178,3 +178,7 @@ body .repo-nav a:hover { background: var(--wf-zone); }
 body .repo-nav a.nav-current { background: var(--wf-fill); }
 body .repo-nav .nav-branch, body .repo-nav .nav-section { color: var(--wf-muted); }
 body .repo-nav .nav-branch::before { background: var(--wf-muted); border-radius: 0; }
+body .repo-nav .nav-states a { border-color: var(--wf-line); border-radius: 0; color: var(--wf-muted); }
+body .repo-nav .nav-states a.nav-current { border-color: var(--wf-text); color: var(--wf-text); background: var(--wf-fill); }
+body .repo-nav a.nav-current-parent { background: var(--wf-zone); }
+body .repo-nav-toggle { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; border-color: var(--wf-line-strong); border-radius: 0; color: var(--wf-text); }

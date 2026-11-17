@@ -152,6 +152,11 @@ body.repo-nav-hidden .repo-nav-toggle {
   left: 12px;
 }
 
+/* навігатор сховано — вміст займає всю ширину екрана, а не лише місце панелі */
+body.repo-nav-hidden main {
+  max-width: none;
+}
+
 @media (max-width: 720px) {
   .repo-nav {
     position: static;

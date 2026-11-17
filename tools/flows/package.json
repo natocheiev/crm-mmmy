@@ -1,0 +1,8 @@
+{
+  "name": "crm-mmmy-flows",
+  "private": true,
+  "description": "Builds user-flows.html from flows.md, sitemap.md and wireframes/",
+  "type": "module",
+  "scripts": { "build": "node build.mjs" },
+  "dependencies": { "elkjs": "0.9.3" }
+}

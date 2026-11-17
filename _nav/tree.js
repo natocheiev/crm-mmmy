@@ -15,6 +15,7 @@ window.NAV_TREE = [
     branch: "Структура",
     items: [
       { title: "Інформаційна архітектура", href: "ia.html" },
+      { title: "User flows", href: "user-flows.html" },
     ],
   },
   {

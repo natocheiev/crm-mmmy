@@ -1,0 +1,118 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Похвали (praise.html). Група «Мотивація». Стан: порожній.
+  Job (JTBD.md): J9 — «Коли мене похвалили або я зробив щось класне, я хочу зберегти й відсвяткувати цей момент, щоб пам'ятати, «який я красава»» (зберегти й перечитати класний момент). Персона: primary — автор (personas.md).
+  Вузли flows.md: PRAISE_EMPTY — «Похвали: empty — збережи першу» → FORM.
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+  Розвилка J9 «Є збережені похвали?» → ні. Форма поруч видима й порожня; «Зберегти» → praise-success.html.
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Похвали · порожній — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Похвали»"><p>Стани екрана «Похвали»:</p><ul><li><a href="praise.html">Базова</a></li><li><a href="praise-empty.html" aria-current="page">Порожній</a></li><li><a href="praise-error.html">Помилка</a></li><li><a href="praise-loading.html">Завантаження</a></li><li><a href="praise-success.html">Успіх</a></li></ul></nav>
+<nav class="flow-next" aria-label="Далі за flow"><p>Розвилка «Є текст або скрін?» (flows.md, J9):</p><p>є текст або скрін → <a href="praise-success.html">похвалу збережено</a> · форма порожня → <a href="praise-error.html">помилка</a></p></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html" aria-current="page">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Похвали</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <!-- Зона 1. Вкладки «Мотивації» (sitemap.md, «Навігація»: «Ачівки» і «Похвали» — підвкладки «Мотивації») -->
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Вкладки «Мотивації» — <b>головна дія: перейти до нагород, ачівок чи похвал</b></p>
+        <h2 id="z1" class="visually-hidden">Розділи мотивації</h2>
+        <nav aria-label="Вкладки «Мотивації»">
+          <ul class="row mot-tabs">
+            <li><a class="btn" href="rewards-loading.html">Нагороди і цілі</a></li>
+            <li><a class="btn" href="trophies-loading.html">Ачівки і Стіна пошани</a></li>
+            <li><a class="btn" href="praise-loading.html" aria-current="page">Похвали</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <div class="split split-wide-left">
+      <!-- Зона 2. Стрічка похвал для перечитування (sitemap.md, сутність «Похвала»: текст або скрін, звідки, від кого, дата, задача [?]) -->
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Стрічка похвал — <b>головна дія: зберегти першу похвалу</b></p>
+        <h2 id="z2">Збережи першу похвалу</h2>
+        <p>Тут збиратимуться слова, які хочеться перечитати: від клієнта, колеги чи команди.</p>
+        <p class="gap-top">Скопіюй повідомлення з Telegram чи Trello або встав скрін через ⌘V — форма поруч.</p>
+        <p class="placeholder ph-preview gap-top">порожня стрічка — місце під похвали</p>
+              <p class="gap-top"><a class="btn" href="#p-text">Зберегти першу похвалу</a></p>
+      </section>
+      <!-- Зона 3. Форма «Зберегти похвалу» (flows.md J9, FORM: текст, скрін або вставка з буфера ⌘V) -->
+      <aside class="zone" aria-labelledby="z3">
+        <p class="zone-label">Зона 3 · Нова похвала — <b>головна дія: зберегти нову похвалу</b></p>
+        <h2 id="z3">Зберегти похвалу</h2>
+        <form class="form" action="praise-success.html">
+          <div class="field">
+            <label for="p-text">Текст похвали</label>
+            <textarea id="p-text" name="text" class="mot-text" placeholder="Наприклад: «Макет — вогонь»"></textarea>
+          </div>
+          <div class="field">
+            <label for="p-shot">Скрін</label>
+            <p class="placeholder ph-preview mot-paste">встав скрін з буфера: ⌘V</p>
+            <input id="p-shot" name="shot" type="file" accept="image/*">
+            <p class="hint">Або вибери файл. Достатньо тексту або скріна.</p>
+          </div>
+          <fieldset class="field">
+            <legend>Звідки</legend>
+            <label><input type="radio" name="source"> Telegram</label>
+            <label><input type="radio" name="source"> Trello</label>
+            <label><input type="radio" name="source"> Усно</label>
+          </fieldset>
+          <div class="field">
+            <label for="p-who">Від кого</label>
+            <input id="p-who" name="who" value="" placeholder="Роль, наприклад «клієнт»">
+          </div>
+          <div class="field">
+            <label for="p-task">Задача [?]</label>
+            <select id="p-task" name="task">
+              <option>Без задачі</option>
+              <option>Пост для каналу</option>
+              <option>Сторінка 404</option>
+              <option>Банер для email-розсилки</option>
+            </select>
+          </div>
+          <p class="row"><a class="btn primary" href="praise-success.html">Зберегти</a> <a class="btn" href="board.html">Скасувати</a></p>
+        </form>
+      </aside>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

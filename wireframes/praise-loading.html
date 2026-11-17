@@ -1,0 +1,94 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Похвали (praise.html). Група «Мотивація». Стан: завантаження.
+  Job (JTBD.md): J9 — «Коли мене похвалили або я зробив щось класне, я хочу зберегти й відсвяткувати цей момент, щоб пам'ятати, «який я красава»» (зберегти й перечитати класний момент). Персона: primary — автор (personas.md).
+  Вузли flows.md: PRAISE_LOADING — «Похвали: loading».
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+  Показано перший варіант з клітинки sitemap.md — «завантаження» стрічки. Далі «Є збережені похвали?»: так → praise.html; ні → praise-empty.html.
+
+  Інший варіант: SAVING — «зберігаю». Стрічка на місці, форма заповнена й заблокована, кнопка «Зберігаю…».
+  Далі «Збережено?»: так → praise-success.html; ні → немає зʼєднання, чернетка лишилась у формі (варіант на praise-error.html).
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Похвали · завантаження — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Похвали»"><p>Стани екрана «Похвали»:</p><ul><li><a href="praise.html">Базова</a></li><li><a href="praise-empty.html">Порожній</a></li><li><a href="praise-error.html">Помилка</a></li><li><a href="praise-loading.html" aria-current="page">Завантаження</a></li><li><a href="praise-success.html">Успіх</a></li></ul></nav>
+<nav class="flow-next" aria-label="Далі за flow"><p>Далі за flow (flows.md, J9):</p><p>є збережені → <a href="praise.html">Похвали</a> · ще немає → <a href="praise-empty.html">порожній стан</a></p></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html" aria-current="page">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Похвали</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <!-- Зона 1. Вкладки «Мотивації» (sitemap.md, «Навігація»: «Ачівки» і «Похвали» — підвкладки «Мотивації») -->
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Вкладки «Мотивації» — <b>чекаю на дані — дія «перейти до нагород, ачівок чи похвал» зʼявиться після завантаження</b></p>
+        <h2 id="z1" class="visually-hidden">Розділи мотивації</h2>
+        <nav aria-label="Вкладки «Мотивації»">
+          <ul class="row mot-tabs">
+            <li><a class="btn" href="rewards-loading.html">Нагороди і цілі</a></li>
+            <li><a class="btn" href="trophies-loading.html">Ачівки і Стіна пошани</a></li>
+            <li><a class="btn" href="praise-loading.html" aria-current="page">Похвали</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <div class="split split-wide-left">
+      <!-- Зона 2. Стрічка похвал для перечитування (sitemap.md, сутність «Похвала»: текст або скрін, звідки, від кого, дата, задача [?]) -->
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Стрічка похвал — <b>чекаю на дані — дія «перечитати похвали» зʼявиться після завантаження</b></p>
+        <h2 id="z2">Завантажую похвали</h2>
+        <div class="list">
+          <span class="placeholder ph-card" aria-hidden="true"></span>
+          <span class="placeholder ph-card" aria-hidden="true"></span>
+          <span class="placeholder ph-card" aria-hidden="true"></span>
+        </div>
+      </section>
+      <!-- Зона 3. Форма «Зберегти похвалу» (flows.md J9, FORM: текст, скрін або вставка з буфера ⌘V) -->
+      <aside class="zone" aria-labelledby="z3">
+        <p class="zone-label">Зона 3 · Нова похвала — <b>чекаю на дані — дія «зберегти нову похвалу» зʼявиться після завантаження</b></p>
+        <h2 id="z3">Зберегти похвалу</h2>
+        <span class="placeholder ph-field" aria-hidden="true"></span>
+        <span class="placeholder ph-preview" aria-hidden="true"></span>
+        <span class="placeholder ph-field" aria-hidden="true"></span>
+        <span class="placeholder ph-button" aria-hidden="true"></span>
+      </aside>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

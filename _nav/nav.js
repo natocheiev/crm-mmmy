@@ -12,6 +12,14 @@
 
   function pageItem(page) {
     var li = document.createElement("li");
+    if (!page.href) {
+      var label = document.createElement("span");
+      label.className = "nav-section";
+      label.textContent = page.title;
+      li.appendChild(label);
+      if (page.children && page.children.length) li.appendChild(list(page.children));
+      return li;
+    }
     var a = document.createElement("a");
     var url = new URL(root + page.href, location.href);
     a.href = root + page.href;

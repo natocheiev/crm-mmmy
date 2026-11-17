@@ -1,0 +1,106 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Похвали (praise.html). Група «Мотивація». Стан: успіх.
+  Job (JTBD.md): J9 — «Коли мене похвалили або я зробив щось класне, я хочу зберегти й відсвяткувати цей момент, щоб пам'ятати, «який я красава»» (зберегти й перечитати класний момент). Персона: primary — автор (personas.md).
+  Вузли flows.md: SAVED — «похвалу збережено — святкування» → OK «Job закрито: момент збережено».
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+  Розвилка J9 «Збережено?» → так. Похвала рахується в «День» (sitemap.md, сутність «Похвала»).
+  Анімація — тільки текстовий підпис (_conventions.md §8). Далі: «Перечитати всі» → praise.html, «На дошку» → board.html.
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Похвали · успіх — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Похвали»"><p>Стани екрана «Похвали»:</p><ul><li><a href="praise.html">Базова</a></li><li><a href="praise-empty.html">Порожній</a></li><li><a href="praise-error.html">Помилка</a></li><li><a href="praise-loading.html">Завантаження</a></li><li><a href="praise-success.html" aria-current="page">Успіх</a></li></ul></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html" aria-current="page">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Похвали</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <!-- Зона 1. Вкладки «Мотивації» (sitemap.md, «Навігація»: «Ачівки» і «Похвали» — підвкладки «Мотивації») -->
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Вкладки «Мотивації» — <b>головна дія: перейти до нагород, ачівок чи похвал</b></p>
+        <h2 id="z1" class="visually-hidden">Розділи мотивації</h2>
+        <nav aria-label="Вкладки «Мотивації»">
+          <ul class="row mot-tabs">
+            <li><a class="btn" href="rewards-loading.html">Нагороди і цілі</a></li>
+            <li><a class="btn" href="trophies-loading.html">Ачівки і Стіна пошани</a></li>
+            <li><a class="btn" href="praise-loading.html" aria-current="page">Похвали</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <div class="split split-wide-left">
+      <!-- Зона 2. Стрічка похвал для перечитування (sitemap.md, сутність «Похвала»: текст або скрін, звідки, від кого, дата, задача [?]) -->
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Стрічка похвал — <b>головна дія: перечитати похвали</b></p>
+        <h2 id="z2">4 похвали · найновіші зверху</h2>
+        <div class="list">
+          <article class="card">
+            <p><span class="tag">Щойно збережено</span></p>
+            <blockquote>«Макет — вогонь»</blockquote>
+            <p class="note">Клієнт · Telegram · 17 листопада · задача: <a href="task.html">Пост для каналу</a></p>
+          </article>
+          <article class="card">
+            <p class="placeholder ph-preview">скрін похвали — коментар у картці Trello</p>
+            <p class="note">Проджект-менеджер · Trello · 12 листопада · задача: <a href="task.html">Сторінка 404</a></p>
+          </article>
+          <article class="card">
+            <blockquote>«Дякую, що виручив з експортом іконок — без тебе сиділи б до ночі»</blockquote>
+            <p class="note">Розробник · усно · 10 листопада · задача: без задачі</p>
+          </article>
+          <article class="card">
+            <blockquote>«Банер для email-розсилки — найкращий за весь квартал»</blockquote>
+            <p class="note">Арт-директор · Telegram · 3 листопада · задача: <a href="task.html">Банер для email-розсилки</a></p>
+          </article>
+        </div>
+      </section>
+      <!-- Зона 3. Форма «Зберегти похвалу» (flows.md J9, FORM: текст, скрін або вставка з буфера ⌘V) -->
+      <aside class="zone" aria-labelledby="z3">
+        <p class="zone-label">Зона 3 · Нова похвала — <b>головна дія: відсвяткувати й перечитати</b></p>
+        <h2 id="z3">Похвалу збережено</h2>
+        <p class="placeholder ph-preview">святкування — конфеті й анімація збереження</p>
+        <blockquote class="gap-top">«Макет — вогонь»</blockquote>
+        <p class="gap-top">Клієнт · Telegram · задача «Пост для каналу»</p>
+        <p class="gap-top">Похвалу збережено. Вона вже в стрічці і в сьогоднішньому підсумку дня.</p>
+        <p class="row gap-top"><a class="btn primary" href="praise.html">Перечитати всі</a> <a class="btn" href="board.html">На дошку</a></p>
+      </aside>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

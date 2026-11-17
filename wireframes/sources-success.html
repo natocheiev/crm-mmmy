@@ -1,0 +1,97 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Групи і джерела (sources.html). Група «Групи і джерела». Стан: успіх (підтвердження після дії).
+  Job (JTBD.md): ГР (задачі «з різних місць», розрізняти групи); J1; J2 (без підключеного чату задачі з Telegram не прийдуть). Персона: primary — автор (personas.md).
+  Крок main flow (flows.md, «Main job»): після «Перепідключення пройшло?» → так → «Дошка: loading — синхронізація з Trello і Telegram».
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Групи і джерела · успіх — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Групи і джерела»"><p>Стани екрана «Групи і джерела»:</p><ul><li><a href="sources.html">Базова</a></li><li><a href="sources-empty.html">Порожній</a></li><li><a href="sources-error.html">Помилка</a></li><li><a href="sources-loading.html">Завантаження</a></li><li><a href="sources-success.html" aria-current="page">Успіх</a></li></ul></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html" aria-current="page">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Групи і джерела</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <div class="split split-2">
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Trello — <b>головна дія: підключити або зберегти</b></p>
+        <h2 id="z1">Trello підключено — дошка знову синхронізується</h2>
+        <ul class="list">
+          <li>Дошка: «Основна робота — дизайн»</li>
+          <li>Колонок зіставлено: 4 — To Do — Tasks, Doing — In Progress, Review — In Review, Done — Approved</li>
+          <li>Карток отримано: 12</li>
+        </ul>
+        <p class="row gap-top"><a class="btn primary" href="board-loading.html">На дошку</a> <a class="btn" href="sources.html">Змінити зіставлення колонок</a></p>
+      </section>
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Telegram — <b>головна дія: перевірити бота</b></p>
+        <h2 id="z2">Друга робота · Telegram</h2>
+        <ul class="list">
+          <li>Бот у робочому чаті: <b>так</b></li>
+          <li>Privacy mode: <b>вимкнено</b> — бот бачить усі повідомлення</li>
+          <li>Останнє повідомлення: сьогодні о 09:40</li>
+        </ul>
+        <form class="form gap-top">
+          <div class="field">
+            <label for="tg-user">Твій @username у робочому чаті</label>
+            <input id="tg-user" name="username" value="@designer_me">
+            <p class="hint">Повідомлення з відміткою цього імені і відповіді на твої повідомлення стають задачами одразу. Решта — у «Можливі задачі».</p>
+          </div>
+          <p class="row"><a class="btn primary" href="sources-loading.html">Перевірити бота</a></p>
+        </form>
+      </section>
+      </div>
+      <section class="zone" aria-labelledby="z3">
+        <p class="zone-label">Зона 3 · Групи — <b>головна дія: задати пріоритет групи</b></p>
+        <h2 id="z3">Групи</h2>
+        <table>
+          <thead><tr><th scope="col">Група</th><th scope="col">Тип</th><th scope="col">Джерело</th><th scope="col">Пріоритет</th><th scope="col">Колір та іконка</th></tr></thead>
+          <tbody>
+            <tr><td>Основна робота</td><td>робота</td><td>Trello</td><td><select aria-label="Пріоритет: Основна робота"><option selected>1</option><option>2</option><option>3</option></select></td><td><span class="placeholder ph-swatch">колір · іконка</span></td></tr>
+            <tr><td>Друга робота</td><td>робота</td><td>Telegram</td><td><select aria-label="Пріоритет: Друга робота"><option>1</option><option selected>2</option><option>3</option></select></td><td><span class="placeholder ph-swatch">колір · іконка</span></td></tr>
+            <tr><td>Особисте</td><td>особисте</td><td>у CRM</td><td><select aria-label="Пріоритет: Особисте"><option>1</option><option>2</option><option selected>3</option></select></td><td><span class="placeholder ph-swatch">колір · іконка</span></td></tr>
+          </tbody>
+        </table>
+        <p class="muted gap-top">Категорії «Особистого»: побут, навчання, спорт, ідеї, пошук роботи, лікар.</p>
+      </section>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

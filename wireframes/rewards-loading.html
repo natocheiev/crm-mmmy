@@ -1,0 +1,98 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Нагороди і цілі (rewards.html). Група «Мотивація». Стан: завантаження.
+  Job (JTBD.md): J11 — «Коли я досягаю цілі, я хочу винагородити себе, щоб знати, скільки роботи зробив і що це добре зроблено» (винагородити себе за досягнуту ціль). Персона: primary — автор (personas.md).
+  Вузли flows.md: REWARDS_LOADING — «Нагороди і цілі: loading — рахую баланс XP» (з BOARD_XP → «Відкрив «Мотивацію»?» → так).
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+  Сірі заглушки на місці вмісту зон 2–4. Далі розвилка «Є нагороди?»: так → rewards.html; ні → rewards-empty.html.
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Нагороди і цілі · завантаження — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Нагороди і цілі»"><p>Стани екрана «Нагороди і цілі»:</p><ul><li><a href="rewards.html">Базова</a></li><li><a href="rewards-empty.html">Порожній</a></li><li><a href="rewards-error.html">Помилка</a></li><li><a href="rewards-loading.html" aria-current="page">Завантаження</a></li><li><a href="rewards-success.html">Успіх</a></li></ul></nav>
+<nav class="flow-next" aria-label="Далі за flow"><p>Далі за flow (flows.md, J11):</p><p>є нагороди → <a href="rewards.html">Нагороди і цілі</a> · нагород немає → <a href="rewards-empty.html">порожній стан</a></p></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html" aria-current="page">Мотивація <span class="count">…</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Нагороди і цілі</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <!-- Зона 1. Вкладки «Мотивації» (sitemap.md, «Навігація»: «Ачівки» і «Похвали» — підвкладки «Мотивації») -->
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Вкладки «Мотивації» — <b>чекаю на дані — дія «перейти до нагород, ачівок чи похвал» зʼявиться після завантаження</b></p>
+        <h2 id="z1" class="visually-hidden">Розділи мотивації</h2>
+        <nav aria-label="Вкладки «Мотивації»">
+          <ul class="row mot-tabs">
+            <li><a class="btn" href="rewards-loading.html" aria-current="page">Нагороди і цілі</a></li>
+            <li><a class="btn" href="trophies-loading.html">Ачівки і Стіна пошани</a></li>
+            <li><a class="btn" href="praise-loading.html">Похвали</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <!-- Зона 2. Баланс XP — рахується -->
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Баланс XP — <b>чекаю на дані — дія «звірити баланс з ціною нагород» зʼявиться після завантаження</b></p>
+        <h2 id="z2">Рахую баланс XP</h2>
+        <span class="placeholder ph-line short" aria-hidden="true"></span>
+        <span class="placeholder ph-line" aria-hidden="true"></span>
+      </section>
+      <div class="split split-wide-left">
+      <!-- Зона 3. Мої нагороди з ціною і прогресом (sitemap.md, сутність «Нагорода»; flows.md J11: REWARDS_PROGRESS) -->
+      <section class="zone" aria-labelledby="z3">
+        <p class="zone-label">Зона 3 · Мої нагороди — <b>чекаю на дані — дія «отримати нагороду, на яку вистачає XP» зʼявиться після завантаження</b></p>
+        <h2 id="z3">Мої нагороди</h2>
+        <div class="list">
+          <span class="placeholder ph-card" aria-hidden="true"></span>
+          <span class="placeholder ph-card" aria-hidden="true"></span>
+          <span class="placeholder ph-card" aria-hidden="true"></span>
+        </div>
+      </section>
+      <!-- Зона 4. Форма «Додати нагороду» (sitemap.md, сутність «Нагорода»: назва, ціна в XP; flows.md J11: «Нагорода надто далеко?») -->
+      <section class="zone" aria-labelledby="z4">
+        <p class="zone-label">Зона 4 · Нова нагорода — <b>чекаю на дані — дія «додати нагороду з ціною в XP» зʼявиться після завантаження</b></p>
+        <h2 id="z4">Додати нагороду</h2>
+        <p class="muted">Як «100 XP — купую собі X». Ціну звір з балансом і середнім XP на день.</p>
+        <span class="placeholder ph-field" aria-hidden="true"></span>
+        <span class="placeholder ph-field" aria-hidden="true"></span>
+        <span class="placeholder ph-button" aria-hidden="true"></span>
+      </section>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

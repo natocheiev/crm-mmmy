@@ -19,9 +19,13 @@ Vercel Hobby + Supabase Free: **$0/міс**. Проєкт self-hostable: фор�
 - [CLAUDE.md](./CLAUDE.md) — повний продуктовий бриф і правила роботи з репо
 - [JTBD.md](./JTBD.md) — Jobs-to-be-Done: головна робота, карта роботи, сили прогресу, job stories, бажані результати
 - [personas.md](./personas.md) — реєстр персон: primary — автор
-- [sitemap.md](./sitemap.md) — реєстр сутностей, екранів і станів, навігація, матриця трасування
-- [flows.md](./flows.md) — user flows у Mermaid: main job, J2 (Telegram), J3 (голос), J11 (нагорода), J9 (похвала)
+- [sitemap.md](./sitemap.md) — реєстр сутностей, екранів (з колонкою «Стани») і станів, навігація, матриця трасування
+- [flows.md](./flows.md) — user flows у Mermaid: main job, J2 (Telegram), J3 (голос), J11 (нагорода), J9 (похвала), «Кольори і теми»
 - [ia.html](./ia.html) — знімок IA: sitemap деревом, flows у Mermaid, матриця трасування ([на сайті](https://natocheiev.github.io/crm-mmmy/ia.html))
+- [wireframes/_conventions.md](./wireframes/_conventions.md) — правила вайрфреймів: рамка, шапка й навігація, стани, назви файлів, переходи за flows.md
+- [wireframes/_frame.css](./wireframes/_frame.css) — сірий каркас: рамка `.device`, зони, форми, заглушки
+- [wireframes/board.html](./wireframes/board.html) — головний екран «Дошка», зразок для решти ([на сайті](https://natocheiev.github.io/crm-mmmy/wireframes/board.html))
+- [wireframes/](./wireframes/) — вайрфрейми всіх 10 екранів sitemap.md і їхніх станів (44 сторінки): Дошка, Задача, Швидке додавання, Можливі задачі, Підсумок дня, Нагороди і цілі, Ачівки і Стіна пошани, Похвали, Групи і джерела, Кольори і теми
 - [index.html](./index.html) — стартова сторінка ([на сайті](https://natocheiev.github.io/crm-mmmy/))
 - [_nav/tree.js](./_nav/tree.js) — дерево сторінок навігатора
 - [research/](./research/) — дослідження

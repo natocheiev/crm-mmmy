@@ -60,6 +60,18 @@
   color: #284b9b;
 }
 
+.repo-nav .nav-section {
+  display: block;
+  padding: 6px 12px 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #5c708e;
+}
+
+.repo-nav .nav-section + ul a {
+  padding-left: 22px;
+}
+
 .repo-nav .nav-branch::before {
   content: "";
   width: 6px;

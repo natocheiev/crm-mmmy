@@ -1,0 +1,75 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Швидке додавання (capture.html). Група «Задачі». Стан: завантаження.
+  Job (JTBD.md): J3 (надиктувати за секунду); J4 (зафіксувати прохання); J10 (з телефона). Персона: primary — автор (personas.md).
+  Крок main flow (flows.md, «Main job»): flow J3: CAPTURE_LISTEN — «Швидке додавання: loading — слухаю одразу після кліку».
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+  Продукт чекає, поки людина договорить, і розпізнає мову. Далі розвилка «Текст розпізнано?».
+  Інший варіант (sitemap.md): «Зберігаю» — після «Зберегти» (вузол CAPTURE_SAVING).
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Швидке додавання · завантаження — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Швидке додавання»"><p>Стани екрана «Швидке додавання»:</p><ul><li><a href="capture.html">Базова</a></li><li><a href="capture-error.html">Помилка</a></li><li><a href="capture-loading.html" aria-current="page">Завантаження</a></li><li><a href="capture-success.html">Успіх</a></li></ul></nav>
+<nav class="flow-next" aria-label="Далі за flow"><p>Далі за flow (flows.md, J3):</p><p>текст розпізнано → <a href="capture.html">перевірка перед збереженням</a> · не почув → <a href="capture-loading.html">слухаю ще раз</a> або <a href="capture-error.html#t-name">ввести текстом</a> · мікрофон заборонено (перевірка до слухання) → <a href="capture-error.html">помилка</a></p></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Швидке додавання</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <div class="split split-wide-right">
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Голос — <b>чекаю на дані — дія «надиктувати задачу» зʼявиться після завантаження</b></p>
+        <h2 id="z1">Слухаю…</h2>
+        <p>Скажи задачу: що зробити, для якої групи і до коли.</p>
+        <p class="muted">Наприклад: «Завтра до обіду обкладинку для статті в блог, основна робота».</p>
+        <p class="row gap-top"><a class="btn" href="capture.html">Зупинити</a> <a class="btn" href="board.html">Скасувати</a></p>
+      </section>
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Розпізнане на перевірку — <b>чекаю на дані — дія «зберегти задачу» зʼявиться після завантаження</b></p>
+        <h2 id="z2">Перевір перед збереженням</h2>
+        <p class="muted">Розпізнані назва, група і дедлайн з'являться тут.</p>
+        <p class="placeholder ph-field" aria-hidden="true"></p>
+        <p class="placeholder ph-field" aria-hidden="true"></p>
+        <p class="placeholder ph-field" aria-hidden="true"></p>
+      </section>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

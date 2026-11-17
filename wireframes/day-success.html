@@ -1,0 +1,99 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Підсумок дня (day.html). Група «День». Стан: успіх (підтвердження після дії).
+  Job (JTBD.md): J7 (скільки зроблено з урахуванням розміру); J9 (похвали за день); J11 (скільки роботи зроблено). Персона: primary — автор (personas.md).
+  Крок main flow (flows.md, «Main job»): DAY_TOMORROW(["Підсумок дня: план на завтра збережено"]) / після «Перенесення збережено?» → так → «Job закрито: усе видно, нічого не загублено, день не дарма».
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+  Інший варіант (sitemap.md): «Незакрите перенесено».
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Підсумок дня · успіх — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Підсумок дня»"><p>Стани екрана «Підсумок дня»:</p><ul><li><a href="day.html">Базова</a></li><li><a href="day-empty.html">Порожній</a></li><li><a href="day-error.html">Помилка</a></li><li><a href="day-loading.html">Завантаження</a></li><li><a href="day-success.html" aria-current="page">Успіх</a></li></ul></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html" aria-current="page">День</a></li>
+      <li><a href="rewards.html">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Підсумок дня</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Перемикач груп — <b>головна дія: показати підсумок однієї групи</b></p>
+        <h2 id="z1" class="visually-hidden">Групи</h2>
+        <div class="row" role="group" aria-label="Фільтр за групою">
+          <button type="button" class="chip" aria-pressed="true">Усі</button>
+          <button type="button" class="chip" aria-pressed="false">Основна робота</button>
+          <button type="button" class="chip" aria-pressed="false">Друга робота</button>
+          <button type="button" class="chip" aria-pressed="false">Особисте</button>
+        </div>
+      </section>
+      <div class="split split-wide-left">
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Зроблено з урахуванням розміру — <b>головна дія: переглянути закрите</b></p>
+        <h2 id="z2">Сьогодні закрито 2 задачі · вага M + S</h2>
+        <table>
+          <thead><tr><th scope="col">Задача</th><th scope="col">Група</th><th scope="col">Розмір</th><th scope="col">XP</th></tr></thead>
+          <tbody>
+            <tr><td><a href="task.html">Сторінка 404</a></td><td>Основна робота</td><td>M</td><td>+30</td></tr>
+            <tr><td><a href="task.html">Пост для каналу</a></td><td>Друга робота</td><td>S</td><td>+15</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <aside class="zone" aria-labelledby="z3">
+        <p class="zone-label">Зона 3 · Час, XP і похвали — <b>головна дія: зберегти похвалу</b></p>
+        <h2 id="z3">Час, XP і похвали</h2>
+        <ul class="list">
+          <li>Час у роботі: <b>1 год 50 хв</b>, з них прохання — 30 хв</li>
+          <li>Зароблено: <b>+45 XP</b></li>
+          <li>Похвала: «Макет — вогонь» · клієнт у Telegram</li>
+        </ul>
+        <p class="row gap-top"><a class="btn" href="praise.html">Зберегти похвалу</a></p>
+      </aside>
+      </div>
+      <section class="zone" aria-labelledby="z4">
+        <p class="zone-label">Зона 4 · Розбір незакритого — <b>головна дія: зберегти розбір: на завтра або зняти з плану</b></p>
+        <h2 id="z4">План на завтра збережено</h2>
+        <ul class="list">
+          <li>На завтра, першими в плані: <b>Банер для email-розсилки</b> (M), <b>Обкладинка для статті в блог</b> (S)</li>
+          <li>Знято з плану: Записатися до стоматолога — лишилась на дошці в Tasks</li>
+        </ul>
+        <p class="gap-top"><b>День не дарма:</b> 2 задачі закрито, +45 XP, 1 год 50 хв у роботі.</p>
+        <p class="row gap-top"><a class="btn primary" href="board.html">На дошку</a> <a class="btn" href="day.html">Змінити розбір</a></p>
+      </section>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

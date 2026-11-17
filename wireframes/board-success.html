@@ -1,0 +1,177 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Дошка (board.html) — головний екран. Стан: успіх (підтвердження після дії).
+  Базова сторінка — board.html; структура, шапка, навігація і зони ті самі, змінено лише вміст.
+  Текст стану — sitemap.md, «Екрани», колонка «Стани»; вузол flows.md, «Main job»: BOARD_PLAN(["Дошка: тема і план під настрій — задачі за розміром, перенесене вчора першим"]).
+  Дія: людина вибрала настрій дня (стан «настрій не вибрано» → «Вибрав настрій?» → так → «Настрій збережено?» → так).
+  Підтвердження показано в зоні 3 «Сьогодні» (сутність День: настрій, план під настрій). Що далі: почати з першої задачі плану.
+  Назва настрою — приклад [?]: список настроїв ще відкрите питання (CLAUDE.md §9). Тема дня — це колір, на вайрфреймі не показуємо.
+  Інший варіант успіху (sitemap.md) — «Лист надіслано — перевір пошту і спам» після введення email у стані «Дошка: немає сесії»;
+  окремої сторінки не має (_conventions.md §7).
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дошка · успіх — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Дошка»"><p>Стани екрана «Дошка»:</p><ul><li><a href="board.html">Базова</a></li><li><a href="board-empty.html">Порожній</a></li><li><a href="board-error.html">Помилка</a></li><li><a href="board-loading.html">Завантаження</a></li><li><a href="board-success.html" aria-current="page">Успіх</a></li></ul></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html" aria-current="page">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Дошка</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <!-- Зона 1. Перемикач груп (sitemap.md, «Перемикач») -->
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Перемикач груп — <b>головна дія: відфільтрувати дошку за групою</b></p>
+        <h2 id="z1" class="visually-hidden">Групи</h2>
+        <div class="row" role="group" aria-label="Фільтр за групою">
+          <button type="button" class="chip" aria-pressed="true">Усі · 10</button>
+          <button type="button" class="chip" aria-pressed="false">Основна робота · Trello · 5</button>
+          <button type="button" class="chip" aria-pressed="false">Друга робота · Telegram · 4</button>
+          <button type="button" class="chip" aria-pressed="false">Особисте · 1</button>
+        </div>
+      </section>
+
+      <div class="split split-wide-left">
+
+        <!-- Зона 2. Можливі задачі і стан джерел (sitemap.md: лічильник зверху дошки; Джерело — час синхронізації [?]) -->
+        <section class="zone" aria-labelledby="z2">
+          <p class="zone-label">Зона 2 · Вхідне з Telegram і стан джерел — <b>головна дія: розібрати можливі задачі</b></p>
+          <h2 id="z2">3 можливі задачі з Telegram чекають розбору</h2>
+          <p class="muted">Повідомлення з робочого чату без відмітки. Найстаріше — «Можеш глянути макет картки товару до вечора?», 2 год тому.</p>
+          <p class="row gap-top"><a class="btn" href="inbox-loading.html">Розібрати 3</a></p>
+          <ul class="list gap-top">
+            <li><span class="tag">Trello</span> Дошка основної роботи — синхронізовано о 09:12</li>
+            <li><span class="tag">Telegram</span> Бот у робочому чаті бачить усі повідомлення — останнє о 09:40</li>
+          </ul>
+        </section>
+
+        <!-- Зона 3. Що вже зроблено сьогодні (sitemap.md, «Головний екран»: «що вже зроблено сьогодні») -->
+        <aside class="zone" aria-labelledby="z3">
+          <p class="zone-label">Зона 3 · Сьогодні — <b>головна дія: відкрити підсумок дня</b></p>
+          <h2 id="z3">Настрій збережено: «Мало сил» — план під настрій готовий</h2>
+          <p class="muted">Сьогодні дрібніші задачі й мʼякша ціль: 3 задачі S і M, разом ~3 год 15 хв. Перенесене з учора — першим.</p>
+          <ol class="list gap-top">
+            <li>1. Обкладинка для статті в блог · S · ~1 год</li>
+            <li>2. Банер для email-розсилки · M · ~2 год</li>
+            <li>3. Записатися до стоматолога · S · ~15 хв</li>
+          </ol>
+          <p class="row gap-top"><a class="btn primary" href="task-loading.html">Почати з першої задачі</a></p>
+          <footer class="gap-top">
+            <a href="day-loading.html">Підсумок дня</a> · <a href="rewards-loading.html">До нагород</a>
+          </footer>
+        </aside>
+      </div>
+
+      <!-- Зона 4. Kanban: усі задачі разом, 4 статуси (CLAUDE.md §4; sitemap.md, сутність «Задача») -->
+      <section class="zone" aria-labelledby="z4">
+        <p class="zone-label">Зона 4 · Дошка задач — <b>головна дія: перетягнути картку в наступний статус</b>; клік по назві відкриває задачу</p>
+        <h2 id="z4">Задачі з Trello, Telegram і особисте — за пріоритетом групи і задачі</h2>
+
+        <div class="kanban">
+          <section aria-labelledby="c1">
+            <h3 id="c1">Tasks <span class="muted">4</span></h3>
+            <article class="card">
+              <h4><a href="task.html">Обкладинка для статті в блог</a></h4>
+              <p class="note">Перенесено з учора · у плані першою</p>
+              <p class="meta"><span class="tag">Основна робота</span><span class="tag">Trello</span><span class="tag">S · ~1 год</span></p>
+            </article>
+            <article class="card">
+              <h4><a href="task.html">Банер для email-розсилки</a></h4>
+              <p class="note">У плані на сьогодні</p>
+              <p class="meta"><span class="tag">Основна робота</span><span class="tag">Trello</span><span class="tag">M · ~2 год</span></p>
+              <a class="btn" href="task-loading.html" aria-label="Перемістити «Банер для email-розсилки» в In Progress">В роботу</a>
+            </article>
+            <article class="card">
+              <h4><a href="task.html">Макет картки товару</a></h4>
+              <p class="meta"><span class="tag">Друга робота</span><span class="tag">Telegram</span><span class="tag">M · ~3 год</span></p>
+            </article>
+            <article class="card">
+              <h4><a href="task.html">Записатися до стоматолога</a></h4>
+              <p class="note">У плані на сьогодні</p>
+              <p class="meta"><span class="tag">Особисте · лікар</span><span class="tag">S · ~15 хв</span></p>
+            </article>
+          </section>
+
+          <section aria-labelledby="c2">
+            <h3 id="c2">In Progress <span class="muted">2</span></h3>
+            <article class="card">
+              <h4><a href="task.html">Іконки для мобільного меню</a></h4>
+              <p class="meta"><span class="tag">Основна робота</span><span class="tag">Trello</span><span class="tag">L · ~5 год</span></p>
+            </article>
+            <article class="card">
+              <h4><a href="task.html">Допомогти програмісту з експортом SVG</a></h4>
+              <p class="meta"><span class="tag">Друга робота</span><span class="tag">Telegram</span><span class="tag">Прохання</span><span class="tag">S · ~30 хв</span></p>
+            </article>
+          </section>
+
+          <section aria-labelledby="c3">
+            <h3 id="c3">In Review <span class="muted">2</span></h3>
+            <article class="card">
+              <h4><a href="task.html">Лендинг акції «Чорна п'ятниця»</a></h4>
+              <p class="meta"><span class="tag">Основна робота</span><span class="tag">Trello</span><span class="tag">L · ~6 год</span></p>
+              <p class="note">Чекає апрув 2 дні</p>
+            </article>
+            <article class="card">
+              <h4><a href="task.html">Банер для сторіз</a></h4>
+              <p class="meta"><span class="tag">Друга робота</span><span class="tag">Telegram</span><span class="tag">S · ~1 год</span></p>
+              <p class="note">Чекає апрув 1 день</p>
+            </article>
+          </section>
+
+          <section aria-labelledby="c4">
+            <h3 id="c4">Approved <span class="muted">2</span></h3>
+            <article class="card">
+              <h4><a href="task.html">Сторінка 404</a></h4>
+              <p class="meta"><span class="tag">Основна робота</span><span class="tag">Trello</span><span class="tag">M</span></p>
+              <p class="note">Сьогодні · +30 XP</p>
+            </article>
+            <article class="card">
+              <h4><a href="task.html">Пост для каналу</a></h4>
+              <p class="meta"><span class="tag">Друга робота</span><span class="tag">Telegram</span><span class="tag">S</span></p>
+              <p class="note">Сьогодні · +15 XP</p>
+            </article>
+          </section>
+        </div>
+
+        <footer class="muted gap-top">
+          Задачі плану позначено на картках. Перетягни першу в In Progress, щоб запустити таймер.
+        </footer>
+      </section>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

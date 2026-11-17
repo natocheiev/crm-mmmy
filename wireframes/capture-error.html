@@ -1,0 +1,103 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Швидке додавання (capture.html). Група «Задачі». Стан: помилка.
+  Job (JTBD.md): J3 (надиктувати за секунду); J4 (зафіксувати прохання); J10 (з телефона). Персона: primary — автор (personas.md).
+  Крок main flow (flows.md, «Main job»): flow J3: CAPTURE_MIC_ERR — «Швидке додавання: error — мікрофон заборонено, як дозволити».
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+  Розвилка flows.md J3: «Є дозвіл на мікрофон?» → ні. Виходи з flow: «Спробувати ще» (після дозволу) і «ввести текстом» — поле для диктовки клавіатурою.
+  Інші варіанти помилки (sitemap.md): «Не почув — ще раз або ввести текстом» (розвилка «Текст розпізнано?»);
+  «Браузер не розпізнає мову — поле для диктовки клавіатурою» (розвилка «Браузер підтримує розпізнавання мови?»).
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Швидке додавання · помилка — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Швидке додавання»"><p>Стани екрана «Швидке додавання»:</p><ul><li><a href="capture.html">Базова</a></li><li><a href="capture-error.html" aria-current="page">Помилка</a></li><li><a href="capture-loading.html">Завантаження</a></li><li><a href="capture-success.html">Успіх</a></li></ul></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Швидке додавання</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <div class="split split-wide-right">
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Голос — <b>головна дія: надиктувати задачу</b></p>
+        <h2 id="z1">Мікрофон заборонено</h2>
+        <p>Браузер не дає CRM доступу до мікрофона, тому я не можу тебе почути.</p>
+        <ol class="list gap-top">
+          <li>1. Натисни на значок замка зліва від адреси сайту.</li>
+          <li>2. Біля «Мікрофон» вибери «Дозволити».</li>
+          <li>3. Повернись сюди й натисни «Спробувати ще».</li>
+        </ol>
+        <p class="row gap-top"><a class="btn primary" href="capture-loading.html">Спробувати ще</a> <a class="btn" href="#t-name">Ввести текстом</a></p>
+      </section>
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Розпізнане на перевірку — <b>головна дія: зберегти задачу</b></p>
+        <h2 id="z2">Перевір перед збереженням</h2>
+        <form class="form" action="capture-success.html">
+          <div class="field">
+            <label for="t-name">Назва</label>
+            <input id="t-name" name="name" value="">
+            <p class="hint">Можна диктувати клавіатурою телефона — кнопка мікрофона на клавіатурі</p>
+          </div>
+          <div class="field">
+            <label for="t-group">Група</label>
+            <select id="t-group" name="group">
+              <option>Основна робота · Trello</option>
+              <option>Друга робота · Telegram</option>
+              <option selected>Особисте</option>
+            </select>
+            <p class="hint">Без розпізнаної групи ставлю «Особисте»</p>
+          </div>
+          <div class="field">
+            <label for="t-deadline">Дедлайн</label>
+            <input id="t-deadline" name="deadline" value="">
+            <p class="hint">Наприклад: «завтра», «до пʼятниці»</p>
+          </div>
+          <fieldset class="field">
+            <legend>Тип</legend>
+            <label><input type="radio" name="type" checked> Задача</label>
+            <label><input type="radio" name="type"> Прохання — незаплановане, з таймером</label>
+          </fieldset>
+          <p class="row"><a class="btn primary" href="capture-success.html">Зберегти</a> <a class="btn" href="board.html">Скасувати</a></p>
+          <p class="muted">Поле працює і без мікрофона.</p>
+        </form>
+      </section>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

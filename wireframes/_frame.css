@@ -1,0 +1,180 @@
+/* Рамка і каркас вайрфреймів CRM-MMMY.
+   Правила — wireframes/_conventions.md: тільки сірий, системний шрифт,
+   без кольору, іконок, тіней і радіусів-декору. */
+
+:root {
+  --wf-bg: #f2f2f2;        /* поле навколо рамки */
+  --wf-paper: #ffffff;     /* фон екрана */
+  --wf-zone: #f7f7f7;      /* заливка зон */
+  --wf-fill: #e6e6e6;      /* плейсхолдери, теги */
+  --wf-line: #c8c8c8;      /* лінії */
+  --wf-line-strong: #8c8c8c;
+  --wf-text: #222222;
+  --wf-muted: #666666;
+  --wf-note: #8c8c8c;      /* підписи зон */
+  --wf-nav-w: 232px;
+  --wf-gap: 16px;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--wf-bg); }
+body {
+  margin: 0; padding: 24px 16px;
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--wf-text);
+}
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: var(--wf-text); }
+button {
+  font: inherit; color: var(--wf-text); cursor: pointer;
+  background: var(--wf-paper); border: 1px solid var(--wf-line-strong);
+  padding: 6px 12px;
+}
+a.btn { display: inline-block; text-decoration: none; border: 1px solid var(--wf-line-strong); padding: 6px 12px; background: var(--wf-paper); }
+button.primary, a.btn.primary { background: var(--wf-text); color: var(--wf-paper); border-color: var(--wf-text); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- рамка ---------- */
+.device {
+  max-width: 1280px; min-height: 800px; margin: 0 auto;
+  background: var(--wf-paper); border: 1px solid var(--wf-line-strong);
+  display: grid; grid-template-columns: var(--wf-nav-w) 1fr;
+}
+
+/* ---------- глобальна навігація (однакова на всіх екранах) ---------- */
+.app-nav {
+  border-right: 1px solid var(--wf-line); padding: 20px 16px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.app-nav .product { font-weight: 700; }
+.app-nav .add { width: 100%; padding: 10px 12px; text-align: left; }
+.app-nav ul { display: grid; gap: 2px; }
+.app-nav ul a {
+  display: flex; justify-content: space-between; gap: 8px;
+  padding: 8px 10px; text-decoration: none; border: 1px solid transparent;
+}
+.app-nav ul a[aria-current="page"] { border-color: var(--wf-line-strong); background: var(--wf-zone); font-weight: 600; }
+.app-nav .count { color: var(--wf-muted); }
+.app-nav .settings { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--wf-line); display: grid; gap: 4px; }
+.app-nav .settings-title { padding: 0 10px; font-size: 12px; color: var(--wf-muted); }
+
+/* ---------- шапка і вміст ---------- */
+.app-body { display: flex; flex-direction: column; min-width: 0; }
+.app-header {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  padding: 18px 24px; border-bottom: 1px solid var(--wf-line);
+}
+.app-header h1 { font-size: 22px; }
+.app-header .today { color: var(--wf-muted); }
+.app-main { padding: 16px 24px 24px; display: grid; gap: var(--wf-gap); align-content: start; }
+
+/* ---------- зони і підписи зон ---------- */
+.zone { border: 1px dashed var(--wf-line-strong); background: var(--wf-zone); padding: 12px 14px; min-width: 0; }
+.zone-label {
+  font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: var(--wf-note);
+  margin-bottom: 8px;
+}
+.zone-label b { color: var(--wf-muted); font-weight: 600; }
+.zone h2 { font-size: 15px; margin-bottom: 8px; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.split { display: grid; gap: var(--wf-gap); }
+.split-wide-left { grid-template-columns: 1.4fr 1fr; }
+.list { display: grid; gap: 4px; }
+.gap-top { margin-top: 10px; }
+.muted { color: var(--wf-muted); }
+
+/* ---------- дрібні елементи ---------- */
+.tag { display: inline-block; background: var(--wf-fill); padding: 1px 6px; font-size: 12px; }
+.chip { background: var(--wf-paper); }
+.chip[aria-pressed="true"] { background: var(--wf-text); color: var(--wf-paper); }
+.placeholder {
+  display: grid; place-items: center; background: var(--wf-fill); color: var(--wf-muted);
+  font-size: 11px; text-align: center;
+}
+
+/* ---------- Kanban ---------- */
+.kanban { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.kanban > section { border: 1px solid var(--wf-line); background: var(--wf-paper); padding: 10px; display: grid; gap: 8px; align-content: start; }
+.kanban h3 { font-size: 13px; display: flex; justify-content: space-between; }
+.card { border: 1px solid var(--wf-line-strong); background: var(--wf-paper); padding: 8px 10px; display: grid; gap: 6px; }
+.card h4 { margin: 0; font-size: 14px; font-weight: 600; }
+.card h4 a { text-decoration: none; }
+.card .meta { display: flex; flex-wrap: wrap; gap: 4px; font-size: 12px; }
+.card .note { font-size: 12px; color: var(--wf-muted); }
+.card button { justify-self: start; padding: 2px 8px; font-size: 12px; }
+
+/* ---------- перемикач станів екрана (над рамкою, не частина продукту) ---------- */
+.state-nav { max-width: 1280px; margin: 0 auto 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--wf-muted); }
+.state-nav ul { display: flex; flex-wrap: wrap; gap: 4px; }
+.state-nav a { display: inline-block; padding: 4px 10px; border: 1px solid var(--wf-line); text-decoration: none; background: var(--wf-paper); }
+.state-nav a[aria-current="page"] { border-color: var(--wf-text); font-weight: 600; }
+
+/* ---------- сірі заглушки стану завантаження ---------- */
+.placeholder.ph-chip { display: inline-block; width: 140px; height: 32px; }
+.placeholder.ph-line { display: block; height: 12px; margin: 8px 0; }
+.placeholder.ph-line.short { width: 60%; }
+.placeholder.ph-button { display: block; width: 120px; height: 34px; }
+.placeholder.ph-card { display: block; height: 76px; margin: 0; }
+
+/* ---------- сітки екранів ---------- */
+.split-2 { grid-template-columns: 1fr 1fr; }
+.split-wide-right { grid-template-columns: 1fr 1.4fr; }
+.zone h3 { font-size: 14px; margin-bottom: 6px; }
+.big { font-size: 32px; font-weight: 700; }
+blockquote { margin: 0; padding: 8px 12px; border-left: 3px solid var(--wf-line-strong); background: var(--wf-paper); }
+
+/* ---------- форми ---------- */
+.form { display: grid; gap: 14px; }
+.field { display: grid; gap: 4px; margin: 0; }
+fieldset.field { border: 1px solid var(--wf-line); padding: 10px 12px; }
+fieldset.field legend { padding: 0 4px; font-weight: 600; }
+.field > label, .field > legend { font-weight: 600; }
+input:not([type="checkbox"]):not([type="radio"]), select {
+  font: inherit; color: var(--wf-text); background: var(--wf-paper);
+  border: 1px solid var(--wf-line-strong); padding: 7px 10px; min-width: 0;
+}
+.hint { font-size: 12px; color: var(--wf-muted); }
+.error-text { border: 1px solid var(--wf-line-strong); background: var(--wf-paper); padding: 8px 10px; }
+
+/* ---------- таблиці ---------- */
+table { width: 100%; border-collapse: collapse; background: var(--wf-paper); }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--wf-line); vertical-align: top; }
+th { font-size: 12px; color: var(--wf-muted); font-weight: 600; }
+
+/* ---------- плейсхолдери ---------- */
+.placeholder.ph-preview { min-height: 120px; }
+.placeholder.ph-field { display: block; height: 36px; margin: 8px 0; }
+.placeholder.ph-swatch { display: inline-grid; padding: 2px 8px; }
+
+/* ---------- автоматичні переходи стану завантаження (над рамкою, не частина продукту) ---------- */
+.flow-next { max-width: 1280px; margin: -4px auto 12px; display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; color: var(--wf-muted); }
+
+/* ---------- Мотивація ---------- */
+.mot-tabs a[aria-current="page"] { background: var(--wf-text); color: var(--wf-paper); border-color: var(--wf-text); }
+.mot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+.mot-count { float: right; font-size: 18px; font-weight: 700; }
+progress.mot-progress {
+  -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 8px;
+  border: 1px solid var(--wf-line-strong); background: var(--wf-paper);
+}
+progress.mot-progress::-webkit-progress-bar { background: var(--wf-paper); }
+progress.mot-progress::-webkit-progress-value { background: var(--wf-line-strong); }
+progress.mot-progress::-moz-progress-bar { background: var(--wf-line-strong); }
+textarea.mot-text {
+  font: inherit; color: var(--wf-text); background: var(--wf-paper);
+  border: 1px solid var(--wf-line-strong); padding: 7px 10px; min-height: 84px; resize: vertical;
+}
+.placeholder.mot-paste { min-height: 64px; border: 1px dashed var(--wf-line-strong); }
+
+/* ---------- без кольору браузера: radio, checkbox, progress ---------- */
+input[type="radio"], input[type="checkbox"], progress { accent-color: var(--wf-text); }
+
+/* ---------- навігатор репо на сторінках вайрфреймів — теж у сірому ----------
+   _nav/nav.css підключено після цього файлу, тому селектори з body мають вищу вагу. */
+body .repo-nav { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--wf-text); border-right-color: var(--wf-line); }
+body .repo-nav a { color: var(--wf-text); border-radius: 0; }
+body .repo-nav a:hover { background: var(--wf-zone); }
+body .repo-nav a.nav-current { background: var(--wf-fill); }
+body .repo-nav .nav-branch, body .repo-nav .nav-section { color: var(--wf-muted); }
+body .repo-nav .nav-branch::before { background: var(--wf-muted); border-radius: 0; }

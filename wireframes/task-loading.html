@@ -1,0 +1,82 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Задача (task.html). Група «Задачі». Стан: завантаження.
+  Job (JTBD.md): J5 (таймер і приблизний час); J6 (усі матеріали поруч); J4 (час на прохання). Персона: primary — автор (personas.md).
+  Крок main flow (flows.md, «Main job»): TASK_LOADING(["Задача: loading — матеріали з джерела"]).
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+  Продукт чекає на опис, чекліст і вкладення картки з Trello. Назва і група відомі з дошки. Далі: «Матеріали завантажились?».
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Задача · завантаження — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Задача»"><p>Стани екрана «Задача»:</p><ul><li><a href="task.html">Базова</a></li><li><a href="task-error.html">Помилка</a></li><li><a href="task-loading.html" aria-current="page">Завантаження</a></li></ul></nav>
+<nav class="flow-next" aria-label="Далі за flow"><p>Далі за flow (flows.md):</p><p>матеріали завантажились → <a href="task.html">Задача</a> · вкладення недоступне → <a href="task-error.html">помилка</a></p></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html" aria-current="page">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Задача</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <div class="split split-wide-left">
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Що робити — <b>чекаю на дані — дія «передати в In Review» зʼявиться після завантаження</b></p>
+        <h2 id="z1">Банер для email-розсилки</h2>
+        <p class="meta row"><span class="tag">Основна робота</span><span class="tag">Trello</span><span class="tag">M · ~2 год</span><span class="tag">In Progress</span></p>
+        <p class="muted gap-top">Отримую опис і чекліст з картки Trello…</p>
+        <p class="placeholder ph-line" aria-hidden="true"></p>
+        <p class="placeholder ph-line" aria-hidden="true"></p>
+        <p class="placeholder ph-line short" aria-hidden="true"></p>
+      </section>
+      <aside class="zone" aria-labelledby="z3">
+        <p class="zone-label">Зона 3 · Таймер — <b>чекаю на дані — дія «зупинити таймер» зʼявиться після завантаження</b></p>
+        <h2 id="z3">Таймер</h2>
+        <p class="big">0:00 <span class="muted">з ~2 год</span></p>
+        <p class="muted gap-top">Таймер запуститься, щойно задача відкриється.</p>
+      </aside>
+      </div>
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Матеріали з Trello, Telegram і Figma — <b>чекаю на дані — дія «відкрити матеріал» зʼявиться після завантаження</b></p>
+        <h2 id="z2">Завантажую матеріали з Trello…</h2>
+        <p class="placeholder ph-line" aria-hidden="true"></p>
+        <p class="placeholder ph-line" aria-hidden="true"></p>
+        <p class="placeholder ph-line short" aria-hidden="true"></p>
+        <p class="placeholder ph-preview" aria-hidden="true"></p>
+      </section>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

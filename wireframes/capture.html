@@ -1,0 +1,97 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Швидке додавання (capture.html). Група «Задачі». Стан: базова — форма (екран введення).
+  Job (JTBD.md): J3 (надиктувати за секунду); J4 (зафіксувати прохання); J10 (з телефона). Персона: primary — автор (personas.md).
+  Крок main flow (flows.md, «Main job»): CAPTURE["Швидке додавання"] — гілка з «Дошка: empty» («додати свою»), далі flow J3; а також кнопка «Додати голосом» з будь-якого екрана.
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+  Вузол flows.md, J3: «Швидке додавання: назва, група і дедлайн на перевірку, автозбереження через 3 с».
+  Біля кожного поля — з чим людина звіряє введене: що саме розпізнано зі сказаного (flows.md J3, СТ-7: «розпізнані назву, групу й дедлайн видно до збереження»).
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Швидке додавання — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Швидке додавання»"><p>Стани екрана «Швидке додавання»:</p><ul><li><a href="capture.html" aria-current="page">Базова</a></li><li><a href="capture-error.html">Помилка</a></li><li><a href="capture-loading.html">Завантаження</a></li><li><a href="capture-success.html">Успіх</a></li></ul></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Швидке додавання</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <div class="split split-wide-right">
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Голос — <b>головна дія: надиктувати задачу</b></p>
+        <h2 id="z1">Ти сказав</h2>
+        <blockquote>«Завтра до обіду обкладинку для статті в блог, основна робота»</blockquote>
+        <p class="row gap-top"><a class="btn" href="capture-loading.html">Диктувати ще раз</a></p>
+      </section>
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Розпізнане на перевірку — <b>головна дія: зберегти задачу</b></p>
+        <h2 id="z2">Перевір перед збереженням</h2>
+        <form class="form" action="capture-success.html">
+          <div class="field">
+            <label for="t-name">Назва</label>
+            <input id="t-name" name="name" value="Обкладинка для статті в блог">
+            <p class="hint">Розпізнано з «обкладинку для статті в блог»</p>
+          </div>
+          <div class="field">
+            <label for="t-group">Група</label>
+            <select id="t-group" name="group">
+              <option selected>Основна робота · Trello</option>
+              <option>Друга робота · Telegram</option>
+              <option>Особисте</option>
+            </select>
+            <p class="hint">Розпізнано з «основна робота»</p>
+          </div>
+          <div class="field">
+            <label for="t-deadline">Дедлайн</label>
+            <input id="t-deadline" name="deadline" value="Середа, 18 листопада, 13:00">
+            <p class="hint">Розпізнано з «завтра до обіду»</p>
+          </div>
+          <fieldset class="field">
+            <legend>Тип</legend>
+            <label><input type="radio" name="type" checked> Задача</label>
+            <label><input type="radio" name="type"> Прохання — незаплановане, з таймером</label>
+          </fieldset>
+          <p class="row"><a class="btn primary" href="capture-success.html">Зберегти</a> <a class="btn" href="board.html">Скасувати</a></p>
+          <p class="muted">Збережу сам через 3 с [?], якщо нічого не змінювати. Без розпізнаної групи ставлю «Особисте».</p>
+        </form>
+      </section>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

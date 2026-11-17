@@ -1,0 +1,86 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Ачівки і Стіна пошани (trophies.html). Група «Мотивація». Стан: помилка.
+  Job (JTBD.md): J11 — «…щоб знати, скільки роботи зробив і що це добре зроблено» (знати, що це добре зроблено). Персона: primary — автор (personas.md).
+  Вузли flows.md: стан TROPHIES_LOADING, коли дані не прийшли — «не вдалося завантажити (СТ-11)». У flows.md J11 окремого вузла помилки немає; стан узято з sitemap.md.
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+  Виходи: «Спробувати ще» → trophies-loading.html; «Назад до нагород» → rewards.html.
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ачівки і Стіна пошани · помилка — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Ачівки і Стіна пошани»"><p>Стани екрана «Ачівки і Стіна пошани»:</p><ul><li><a href="trophies.html">Базова</a></li><li><a href="trophies-empty.html">Порожній</a></li><li><a href="trophies-error.html" aria-current="page">Помилка</a></li><li><a href="trophies-loading.html">Завантаження</a></li></ul></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html" aria-current="page">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Ачівки і Стіна пошани</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <!-- Зона 1. Вкладки «Мотивації» (sitemap.md, «Навігація»: «Ачівки» і «Похвали» — підвкладки «Мотивації») -->
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Вкладки «Мотивації» — <b>головна дія: перейти до нагород, ачівок чи похвал</b></p>
+        <h2 id="z1" class="visually-hidden">Розділи мотивації</h2>
+        <nav aria-label="Вкладки «Мотивації»">
+          <ul class="row mot-tabs">
+            <li><a class="btn" href="rewards-loading.html">Нагороди і цілі</a></li>
+            <li><a class="btn" href="trophies-loading.html" aria-current="page">Ачівки і Стіна пошани</a></li>
+            <li><a class="btn" href="praise-loading.html">Похвали</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <div class="split split-wide-left">
+      <!-- Зона 2. Ачівки — одноразові: отримані й ще ні, з умовою і датою (sitemap.md, сутність «Ачівка») -->
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Ачівки — <b>головна дія: спробувати завантажити ще раз</b></p>
+        <h2 id="z2">Ачівки</h2>
+        <p class="error-text" role="alert"><b>Не вдалося завантажити ачівки і відзнаки.</b> Отримане нікуди не зникло — спробуй ще раз.</p>
+        <p class="row gap-top"><a class="btn primary" href="trophies-loading.html">Спробувати ще</a> <a class="btn" href="rewards.html">Назад до нагород</a></p>
+      </section>
+      <!-- Зона 3. Стіна пошани — відзнаки повторюються й накопичуються, з лічильником (sitemap.md, сутність «Відзнака») -->
+      <section class="zone" aria-labelledby="z3">
+        <p class="zone-label">Зона 3 · Стіна пошани — <b>головна дія: побачити, скільки разів отримано кожну відзнаку</b></p>
+        <h2 id="z3">Стіна пошани</h2>
+        <p class="muted">Стіна пошани завантажиться разом з ачівками.</p>
+        <p class="placeholder ph-preview gap-top">Стіна пошани недоступна</p>
+              <p class="gap-top"><a href="board.html">Заробити відзнаку — до дошки</a></p>
+      </section>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

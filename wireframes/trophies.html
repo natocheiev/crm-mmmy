@@ -1,0 +1,127 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Ачівки і Стіна пошани (trophies.html). Група «Мотивація». Стан: базова (робочий вигляд).
+  Job (JTBD.md): J11 — «…щоб знати, скільки роботи зробив і що це добре зроблено» (знати, що це добре зроблено). Персона: primary — автор (personas.md).
+  Вузли flows.md: TROPHIES["Ачівки і Стіна пошани"] → OK_PROUD «Job закрито: видно, що це добре зроблено».
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+  Сюди ведуть: вкладка «Ачівки» з rewards.html і «Подивитися?» → так з дошки (BOARD_ACH), обидва через TROPHIES_LOADING.
+  Ачівки — одноразові (CLAUDE.md §6: «Перший approve», «10 задач за тиждень», «Нічна сова»).
+  Відзнаки Стіни пошани повторюються; їхній список — відкрите питання (CLAUDE.md §9), тому приклади позначено [?].
+  Ілюстрації — сірі зони з підписом (_conventions.md §1). Стану «успіх» немає: екран перегляду, ачівку отримують на дошці.
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ачівки і Стіна пошани — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Ачівки і Стіна пошани»"><p>Стани екрана «Ачівки і Стіна пошани»:</p><ul><li><a href="trophies.html" aria-current="page">Базова</a></li><li><a href="trophies-empty.html">Порожній</a></li><li><a href="trophies-error.html">Помилка</a></li><li><a href="trophies-loading.html">Завантаження</a></li></ul></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html" aria-current="page">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Ачівки і Стіна пошани</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <!-- Зона 1. Вкладки «Мотивації» (sitemap.md, «Навігація»: «Ачівки» і «Похвали» — підвкладки «Мотивації») -->
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Вкладки «Мотивації» — <b>головна дія: перейти до нагород, ачівок чи похвал</b></p>
+        <h2 id="z1" class="visually-hidden">Розділи мотивації</h2>
+        <nav aria-label="Вкладки «Мотивації»">
+          <ul class="row mot-tabs">
+            <li><a class="btn" href="rewards-loading.html">Нагороди і цілі</a></li>
+            <li><a class="btn" href="trophies-loading.html" aria-current="page">Ачівки і Стіна пошани</a></li>
+            <li><a class="btn" href="praise-loading.html">Похвали</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <div class="split split-wide-left">
+      <!-- Зона 2. Ачівки — одноразові: отримані й ще ні, з умовою і датою (sitemap.md, сутність «Ачівка») -->
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Ачівки — <b>головна дія: подивитися, що вже отримано і що ще ні</b></p>
+        <h2 id="z2">Отримано 2 з 3</h2>
+        <div class="mot-grid">
+          <article class="card">
+            <p class="placeholder ph-card">ілюстрація ачівки</p>
+            <h3>Перший approve</h3>
+            <p class="note">Умова: перша задача дійшла до Approved</p>
+            <p><b>Отримано</b> · 3 листопада</p>
+          </article>
+          <article class="card">
+            <p class="placeholder ph-card">ілюстрація ачівки</p>
+            <h3>Нічна сова</h3>
+            <p class="note">Умова: закрити задачу після 23:00 [?]</p>
+            <p><b>Отримано</b> · 12 листопада</p>
+          </article>
+          <article class="card">
+            <p class="placeholder ph-card">ілюстрація ачівки (ще закрита)</p>
+            <h3>10 задач за тиждень</h3>
+            <p class="note">Умова: закрити 10 задач за один тиждень</p>
+            <p><b>Ще ні</b> · цього тижня 7 з 10 — лишилось 3 задачі</p>
+          </article>
+        </div>
+              <p class="gap-top"><a href="day-loading.html">Що наближає ачівки — Підсумок дня</a></p>
+      </section>
+      <!-- Зона 3. Стіна пошани — відзнаки повторюються й накопичуються, з лічильником (sitemap.md, сутність «Відзнака») -->
+      <section class="zone" aria-labelledby="z3">
+        <p class="zone-label">Зона 3 · Стіна пошани — <b>головна дія: побачити, скільки разів отримано кожну відзнаку</b></p>
+        <h2 id="z3">Відзнаки · разом 7</h2>
+        <div class="mot-grid">
+          <article class="card">
+            <p class="placeholder ph-card">ілюстрація відзнаки</p>
+            <h3>Апрув з першого разу [?] <span class="mot-count">4 рази</span></h3>
+            <p class="note">За що: задача пройшла In Review без правок</p>
+            <p class="note">Останній раз: 17 листопада, «Сторінка 404»</p>
+          </article>
+          <article class="card">
+            <p class="placeholder ph-card">ілюстрація відзнаки</p>
+            <h3>Виручив команду [?] <span class="mot-count">2 рази</span></h3>
+            <p class="note">За що: закрито незаплановане прохання</p>
+            <p class="note">Останній раз: 14 листопада</p>
+          </article>
+          <article class="card">
+            <p class="placeholder ph-card">ілюстрація відзнаки</p>
+            <h3>Повний день без відволікань [?] <span class="mot-count">1 раз</span></h3>
+            <p class="note">За що: закрито все з плану дня</p>
+            <p class="note">Отримано: 10 листопада</p>
+          </article>
+        </div>
+        <p class="muted gap-top">Список відзнак ще доповнюється [?].</p>
+              <p class="gap-top"><a href="board.html">Заробити відзнаку — до дошки</a></p>
+      </section>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

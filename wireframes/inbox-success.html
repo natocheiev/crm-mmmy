@@ -1,0 +1,92 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Можливі задачі (inbox.html). Група «Вхідні». Стан: успіх (підтвердження після дії).
+  Job (JTBD.md): J2 (повідомлення без відмітки гарантовано в списку). Персона: primary — автор (personas.md).
+  Крок main flow (flows.md, «Main job»): flow J2: INBOX_CONVERTED — «Можливі задачі: перетворено — задача на дошці», далі знову «Є нерозібрані?».
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+  Інший варіант (sitemap.md): «Відхилено, є «Скасувати»».
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Можливі задачі · успіх — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Можливі задачі»"><p>Стани екрана «Можливі задачі»:</p><ul><li><a href="inbox.html">Базова</a></li><li><a href="inbox-empty.html">Порожній</a></li><li><a href="inbox-error.html">Помилка</a></li><li><a href="inbox-loading.html">Завантаження</a></li><li><a href="inbox-success.html" aria-current="page">Успіх</a></li></ul></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html" aria-current="page">Можливі задачі <span class="count">2</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Можливі задачі</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Фільтр — <b>головна дія: перемкнути нові і відхилені</b></p>
+        <h2 id="z1" class="visually-hidden">Фільтр</h2>
+        <div class="row" role="group" aria-label="Фільтр можливих задач">
+          <button type="button" class="chip" aria-pressed="true">Нові · 2</button>
+          <button type="button" class="chip" aria-pressed="false">Відхилені · 5</button>
+        </div>
+      </section>
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Повідомлення з Telegram без відмітки — <b>головна дія: перетворити повідомлення на задачу</b></p>
+        <h2 id="z2">Перетворено — задача на дошці</h2>
+        <p><b>«Макет картки товару»</b> тепер у колонці Tasks: Друга робота · Telegram · M · ~3 год. Посилання на повідомлення збережено в задачі.</p>
+        <p class="row gap-top"><a class="btn" href="inbox.html">Скасувати</a> <a class="btn" href="board.html">Відкрити на дошці</a></p>
+        <h3 class="gap-top">Далі — ще 2 повідомлення</h3>
+        <div class="list">
+          <article class="card">
+            <p class="muted">Арт-директор · робочий чат · сьогодні 10:05</p>
+            <p>«Треба буде ще іконку кошика в тому ж стилі, але не горить»</p>
+            <p class="row"><a class="btn primary" href="inbox-success.html">Це задача</a> <a class="btn" href="inbox.html">Відхилити</a> <a href="https://t.me/" target="_blank" rel="noopener" title="Зовнішнє посилання: відкриває сервіс, не сторінку вайрфрейму">Відкрити в Telegram</a></p>
+          </article>
+          <article class="card">
+            <p class="muted">Розробник · робочий чат · сьогодні 11:20</p>
+            <div class="split split-2">
+              <p class="placeholder ph-preview">скрін екрана оплати з повідомлення</p>
+              <form class="form">
+                <div class="field">
+                  <label for="m3-name">Назва задачі</label>
+                  <input id="m3-name" name="name" placeholder="Що зробити за цим скріном?">
+                  <p class="hint">У повідомленні тільки скрін — звір назву з ним</p>
+                </div>
+                <p class="row"><a class="btn primary" href="inbox-success.html">Це задача</a> <a class="btn" href="inbox.html">Відхилити</a></p>
+              </form>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

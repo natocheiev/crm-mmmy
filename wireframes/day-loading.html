@@ -1,0 +1,90 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Підсумок дня (day.html). Група «День». Стан: завантаження.
+  Job (JTBD.md): J7 (скільки зроблено з урахуванням розміру); J9 (похвали за день); J11 (скільки роботи зроблено). Персона: primary — автор (personas.md).
+  Крок main flow (flows.md, «Main job»): DAY_LOADING(["Підсумок дня: loading — рахую вагу і XP"]).
+  Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
+  Продукт чекає на закриті сьогодні задачі, записи часу, XP і похвали за дату, щоб порахувати вагу закритого за розміром. Далі: «Підсумок пораховано?».
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Підсумок дня · завантаження — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Підсумок дня»"><p>Стани екрана «Підсумок дня»:</p><ul><li><a href="day.html">Базова</a></li><li><a href="day-empty.html">Порожній</a></li><li><a href="day-error.html">Помилка</a></li><li><a href="day-loading.html" aria-current="page">Завантаження</a></li><li><a href="day-success.html">Успіх</a></li></ul></nav>
+<nav class="flow-next" aria-label="Далі за flow"><p>Далі за flow (flows.md):</p><p>сьогодні щось закрито → <a href="day.html">Підсумок дня</a> · закритого немає → <a href="day-empty.html">порожній стан</a> · не вдалося порахувати → <a href="day-error.html">помилка</a></p></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html" aria-current="page">День</a></li>
+      <li><a href="rewards.html">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Підсумок дня</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Перемикач груп — <b>чекаю на дані — дія «показати підсумок однієї групи» зʼявиться після завантаження</b></p>
+        <h2 id="z1" class="visually-hidden">Групи</h2>
+        <div class="row" role="group" aria-label="Фільтр за групою">
+          <button type="button" class="chip" aria-pressed="true">Усі</button>
+          <button type="button" class="chip" aria-pressed="false">Основна робота</button>
+          <button type="button" class="chip" aria-pressed="false">Друга робота</button>
+          <button type="button" class="chip" aria-pressed="false">Особисте</button>
+        </div>
+      </section>
+      <div class="split split-wide-left">
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Зроблено з урахуванням розміру — <b>чекаю на дані — дія «переглянути закрите» зʼявиться після завантаження</b></p>
+        <h2 id="z2">Рахую вагу і XP…</h2>
+        <p class="placeholder ph-line" aria-hidden="true"></p>
+        <p class="placeholder ph-line" aria-hidden="true"></p>
+        <p class="placeholder ph-line short" aria-hidden="true"></p>
+      </section>
+      <aside class="zone" aria-labelledby="z3">
+        <p class="zone-label">Зона 3 · Час, XP і похвали — <b>чекаю на дані — дія «зберегти похвалу» зʼявиться після завантаження</b></p>
+        <h2 id="z3">Час, XP і похвали</h2>
+        <p class="placeholder ph-line" aria-hidden="true"></p>
+        <p class="placeholder ph-line" aria-hidden="true"></p>
+        <p class="placeholder ph-line short" aria-hidden="true"></p>
+      </aside>
+      </div>
+      <section class="zone" aria-labelledby="z4">
+        <p class="zone-label">Зона 4 · Розбір незакритого — <b>чекаю на дані — дія «зберегти розбір: на завтра або зняти з плану» зʼявиться після завантаження</b></p>
+        <h2 id="z4">Розбір незакритого</h2>
+        <p class="placeholder ph-field" aria-hidden="true"></p>
+        <p class="placeholder ph-field" aria-hidden="true"></p>
+        <p class="placeholder ph-field" aria-hidden="true"></p>
+      </section>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

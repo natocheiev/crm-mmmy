@@ -285,3 +285,22 @@ sup.u { font-size: .42em; font-weight: 500; vertical-align: super; letter-spacin
 .wish-row { display: grid; grid-template-columns: 1fr 110px; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--wf-card-line); }
 .wish-row .hint { grid-column: 1 / -1; margin-top: -4px; }
 .card > .tag { justify-self: start; }
+
+/* ---------- список і деталь поруч (C, F) ---------- */
+.split-list { grid-template-columns: minmax(220px, .85fr) 1.4fr; align-items: start; }
+.msg-list { display: grid; gap: 6px; }
+.msg { display: grid; gap: 2px; padding: 12px 14px; border: 1px solid var(--wf-card-line); border-radius: var(--r-md); text-decoration: none; background: var(--wf-paper); }
+.msg.on { background: #f0f0f0; border-color: var(--wf-anchor); }
+.detail { gap: 10px; }
+/* ---------- перемикач рішення однакової ваги (B) ---------- */
+.toggle { display: inline-flex; gap: 4px; padding: 4px; background: #f0f0f0; border-radius: var(--r-pill); justify-self: start; }
+.toggle .btn { min-width: 140px; text-align: center; border-color: transparent; }
+.toggle .btn:not(.primary) { background: var(--wf-paper); }
+/* ---------- календар-стрік (E) ---------- */
+.cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; max-width: 300px; }
+.cal li { aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; font-size: 12px; font-weight: 600; background: #f0f0f0; }
+.cal-head li { aspect-ratio: auto; background: none; color: var(--wf-muted); font-size: 11px; }
+.cal li.on { background: var(--wf-anchor); color: #fff; }
+.cal li.today { outline: 2px solid var(--wf-anchor); outline-offset: 2px; }
+.cal li.future { background: none; border: 1px dashed #c8c8c8; color: var(--wf-muted); }
+.cal li.cal-pad { background: none; }

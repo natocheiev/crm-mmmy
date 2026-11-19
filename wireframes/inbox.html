@@ -60,32 +60,25 @@
       <section class="zone" aria-labelledby="z2">
         <p class="zone-label">Зона 2 · Повідомлення з Telegram без відмітки — <b>головна дія: перетворити повідомлення на задачу</b></p>
         <h2 id="z2">3 повідомлення чекають розбору</h2>
-        <p class="muted">«Це задача» додає повідомлення на дошку на місці: група «Друга робота», розмір M — змінити можна потім у задачі.</p>
-        <div class="list gap-top">
-          <article class="card">
-            <p class="muted">Проджект-менеджер · робочий чат · сьогодні 07:40</p>
-            <p>«Можеш глянути макет картки товару до вечора?»</p>
-            <p class="row"><a class="btn primary" href="inbox-success.html">Це задача</a> <a class="btn" href="inbox.html">Відхилити</a> <a href="https://t.me/" target="_blank" rel="noopener" title="Зовнішнє посилання: відкриває сервіс, не сторінку вайрфрейму">Відкрити в Telegram</a></p>
-          </article>
-          <article class="card">
-            <p class="muted">Арт-директор · робочий чат · сьогодні 10:05</p>
-            <p>«Треба буде ще іконку кошика в тому ж стилі, але не горить»</p>
-            <p class="row"><a class="btn primary" href="inbox-success.html">Це задача</a> <a class="btn" href="inbox.html">Відхилити</a> <a href="https://t.me/" target="_blank" rel="noopener" title="Зовнішнє посилання: відкриває сервіс, не сторінку вайрфрейму">Відкрити в Telegram</a></p>
-          </article>
-          <article class="card">
-            <p class="muted">Розробник · робочий чат · сьогодні 11:20</p>
-            <div class="split split-2">
-              <p class="placeholder ph-preview">скрін екрана оплати з повідомлення</p>
-              <form class="form">
-                <div class="field">
-                  <label for="m3-name">Назва задачі</label>
-                  <input id="m3-name" name="name" placeholder="Що зробити за цим скріном?">
-                  <p class="hint">У повідомленні тільки скрін — звір назву з ним</p>
-                </div>
-                <p class="row"><a class="btn primary" href="inbox-success.html">Це задача</a> <a class="btn" href="inbox.html">Відхилити</a></p>
-              </form>
-            </div>
-          </article>
+        <p class="muted">Вибери повідомлення зліва — праворуч воно повністю і видно, якою задачею стане. «Це задача» додає його на дошку на місці.</p>
+                <div class="split split-list gap-top">
+        <ol class="msg-list" aria-label="Повідомлення без відмітки">
+          <li><a class="msg on" href="#m1" aria-current="true"><span class="muted">Проджект-менеджер · 07:40</span><span>«Можеш глянути макет картки товару до вечора?»</span></a></li>
+          <li><a class="msg" href="#m2"><span class="muted">Арт-директор · 10:05</span><span>«Треба буде ще іконку кошика в тому ж стилі, але не горить»</span></a></li>
+          <li><a class="msg" href="#m3"><span class="muted">Розробник · 11:20</span><span>лише скрін — без тексту</span></a></li>
+        </ol>
+        <article class="detail card" id="m1" aria-label="Вибране повідомлення">
+          <p class="muted">Проджект-менеджер · робочий чат другої роботи · сьогодні 07:40 · чекає 2 год</p>
+          <blockquote>«Можеш глянути макет картки товару до вечора?»</blockquote>
+          <h3 class="gap-top">Стане задачею</h3>
+          <ul class="list">
+            <li>Назва: <b>Макет картки товару</b> — з тексту повідомлення</li>
+            <li>Група: <b>Друга робота · Telegram</b></li>
+            <li>Розмір: <b>M</b> за замовчуванням — змінити можна потім у задачі</li>
+          </ul>
+          <div class="toggle" role="group" aria-label="Рішення щодо повідомлення"><a class="btn" href="inbox.html">Відхилити</a><a class="btn primary" href="inbox-success.html">Це задача</a></div>
+          <p><a href="https://t.me/" target="_blank" rel="noopener" title="Зовнішнє посилання: відкриває сервіс, не сторінку вайрфрейму">Відкрити в Telegram</a></p>
+        </article>
         </div>
       </section>
 

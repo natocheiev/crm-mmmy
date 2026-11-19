@@ -414,3 +414,11 @@ html.nav-wide a[aria-current="page"] .count { color: #555; }
 .folder-tab { position: absolute; left: -1px; bottom: calc(100% - 1px); height: 24px; padding: 4px 14px 0; background: var(--wf-paper); border: 1px solid var(--wf-card-line); border-bottom: 0; border-radius: 14px 14px 0 0; font-size: 11px; font-weight: 600; letter-spacing: .02em; color: var(--wf-muted); white-space: nowrap; z-index: 1; }
 .folder-tab::after { content: ""; position: absolute; right: -12px; bottom: 0; width: 12px; height: 12px; background: radial-gradient(circle at 100% 0, transparent 11px, var(--wf-card-line) 11px, var(--wf-card-line) 12px, var(--wf-paper) 12px); }
 @supports (corner-shape: squircle) { .folder-tab { corner-shape: squircle; border-radius: 18px 18px 0 0; } .card.folder { border-top-left-radius: 0; } }
+
+/* ---------- Дошка, «Вхідне з Telegram»: стан джерел праворуч від вмісту; число і підпис — по центру між собою (2026-11-19) ---------- */
+.stat { align-items: center; }
+.zone-incoming { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 32px; align-content: start; }
+.zone-incoming > * { grid-column: 1; }
+.zone-incoming > .zone-label { grid-column: 1 / -1; }
+.zone-incoming > .sync-list { grid-column: 2; grid-row: 2 / span 4; align-self: center; margin: 0; }
+@media (max-width: 1100px) { .zone-incoming { grid-template-columns: 1fr; } .zone-incoming > .sync-list { grid-column: 1; grid-row: auto; } }

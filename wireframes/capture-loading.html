@@ -58,7 +58,7 @@
         <h2 id="z1">Слухаю…</h2>
         <p class="placeholder ph-wave" aria-hidden="true">хвиля голосу</p>
         <p>Скажи задачу: що зробити, для якої групи і до коли.</p>
-        <p class="muted">Наприклад: «Завтра до обіду обкладинку для статті в блог, основна робота».</p>
+        <p class="muted">Наприклад: «Завтра до обіду обкладинку для статті в блог, Genesis».</p>
         <p class="row gap-top"><a class="btn" href="capture.html">Зупинити</a> <a class="btn" href="board.html">Скасувати</a></p>
       </section>
       <section class="zone" aria-labelledby="z2">
@@ -75,8 +75,8 @@
             <label for="t-group">Група</label>
             <select id="t-group" name="group">
               <option selected>Скажи або вибери групу</option>
-              <option>Основна робота · Trello</option>
-              <option>Друга робота · Telegram</option>
+              <option>Genesis · Trello</option>
+              <option>Monolead · Telegram</option>
               <option>Особисте</option>
             </select>
             <p class="hint">Ще не почуто. Без групи поставлю «Особисте»</p>
@@ -86,6 +86,15 @@
             <input id="t-deadline" name="deadline" placeholder="Скажи «завтра», «до пʼятниці» — або введи">
             <p class="hint">Необовʼязково</p>
           </div>
+          <div class="field">
+            <label for="t-time">Приблизний час</label>
+            <input id="t-time" name="time" value="" placeholder="Наприклад, ~1 год">
+          </div>
+          <fieldset class="field">
+            <legend>XP за задачу</legend>
+            <div class="row" role="radiogroup" aria-label="Варіанти XP"><label class="xp-opt"><input type="radio" name="xp"> 10 XP</label><label class="xp-opt"><input type="radio" name="xp"> 20 XP</label><label class="xp-opt"><input type="radio" name="xp"> 30 XP</label><label class="xp-opt"><input type="radio" name="xp"> своє</label></div>
+            <p class="hint">Варіанти XP — за схожими задачами і часом; уточняться, коли договориш</p>
+          </fieldset>
           <fieldset class="field">
             <legend>Тип</legend>
             <label><input type="radio" name="type" checked> Задача</label>

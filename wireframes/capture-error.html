@@ -75,8 +75,8 @@
           <div class="field">
             <label for="t-group">Група</label>
             <select id="t-group" name="group">
-              <option>Основна робота · Trello</option>
-              <option>Друга робота · Telegram</option>
+              <option>Genesis · Trello</option>
+              <option>Monolead · Telegram</option>
               <option selected>Особисте</option>
             </select>
             <p class="hint">Без розпізнаної групи ставлю «Особисте»</p>
@@ -86,6 +86,15 @@
             <input id="t-deadline" name="deadline" value="">
             <p class="hint">Наприклад: «завтра», «до пʼятниці»</p>
           </div>
+          <div class="field">
+            <label for="t-time">Приблизний час</label>
+            <input id="t-time" name="time" value="" placeholder="Наприклад, ~1 год">
+          </div>
+          <fieldset class="field">
+            <legend>XP за задачу</legend>
+            <div class="row" role="radiogroup" aria-label="Варіанти XP"><label class="xp-opt"><input type="radio" name="xp"> 10 XP</label><label class="xp-opt"><input type="radio" name="xp"> 20 XP</label><label class="xp-opt"><input type="radio" name="xp"> 30 XP</label><label class="xp-opt"><input type="radio" name="xp"> своє</label></div>
+            <p class="hint">Варіанти XP зʼявляться, щойно введеш назву і час</p>
+          </fieldset>
           <fieldset class="field">
             <legend>Тип</legend>
             <label><input type="radio" name="type" checked> Задача</label>

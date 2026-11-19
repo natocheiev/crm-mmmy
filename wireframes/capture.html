@@ -54,7 +54,7 @@
       <section class="zone" aria-labelledby="z1">
         <p class="zone-label">Зона 1 · Голос — <b>головна дія: надиктувати задачу</b></p>
         <h2 id="z1">Ти сказав</h2>
-        <blockquote>«Завтра до обіду обкладинку для статті в блог, основна робота»</blockquote>
+        <blockquote>«Завтра до обіду обкладинку для статті в блог, Genesis»</blockquote>
         <p class="row gap-top"><a class="btn" href="capture-loading.html">Диктувати ще раз</a></p>
       </section>
       <section class="zone" aria-labelledby="z2">
@@ -69,17 +69,26 @@
           <div class="field">
             <label for="t-group">Група</label>
             <select id="t-group" name="group">
-              <option selected>Основна робота · Trello</option>
-              <option>Друга робота · Telegram</option>
+              <option selected>Genesis · Trello</option>
+              <option>Monolead · Telegram</option>
               <option>Особисте</option>
             </select>
-            <p class="hint">Розпізнано з «основна робота»</p>
+            <p class="hint">Розпізнано з «Genesis»</p>
           </div>
           <div class="field">
             <label for="t-deadline">Дедлайн</label>
             <input id="t-deadline" name="deadline" value="Середа, 18 листопада, 13:00">
             <p class="hint">Розпізнано з «завтра до обіду»</p>
           </div>
+          <div class="field">
+            <label for="t-time">Приблизний час</label>
+            <input id="t-time" name="time" value="~1 год" placeholder="Наприклад, ~1 год">
+          </div>
+          <fieldset class="field">
+            <legend>XP за задачу</legend>
+            <div class="row" role="radiogroup" aria-label="Варіанти XP"><label class="xp-opt"><input type="radio" name="xp"> 10 XP</label><label class="xp-opt"><input type="radio" name="xp" checked> 20 XP</label><label class="xp-opt"><input type="radio" name="xp"> 30 XP</label><label class="xp-opt"><input type="radio" name="xp"> своє</label></div>
+            <p class="hint">CRM пропонує за схожими задачами (обкладинки минулого тижня — по 20 XP) і часом ~1 год</p>
+          </fieldset>
           <fieldset class="field">
             <legend>Тип</legend>
             <label><input type="radio" name="type" checked> Задача</label>

@@ -15,8 +15,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Дошка · помилка — вайрфрейм</title>
-  <link rel="stylesheet" href="_frame.css?v=20261119g">
-  <script src="_frame.js?v=20261119g" defer></script>
+  <link rel="stylesheet" href="_frame.css?v=20261119h">
+  <script src="_frame.js?v=20261119h" defer></script>
   <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
   <link rel="stylesheet" href="../_nav/nav.css">
   <script src="../_nav/tree.js" defer></script>
@@ -46,57 +46,22 @@
   </nav>
 
   <div class="app-body">
-    <header class="app-header">
-      <h1>Дошка</h1>
+    <header class="app-header app-header-filters">
+      <h1 class="visually-hidden">Дошка</h1>
+      <!-- Фільтр груп у шапці замість видимої назви екрана (рішення автора 2026-11-19); раніше — зона 1 -->
+      <div class="row" role="group" aria-label="Фільтр за групою">
+      <button type="button" class="chip" aria-pressed="true">Усі · 10</button>
+      <button type="button" class="chip" aria-pressed="false">Genesis · 5 · збережена копія</button>
+      <button type="button" class="chip" aria-pressed="false">Monolead · 4</button>
+      <button type="button" class="chip" aria-pressed="false">Особисте · 1</button>
+      </div>
       <p class="today">Вівторок, 17 листопада</p>
     </header>
 
     <main class="app-main">
 
-      <!-- Зона 1. Перемикач груп (sitemap.md, «Перемикач») -->
-      <section class="zone" aria-labelledby="z1">
-        <p class="zone-label">Зона 1 · Перемикач груп і таймер — <b>головна дія: відфільтрувати дошку за групою або одразу запустити таймер</b></p>
-        <h2 id="z1" class="visually-hidden">Групи і таймер</h2>
-        <div class="filter-timer">
-          <div class="row" role="group" aria-label="Фільтр за групою">
-            <button type="button" class="chip" aria-pressed="true">Усі · 10</button>
-            <button type="button" class="chip" aria-pressed="false">Genesis · 5 · збережена копія</button>
-            <button type="button" class="chip" aria-pressed="false">Monolead · 4</button>
-            <button type="button" class="chip" aria-pressed="false">Особисте · 1</button>
-          </div>
-          <div class="timer-widget" role="group" aria-label="Таймер">
-            <div class="tw-top">
-              <span class="placeholder tw-ico" aria-hidden="true">іконка групи</span>
-              <div class="tw-task">
-                <label class="visually-hidden" for="timer-task">Задача для таймера</label>
-                <select id="timer-task" class="tw-select"><option selected>Іконки для мобільного меню</option><option>Допомогти програмісту з експортом SVG</option><option>Банер для email-розсилки</option></select>
-                <p class="tw-sub">Genesis · XP 100 · ~5 год</p>
-              </div>
-              <div class="tw-time"><b>0:00:00</b><span>не запущено</span></div>
-              <a class="tw-play" href="task.html" aria-label="Почати таймер" title="Почати"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></a>
-            </div>
-            <div class="tw-note">
-              <label class="tw-check"><input type="checkbox"> Іконки «Профіль» і «Налаштування» — тонша лінія, як у кошика</label>
-              <a class="tw-all" href="task.html">Усі нотатки задачі</a>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <div class="split split-wide-left">
-
-        <!-- Зона 2. Можливі задачі і стан джерел (sitemap.md: лічильник зверху дошки; Джерело — час синхронізації [?]) -->
-        <section class="zone" aria-labelledby="z2">
-          <p class="zone-label">Зона 2 · Вхідне з Telegram і стан джерел — <b>головна дія: розібрати можливі задачі</b></p>
-          <h2 id="z2">Trello не відповідає — показано збережені задачі</h2>
-          <p class="muted">Остання вдала синхронізація — сьогодні о 07:58. Нові картки і зміни з дошки Genesis можуть бути не видні. Твої зміни в CRM збережено, вони підуть у Trello, щойно зʼєднання повернеться.</p>
-          <p class="row gap-top"><a class="btn primary" href="board-loading.html">Спробувати ще</a> <a class="btn" href="sources.html">Перевірити підключення Trello</a> <a class="btn" href="board.html">Працювати зі збереженими</a></p>
-          <ul class="list gap-top">
-            <li><span class="tag">Trello</span> Не відповідає — спроба о 09:12</li>
-            <li><span class="tag">Telegram</span> Бот у робочому чаті бачить усі повідомлення — останнє о 09:40 · <a href="inbox-loading.html">3 можливі задачі</a></li>
-          </ul>
-        </section>
-
+      <div class="split split-today">
         <!-- Зона 3. Що вже зроблено сьогодні (sitemap.md, «Головний екран»: «що вже зроблено сьогодні») -->
         <aside class="zone" aria-labelledby="z3">
           <p class="zone-label">Зона 3 · Сьогодні — <b>головна дія: відкрити підсумок дня</b></p>
@@ -113,7 +78,40 @@
             <a href="day-loading.html">Підсумок дня</a> · <a href="rewards-loading.html">До нагород</a>
           </footer>
         </aside>
+        <!-- Зона 5. Таймер — окрема секція праворуч від «Сьогодні» (рішення автора 2026-11-19; вигляд — віджет за референсом автора) -->
+        <section class="zone zone-timer" aria-labelledby="z5">
+          <p class="zone-label">Зона 5 · Таймер — <b>головна дія: вибрати задачу і запустити таймер</b></p>
+          <h2 id="z5" class="visually-hidden">Таймер</h2>
+          <div class="timer-widget" role="group" aria-label="Таймер">
+          <div class="tw-top">
+          <span class="placeholder tw-ico" aria-hidden="true">іконка групи</span>
+          <div class="tw-task">
+          <label class="visually-hidden" for="timer-task">Задача для таймера</label>
+          <select id="timer-task" class="tw-select"><option selected>Іконки для мобільного меню</option><option>Допомогти програмісту з експортом SVG</option><option>Банер для email-розсилки</option></select>
+          <p class="tw-sub">Genesis · XP 100 · ~5 год</p>
+          </div>
+          <div class="tw-time"><b>0:00:00</b><span>не запущено</span></div>
+          <a class="tw-play" href="task.html" aria-label="Почати таймер" title="Почати"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></a>
+          </div>
+          <div class="tw-note">
+          <label class="tw-check"><input type="checkbox"> Іконки «Профіль» і «Налаштування» — тонша лінія, як у кошика</label>
+          <a class="tw-all" href="task.html">Усі нотатки задачі</a>
+          </div>
+          </div>
+        </section>
       </div>
+
+      <!-- Зона 2. Можливі задачі і стан джерел (sitemap.md: лічильник зверху дошки; Джерело — час синхронізації [?]) -->
+      <section class="zone" aria-labelledby="z2">
+      <p class="zone-label">Зона 2 · Вхідне з Telegram і стан джерел — <b>головна дія: розібрати можливі задачі</b></p>
+      <h2 id="z2">Trello не відповідає — показано збережені задачі</h2>
+      <p class="muted">Остання вдала синхронізація — сьогодні о 07:58. Нові картки і зміни з дошки Genesis можуть бути не видні. Твої зміни в CRM збережено, вони підуть у Trello, щойно зʼєднання повернеться.</p>
+      <p class="row gap-top"><a class="btn primary" href="board-loading.html">Спробувати ще</a> <a class="btn" href="sources.html">Перевірити підключення Trello</a> <a class="btn" href="board.html">Працювати зі збереженими</a></p>
+      <ul class="list gap-top">
+      <li><span class="tag">Trello</span> Не відповідає — спроба о 09:12</li>
+      <li><span class="tag">Telegram</span> Бот у робочому чаті бачить усі повідомлення — останнє о 09:40 · <a href="inbox-loading.html">3 можливі задачі</a></li>
+      </ul>
+      </section>
 
       <!-- Зона 4. Kanban: усі задачі разом, 4 статуси (CLAUDE.md §4; sitemap.md, сутність «Задача») -->
       <section class="zone" aria-labelledby="z4">

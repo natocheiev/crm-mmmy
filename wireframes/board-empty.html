@@ -11,8 +11,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Дошка · порожній — вайрфрейм</title>
-  <link rel="stylesheet" href="_frame.css?v=20261119g">
-  <script src="_frame.js?v=20261119g" defer></script>
+  <link rel="stylesheet" href="_frame.css?v=20261119h">
+  <script src="_frame.js?v=20261119h" defer></script>
   <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
   <link rel="stylesheet" href="../_nav/nav.css">
   <script src="../_nav/tree.js" defer></script>
@@ -42,56 +42,22 @@
   </nav>
 
   <div class="app-body">
-    <header class="app-header">
-      <h1>Дошка</h1>
+    <header class="app-header app-header-filters">
+      <h1 class="visually-hidden">Дошка</h1>
+      <!-- Фільтр груп у шапці замість видимої назви екрана (рішення автора 2026-11-19); раніше — зона 1 -->
+      <div class="row" role="group" aria-label="Фільтр за групою">
+      <button type="button" class="chip" aria-pressed="true">Усі · 0</button>
+      <button type="button" class="chip" aria-pressed="false">Genesis · 0</button>
+      <button type="button" class="chip" aria-pressed="false">Monolead · 0</button>
+      <button type="button" class="chip" aria-pressed="false">Особисте · 0</button>
+      </div>
       <p class="today">Вівторок, 17 листопада</p>
     </header>
 
     <main class="app-main">
 
-      <!-- Зона 1. Перемикач груп (sitemap.md, «Перемикач») -->
-      <section class="zone" aria-labelledby="z1">
-        <p class="zone-label">Зона 1 · Перемикач груп і таймер — <b>головна дія: відфільтрувати дошку; таймер — коли зʼявляться задачі</b></p>
-        <h2 id="z1" class="visually-hidden">Групи і таймер</h2>
-        <div class="filter-timer">
-          <div class="row" role="group" aria-label="Фільтр за групою">
-            <button type="button" class="chip" aria-pressed="true">Усі · 0</button>
-            <button type="button" class="chip" aria-pressed="false">Genesis · 0</button>
-            <button type="button" class="chip" aria-pressed="false">Monolead · 0</button>
-            <button type="button" class="chip" aria-pressed="false">Особисте · 0</button>
-          </div>
-          <div class="timer-widget" role="group" aria-label="Таймер">
-            <div class="tw-top">
-              <span class="placeholder tw-ico" aria-hidden="true">іконка групи</span>
-              <div class="tw-task">
-                <label class="visually-hidden" for="timer-task">Задача для таймера</label>
-                <select id="timer-task" class="tw-select" disabled><option selected>Задач ще немає</option></select>
-                <p class="tw-sub">Додай першу задачу — і таймер запрацює</p>
-              </div>
-              <div class="tw-time"><b>0:00:00</b><span>не запущено</span></div>
-              <button type="button" class="tw-play" disabled aria-label="Почати таймер — задач ще немає"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></button>
-            </div>
-            <div class="tw-note">
-              <a href="capture-loading.html">Додати задачу</a>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <div class="split split-wide-left">
-
-        <!-- Зона 2. Можливі задачі і стан джерел (sitemap.md: лічильник зверху дошки; Джерело — час синхронізації [?]) -->
-        <section class="zone" aria-labelledby="z2">
-          <p class="zone-label">Зона 2 · Вхідне з Telegram і стан джерел — <b>головна дія: розібрати можливі задачі</b></p>
-          <h2 id="z2">Підключи джерела — і задачі зберуться самі</h2>
-          <p class="muted">Задачі з дошки Trello Genesis і з робочого чату Telegram з'являться тут без ручного перенесення.</p>
-          <p class="row gap-top"><a class="btn primary" href="sources-empty.html">Підключити Trello і Telegram</a></p>
-          <ul class="list gap-top">
-            <li><span class="tag">Trello</span> Не підключено</li>
-            <li><span class="tag">Telegram</span> Бота ще не додано в робочий чат</li>
-          </ul>
-        </section>
-
+      <div class="split split-today">
         <!-- Зона 3. Що вже зроблено сьогодні (sitemap.md, «Головний екран»: «що вже зроблено сьогодні») -->
         <aside class="zone" aria-labelledby="z3">
           <p class="zone-label">Зона 3 · Сьогодні — <b>головна дія: відкрити підсумок дня</b></p>
@@ -101,7 +67,39 @@
             <a href="day-loading.html">Підсумок дня</a>
           </footer>
         </aside>
+        <!-- Зона 5. Таймер — окрема секція праворуч від «Сьогодні» (рішення автора 2026-11-19; вигляд — віджет за референсом автора) -->
+        <section class="zone zone-timer" aria-labelledby="z5">
+          <p class="zone-label">Зона 5 · Таймер — <b>головна дія: додати першу задачу — тоді запустити таймер</b></p>
+          <h2 id="z5" class="visually-hidden">Таймер</h2>
+          <div class="timer-widget" role="group" aria-label="Таймер">
+          <div class="tw-top">
+          <span class="placeholder tw-ico" aria-hidden="true">іконка групи</span>
+          <div class="tw-task">
+          <label class="visually-hidden" for="timer-task">Задача для таймера</label>
+          <select id="timer-task" class="tw-select" disabled><option selected>Задач ще немає</option></select>
+          <p class="tw-sub">Додай першу задачу — і таймер запрацює</p>
+          </div>
+          <div class="tw-time"><b>0:00:00</b><span>не запущено</span></div>
+          <button type="button" class="tw-play" disabled aria-label="Почати таймер — задач ще немає"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></button>
+          </div>
+          <div class="tw-note">
+          <a href="capture-loading.html">Додати задачу</a>
+          </div>
+          </div>
+        </section>
       </div>
+
+      <!-- Зона 2. Можливі задачі і стан джерел (sitemap.md: лічильник зверху дошки; Джерело — час синхронізації [?]) -->
+      <section class="zone" aria-labelledby="z2">
+      <p class="zone-label">Зона 2 · Вхідне з Telegram і стан джерел — <b>головна дія: розібрати можливі задачі</b></p>
+      <h2 id="z2">Підключи джерела — і задачі зберуться самі</h2>
+      <p class="muted">Задачі з дошки Trello Genesis і з робочого чату Telegram з'являться тут без ручного перенесення.</p>
+      <p class="row gap-top"><a class="btn primary" href="sources-empty.html">Підключити Trello і Telegram</a></p>
+      <ul class="list gap-top">
+      <li><span class="tag">Trello</span> Не підключено</li>
+      <li><span class="tag">Telegram</span> Бота ще не додано в робочий чат</li>
+      </ul>
+      </section>
 
       <!-- Зона 4. Kanban: усі задачі разом, 4 статуси (CLAUDE.md §4; sitemap.md, сутність «Задача») -->
       <section class="zone" aria-labelledby="z4">

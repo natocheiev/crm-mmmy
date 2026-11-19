@@ -369,3 +369,10 @@ html.nav-wide a[aria-current="page"] .count { color: #555; }
 .tw-check { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; }
 .tw-check input { margin-top: 4px; }
 .tw-all { font-size: 13px; color: var(--wf-muted); text-decoration: none; }
+
+/* ---------- Дошка: фільтри в шапці, «Сьогодні» і «Таймер» поруч, «Вхідне» на всю ширину (2026-11-19) ---------- */
+.app-header-filters { align-items: center; }
+.app-header-filters .row { gap: 10px; }
+.split-today { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--wf-gap); align-items: stretch; }
+.zone-timer .timer-widget { background: none; border: 0; padding: 0; min-width: 0; max-width: none; corner-shape: round; }
+@media (max-width: 1100px) { .split-today { grid-template-columns: 1fr; } }

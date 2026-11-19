@@ -324,3 +324,17 @@ html.nav-wide a[aria-current="page"] .count { color: #555; }
 .card-top h2, .card-top h3, .card-top h4 { margin: 0; }
 .xp { flex: none; font-size: 15px; font-weight: 700; letter-spacing: -.01em; color: var(--wf-text); white-space: nowrap; line-height: 1.4; }   /* просто «XP 40», без плашки й обводки */
 .xp-opt { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid #cfcfcf; border-radius: var(--r-pill); }
+
+/* ---------- XP — другорядний до назви: трохи менший і приглушений (рішення автора 2026-11-19) ---------- */
+.xp { font-size: 13px; font-weight: 500; color: var(--wf-note); letter-spacing: 0; line-height: 1.55; }
+.card-top h2 + .xp { font-size: 15px; line-height: 1.6; }
+
+/* ---------- заокруглення як в iOS: «безперервний» кут (squircle), де браузер підтримує ---------- */
+.card, .msg { border-radius: 22px; }
+.zone, .kanban > section { border-radius: 28px; }
+@supports (corner-shape: squircle) {
+  .card, .msg, .zone, .kanban > section, .stats > div, .device { corner-shape: squircle; }
+  .card, .msg { border-radius: 30px; }
+  .zone, .kanban > section, .device { border-radius: 38px; }
+  .stats > div { border-radius: 24px; }
+}

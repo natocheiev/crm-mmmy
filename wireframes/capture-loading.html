@@ -5,6 +5,7 @@
   Крок main flow (flows.md, «Main job»): flow J3: CAPTURE_LISTEN — «Швидке додавання: loading — слухаю одразу після кліку».
   Текст стану — sitemap.md, «Екрани», колонка «Стани». Зразок розмітки — board.html.
   Продукт чекає, поки людина договорить, і розпізнає мову. Далі розвилка «Текст розпізнано?».
+  Поля задачі справа активні одразу (рішення автора, 2026-11-19): задачу можна ввести вручну, а розпізнане з голосу заповнює ці самі поля.
   Інший варіант (sitemap.md): «Зберігаю» — після «Зберегти» (вузол CAPTURE_SAVING).
 -->
 <html lang="uk" data-root="../">
@@ -53,7 +54,7 @@
 
       <div class="split split-wide-right">
       <section class="zone" aria-labelledby="z1">
-        <p class="zone-label">Зона 1 · Голос — <b>чекаю на дані — дія «надиктувати задачу» зʼявиться після завантаження</b></p>
+        <p class="zone-label">Зона 1 · Голос — <b>головна дія: договорити задачу і зупинити запис</b></p>
         <h2 id="z1">Слухаю…</h2>
         <p class="placeholder ph-wave" aria-hidden="true">хвиля голосу</p>
         <p>Скажи задачу: що зробити, для якої групи і до коли.</p>
@@ -61,12 +62,38 @@
         <p class="row gap-top"><a class="btn" href="capture.html">Зупинити</a> <a class="btn" href="board.html">Скасувати</a></p>
       </section>
       <section class="zone" aria-labelledby="z2">
-        <p class="zone-label">Зона 2 · Розпізнане на перевірку — <b>чекаю на дані — дія «зберегти задачу» зʼявиться після завантаження</b></p>
-        <h2 id="z2">Перевір перед збереженням</h2>
-        <p class="muted">Розпізнані назва, група і дедлайн з'являться тут.</p>
-        <p class="placeholder ph-field" aria-hidden="true"></p>
-        <p class="placeholder ph-field" aria-hidden="true"></p>
-        <p class="placeholder ph-field" aria-hidden="true"></p>
+        <p class="zone-label">Зона 2 · Поля задачі — <b>головна дія: ввести задачу вручну або перевірити те, що заповнилось з голосу</b></p>
+        <h2 id="z2">Задача</h2>
+        <p class="muted">Можна ввести вручну. Поки говориш, поля заповнюються з голосу — будь-що можна виправити.</p>
+        <form class="form" action="capture-success.html">
+          <div class="field">
+            <label for="t-name">Назва</label>
+            <input id="t-name" name="name" value="Обкладинка для статті…" placeholder="Що зробити?">
+            <p class="hint">Заповнюється з голосу — уже почуто «обкладинку для статті…»</p>
+          </div>
+          <div class="field">
+            <label for="t-group">Група</label>
+            <select id="t-group" name="group">
+              <option selected>Скажи або вибери групу</option>
+              <option>Основна робота · Trello</option>
+              <option>Друга робота · Telegram</option>
+              <option>Особисте</option>
+            </select>
+            <p class="hint">Ще не почуто. Без групи поставлю «Особисте»</p>
+          </div>
+          <div class="field">
+            <label for="t-deadline">Дедлайн</label>
+            <input id="t-deadline" name="deadline" placeholder="Скажи «завтра», «до пʼятниці» — або введи">
+            <p class="hint">Необовʼязково</p>
+          </div>
+          <fieldset class="field">
+            <legend>Тип</legend>
+            <label><input type="radio" name="type" checked> Задача</label>
+            <label><input type="radio" name="type"> Прохання — незаплановане, з таймером</label>
+          </fieldset>
+          <p class="row"><a class="btn primary" href="capture-success.html">Зберегти</a> <a class="btn" href="board.html">Скасувати</a></p>
+          <p class="muted">Зберегти можна будь-коли — навіть не договоривши.</p>
+        </form>
       </section>
       </div>
 

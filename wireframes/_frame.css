@@ -406,3 +406,11 @@ html.nav-wide a[aria-current="page"] .count { color: #555; }
   .zone-timer, .zone-timer:has(.tw-list) { contain: none; }
   .zone-timer .tw-list { max-height: 150px; }
 }
+
+/* ---------- картки задач на Дошці — папки як в iOS: вушко з назвою групи (рішення автора 2026-11-19) ---------- */
+.kanban > section { gap: 18px; }
+.kanban > section > h3 { margin-bottom: -4px; }
+.card.folder { position: relative; margin-top: 20px; border-top-left-radius: 0; }
+.folder-tab { position: absolute; left: -1px; bottom: calc(100% - 1px); height: 24px; padding: 4px 14px 0; background: var(--wf-paper); border: 1px solid var(--wf-card-line); border-bottom: 0; border-radius: 14px 14px 0 0; font-size: 11px; font-weight: 600; letter-spacing: .02em; color: var(--wf-muted); white-space: nowrap; z-index: 1; }
+.folder-tab::after { content: ""; position: absolute; right: -12px; bottom: 0; width: 12px; height: 12px; background: radial-gradient(circle at 100% 0, transparent 11px, var(--wf-card-line) 11px, var(--wf-card-line) 12px, var(--wf-paper) 12px); }
+@supports (corner-shape: squircle) { .folder-tab { corner-shape: squircle; border-radius: 18px 18px 0 0; } .card.folder { border-top-left-radius: 0; } }

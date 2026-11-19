@@ -12,6 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Можливі задачі · завантаження — вайрфрейм</title>
   <link rel="stylesheet" href="_frame.css">
+  <script src="_frame.js" defer></script>
   <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
   <link rel="stylesheet" href="../_nav/nav.css">
   <script src="../_nav/tree.js" defer></script>
@@ -22,23 +23,23 @@
 <nav class="flow-next" aria-label="Далі за flow"><p>Далі за flow (flows.md):</p><p>є нерозібрані → <a href="inbox.html">Можливі задачі</a> · усе розібрано → <a href="inbox-empty.html">порожній стан</a> · не вдалося завантажити → <a href="inbox-error.html">помилка</a></p></nav>
 <div class="device">
 
-  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3). Рейка з іконками; кнопка перемикає вузький і широкий вигляд -->
   <nav class="app-nav" aria-label="Глобальна навігація">
-    <p class="product">CRM-MMMY</p>
-    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
-    <ul>
-      <li><a href="board.html">Дошка</a></li>
-      <li><a href="inbox.html" aria-current="page">Можливі задачі <span class="count">3</span></a></li>
-      <li><a href="day.html">День</a></li>
-      <li><a href="rewards.html">Мотивація <span class="count">240 XP</span></a></li>
-    </ul>
-    <div class="settings">
-      <p class="settings-title">Налаштування</p>
-      <ul>
-        <li><a href="sources.html">Групи і джерела</a></li>
-        <li><a href="theme.html">Кольори і теми</a></li>
-      </ul>
+    <div class="nav-top">
+      <a class="nav-logo" href="board.html" title="CRM-MMMY — на дошку"><span class="logo-mark" aria-hidden="true">CM</span><span class="nav-text">CRM-MMMY</span></a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="app-nav-items" title="Розгорнути навігацію"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/><path d="M14 10l2 2-2 2"/></svg><span class="nav-text">Згорнути</span></button>
     </div>
+    <ul class="nav-items" id="app-nav-items">
+      <li><a class="nav-add" href="capture-loading.html" title="Додати голосом"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg><span class="nav-text">Додати голосом</span></a></li>
+      <li><a href="board.html" title="Дошка" data-key="board"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg><span class="nav-text">Дошка</span></a></li>
+      <li><a href="inbox.html" title="Можливі задачі" data-key="inbox" aria-current="page"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 13l3-8h12l3 8v6H3z"/><path d="M3 13h5l1 3h6l1-3h5"/></svg><span class="nav-text">Можливі задачі</span><span class="count">3</span></a></li>
+      <li><a href="day.html" title="День" data-key="day"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8 15l2.5 2.5L16 13"/></svg><span class="nav-text">День</span></a></li>
+      <li><a href="rewards.html" title="Мотивація" data-key="rewards"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4M9 21h6M10 17h4"/></svg><span class="nav-text">Мотивація</span><span class="count">240 XP</span></a></li>
+    </ul>
+    <ul class="nav-bottom" aria-label="Налаштування">
+      <li><a href="sources.html" title="Групи і джерела" data-key="sources"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><span class="nav-text">Групи і джерела</span></a></li>
+      <li><a href="theme.html" title="Кольори і теми" data-key="theme"><svg class="ico" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg><span class="nav-text">Кольори і теми</span></a></li>
+    </ul>
   </nav>
 
   <div class="app-body">

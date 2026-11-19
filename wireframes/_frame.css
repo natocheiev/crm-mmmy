@@ -391,3 +391,18 @@ html.nav-wide a[aria-current="page"] .count { color: #555; }
 .tw-play[aria-pressed="true"] .i-play { display: none; }
 .tw-play[aria-pressed="true"] .i-pause { display: block; }
 .timer-widget.is-running .tw-status { color: var(--wf-text); font-weight: 600; }
+
+/* ---------- Дошка: «Сьогодні» за шириною вмісту (hug), «Таймер» займає решту і має ту саму висоту (2026-11-19) ---------- */
+.split-today { grid-template-columns: fit-content(560px) minmax(420px, 1fr); align-items: stretch; }   /* «Сьогодні» — за вмістом (hug), але не ширше 560 px */
+.split-today > .zone:first-child { min-width: 500px; }
+.zone-timer { display: flex; flex-direction: column; min-height: 0; }
+.zone-timer:has(.tw-list) { contain: size; }      /* з чеклістом висоту ряду задає «Сьогодні», а чекліст гортається в межах цієї висоти */
+.zone-timer .timer-widget { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.zone-timer .tw-note { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.zone-timer .tw-list { flex: 1 1 auto; min-height: 0; max-height: none; }
+@media (max-width: 1100px) {
+  .split-today { grid-template-columns: 1fr; }
+  .split-today > .zone:first-child { min-width: 0; }
+  .zone-timer, .zone-timer:has(.tw-list) { contain: none; }
+  .zone-timer .tw-list { max-height: 150px; }
+}

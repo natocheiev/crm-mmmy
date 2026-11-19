@@ -43,25 +43,20 @@
   </nav>
 
   <div class="app-body">
-    <header class="app-header">
-      <h1>Похвали</h1>
+    <header class="app-header app-header-filters">
+      <h1 class="visually-hidden">Похвали</h1>
+      <!-- Вкладки «Мотивації» у шапці замість видимої назви — як фільтри (рішення автора 2026-11-19); раніше — зона 1 -->
+      <nav aria-label="Вкладки «Мотивації»">
+        <ul class="row mot-tabs">
+          <li><a class="btn" href="rewards-loading.html">Нагороди і цілі</a></li>
+          <li><a class="btn" href="trophies-loading.html">Ачівки і Стіна пошани</a></li>
+          <li><a class="btn" href="praise-loading.html" aria-current="page">Похвали</a></li>
+        </ul>
+      </nav>
       <p class="today">Вівторок, 17 листопада</p>
     </header>
 
     <main class="app-main">
-
-      <!-- Зона 1. Вкладки «Мотивації» (sitemap.md, «Навігація»: «Ачівки» і «Похвали» — підвкладки «Мотивації») -->
-      <section class="zone" aria-labelledby="z1">
-        <p class="zone-label">Зона 1 · Вкладки «Мотивації» — <b>головна дія: перейти до нагород, ачівок чи похвал</b></p>
-        <h2 id="z1" class="visually-hidden">Розділи мотивації</h2>
-        <nav aria-label="Вкладки «Мотивації»">
-          <ul class="row mot-tabs">
-            <li><a class="btn" href="rewards-loading.html">Нагороди і цілі</a></li>
-            <li><a class="btn" href="trophies-loading.html">Ачівки і Стіна пошани</a></li>
-            <li><a class="btn" href="praise-loading.html" aria-current="page">Похвали</a></li>
-          </ul>
-        </nav>
-      </section>
 
       <div class="split split-wide-left">
       <!-- Зона 2. Стрічка похвал для перечитування (sitemap.md, сутність «Похвала»: текст або скрін, звідки, від кого, дата, задача [?]) -->

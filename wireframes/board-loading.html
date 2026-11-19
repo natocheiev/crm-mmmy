@@ -10,8 +10,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Дошка · завантаження — вайрфрейм</title>
-  <link rel="stylesheet" href="_frame.css?v=20261119h">
-  <script src="_frame.js?v=20261119h" defer></script>
+  <link rel="stylesheet" href="_frame.css?v=20261119i">
+  <script src="_frame.js?v=20261119i" defer></script>
   <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
   <link rel="stylesheet" href="../_nav/nav.css">
   <script src="../_nav/tree.js" defer></script>
@@ -94,11 +94,9 @@
       </ul>
       </section>
 
-      <!-- Зона 4. Kanban: усі задачі разом, 4 статуси (CLAUDE.md §4; sitemap.md, сутність «Задача») -->
-      <section class="zone" aria-labelledby="z4">
-        <p class="zone-label">Зона 4 · Дошка задач — <b>чекаю на дані — дія «перетягнути картку в наступний статус» зʼявиться після завантаження</b>; клік по назві відкриває задачу</p>
-        <h2 id="z4">Задачі з Trello, Telegram і особисте — за пріоритетом групи і задачі</h2>
-
+      <!-- Зона 4. Kanban без рамки, підписів і підказок — лише колонки статусів і задачі (рішення автора 2026-11-19) -->
+      <section class="kanban-wrap" aria-labelledby="z4">
+        <h2 id="z4" class="visually-hidden">Задачі з Trello, Telegram і особисте за статусами</h2>
         <div class="kanban">
           <section aria-labelledby="c1" aria-busy="true">
             <h3 id="c1">Tasks <span class="muted">…</span></h3>
@@ -124,10 +122,6 @@
             <p class="placeholder ph-card" aria-hidden="true"></p>
           </section>
         </div>
-
-        <footer class="muted gap-top">
-          Завантажую задачі. Збережені задачі з'являться одразу, свіжі — після синхронізації.
-        </footer>
       </section>
 
     </main>

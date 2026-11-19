@@ -376,3 +376,7 @@ html.nav-wide a[aria-current="page"] .count { color: #555; }
 .split-today { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--wf-gap); align-items: stretch; }
 .zone-timer .timer-widget { background: none; border: 0; padding: 0; min-width: 0; max-width: none; corner-shape: round; }
 @media (max-width: 1100px) { .split-today { grid-template-columns: 1fr; } }
+
+/* ---------- Дошка: Kanban без рамки зони і підказок (рішення автора 2026-11-19) ---------- */
+.kanban-wrap { min-width: 0; }
+.kanban-wrap .kanban > section { background: #e4e4e4; }

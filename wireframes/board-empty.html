@@ -11,8 +11,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Дошка · порожній — вайрфрейм</title>
-  <link rel="stylesheet" href="_frame.css?v=20261119e">
-  <script src="_frame.js?v=20261119e" defer></script>
+  <link rel="stylesheet" href="_frame.css?v=20261119g">
+  <script src="_frame.js?v=20261119g" defer></script>
   <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
   <link rel="stylesheet" href="../_nav/nav.css">
   <script src="../_nav/tree.js" defer></script>
@@ -60,13 +60,20 @@
             <button type="button" class="chip" aria-pressed="false">Monolead · 0</button>
             <button type="button" class="chip" aria-pressed="false">Особисте · 0</button>
           </div>
-          <div class="mini-timer" role="group" aria-label="Таймер">
-            <div class="ring ring-sm r0" role="img" aria-label="Таймер не запущено"><div><b>0:00</b></div></div>
-            <div class="mt-body">
-              <label for="timer-task">Таймер на задачу</label>
-              <select id="timer-task" name="timer-task" disabled><option selected>Задач ще немає</option></select>
+          <div class="timer-widget" role="group" aria-label="Таймер">
+            <div class="tw-top">
+              <span class="placeholder tw-ico" aria-hidden="true">іконка групи</span>
+              <div class="tw-task">
+                <label class="visually-hidden" for="timer-task">Задача для таймера</label>
+                <select id="timer-task" class="tw-select" disabled><option selected>Задач ще немає</option></select>
+                <p class="tw-sub">Додай першу задачу — і таймер запрацює</p>
+              </div>
+              <div class="tw-time"><b>0:00:00</b><span>не запущено</span></div>
+              <button type="button" class="tw-play" disabled aria-label="Почати таймер — задач ще немає"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></button>
             </div>
-            <button type="button" disabled>Почати</button>
+            <div class="tw-note">
+              <a href="capture-loading.html">Додати задачу</a>
+            </div>
           </div>
         </div>
       </section>

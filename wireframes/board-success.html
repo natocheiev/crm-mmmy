@@ -14,8 +14,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Дошка · успіх — вайрфрейм</title>
-  <link rel="stylesheet" href="_frame.css?v=20261119e">
-  <script src="_frame.js?v=20261119e" defer></script>
+  <link rel="stylesheet" href="_frame.css?v=20261119g">
+  <script src="_frame.js?v=20261119g" defer></script>
   <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
   <link rel="stylesheet" href="../_nav/nav.css">
   <script src="../_nav/tree.js" defer></script>
@@ -63,13 +63,21 @@
             <button type="button" class="chip" aria-pressed="false">Monolead · 4</button>
             <button type="button" class="chip" aria-pressed="false">Особисте · 1</button>
           </div>
-          <div class="mini-timer" role="group" aria-label="Таймер">
-            <div class="ring ring-sm r0" role="img" aria-label="Таймер не запущено"><div><b>0:00</b></div></div>
-            <div class="mt-body">
-              <label for="timer-task">Таймер на задачу</label>
-              <select id="timer-task" name="timer-task"><option selected>Обкладинка для статті в блог · ~1 год · перша в плані</option><option>Банер для email-розсилки · ~2 год</option><option>Записатися до стоматолога · ~15 хв</option></select>
+          <div class="timer-widget" role="group" aria-label="Таймер">
+            <div class="tw-top">
+              <span class="placeholder tw-ico" aria-hidden="true">іконка групи</span>
+              <div class="tw-task">
+                <label class="visually-hidden" for="timer-task">Задача для таймера</label>
+                <select id="timer-task" class="tw-select"><option selected>Обкладинка для статті в блог</option><option>Банер для email-розсилки</option><option>Записатися до стоматолога</option></select>
+                <p class="tw-sub">Genesis · XP 20 · ~1 год · перша в плані</p>
+              </div>
+              <div class="tw-time"><b>0:00:00</b><span>не запущено</span></div>
+              <a class="tw-play" href="task.html" aria-label="Почати таймер" title="Почати"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></a>
             </div>
-            <a class="btn primary" href="task.html">Почати</a>
+            <div class="tw-note">
+              <label class="tw-check"><input type="checkbox"> Перевірити розмір обкладинки під блог — 1200 × 630</label>
+              <a class="tw-all" href="task.html">Усі нотатки задачі</a>
+            </div>
           </div>
         </div>
       </section>

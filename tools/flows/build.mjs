@@ -350,8 +350,8 @@ a.node:hover rect, a.node:hover polygon, a.node:focus rect { stroke-width: 2.6; 
   <p class="lead">${flows.length} flows з <a href="https://github.com/natocheiev/crm-mmmy/blob/main/flows.md" target="_blank" rel="noopener">flows.md</a> у тому ж вигляді, що у Figma: лінії з прямими кутами, пронумеровані розвилки і пояснення поруч. Наведи на вузол-екран — побачиш міні-екран з <a href="wireframes/board.html">вайрфреймів</a>, клікни — відкриєш його.</p>
   <nav class="toc" aria-label="Flows">${flows.map((f, i) => `<a href="#flow-${i + 1}">${esc(f.title.split(":")[0])}</a>`).join("")}</nav>
   <div class="stats">
-    <div class="card"><div class="k">Flows</div><div class="big">${flows.length}</div><p>main job, J2, J3, J11, J9, «Кольори і теми»</p></div>
-    <div class="card"><div class="k">Екранів у sitemap.md</div><div class="big">${screens.length}</div><p>у кожного є вайрфрейм</p></div>
+    <div class="card"><div class="k">Flows</div><div class="big">${flows.length}</div><p>${flows.map((f) => esc(f.title.split(":")[0])).join(", ")}</p></div>
+    <div class="card"><div class="k">Екранів у sitemap.md</div><div class="big">${screens.length}</div><p>${screenRows.filter((r) => r.have.includes("")).length} з вайрфреймом${screenRows.some((r) => !r.have.includes("")) ? ", без: " + esc(screenRows.filter((r) => !r.have.includes("")).map((r) => r.s.name).join(", ")) : ""}</p></div>
     <div class="card yes"><div class="k">Сторінок вайрфреймів</div><div class="big">${totalHave}/${totalWant}</div><p>базові сторінки і стани з колонки «Стани»</p></div>
   </div>
   <div class="how">

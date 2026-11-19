@@ -20,9 +20,9 @@ Vercel Hobby + Supabase Free: **$0/міс**. Проєкт self-hostable: фор�
 - [JTBD.md](./JTBD.md) — Jobs-to-be-Done: головна робота, карта роботи, сили прогресу, job stories, бажані результати
 - [personas.md](./personas.md) — реєстр персон: primary — автор
 - [sitemap.md](./sitemap.md) — реєстр сутностей, екранів (з колонкою «Стани») і станів, навігація, матриця трасування
-- [flows.md](./flows.md) — user flows у Mermaid: main job, J2 (Telegram), J3 (голос), J11 (нагорода), J9 (похвала), «Кольори і теми»
+- [flows.md](./flows.md) — user flows у Mermaid: main job, J2 (Telegram), J3 (голос), J11 (нагорода), J9 (похвала), J12 (бажання на старті), «Кольори і теми»
 - [ia.html](./ia.html) — знімок IA: sitemap деревом, стани, матриця трасування; flows — у user-flows.html ([на сайті](https://natocheiev.github.io/crm-mmmy/ia.html))
-- [user-flows.html](./user-flows.html) — 6 flows у вигляді як у Figma: прямі кути, підсвітка одного шляху, міні-прев'ю вайрфреймів ([на сайті](https://natocheiev.github.io/crm-mmmy/user-flows.html))
+- [user-flows.html](./user-flows.html) — flows у вигляді як у Figma: прямі кути, підсвітка одного шляху, міні-прев'ю вайрфреймів ([на сайті](https://natocheiev.github.io/crm-mmmy/user-flows.html))
 - [tools/flows/](./tools/flows/) — генератор `user-flows.html` з flows.md, sitemap.md і wireframes/ (ELK-розкладка)
 - [wireframes/_conventions.md](./wireframes/_conventions.md) — правила вайрфреймів: рамка, шапка й навігація, стани, назви файлів, переходи за flows.md
 - [wireframes/_frame.css](./wireframes/_frame.css) — сірий каркас: рамка `.device`, зони, форми, заглушки

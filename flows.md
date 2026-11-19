@@ -119,7 +119,8 @@ flowchart TD
     Q_APPROVE -->|так| BOARD_APPROVED(["Дошка: Approved — XP і конфеті"])
     BOARD_APPROVED --> BOARD
 
-    BOARD -->|таймер біля фільтра груп: «Почати»| TASK_TIMER
+    BOARD -->|▶ у секції «Таймер»| BOARD_TIMER(["Дошка: таймер іде у віджеті — задача не відкривається, чекліст гортається"])
+    BOARD_TIMER -->|«Усі задачі»| TASK
     BOARD -->|пункт «День», будь-коли| DAY_LOADING(["Підсумок дня: loading — рахую вагу і XP"])
     DAY_LOADING --> Q_DAY_OK{"Підсумок пораховано?"}
     Q_DAY_OK -->|ні| DAY_ERR(["Підсумок дня: error — не вдалося порахувати"])
@@ -146,7 +147,7 @@ flowchart TD
     classDef err fill:#FFE3E3,stroke:#D94141,color:#111
     classDef ok fill:#DDF7E3,stroke:#2E9E4F,color:#111
     class SOURCES,BOARD,INBOX,TASK,DAY,CAPTURE screen
-    class START,LOGIN,LOGIN_SENT,BOARD_LOADING,SOURCES_LOADING,BOARD_OFF,BOARD_EMPTY,BOARD_MOOD,BOARD_MOOD_SKIP,BOARD_PLAN,BOARD_COUNTER,BOARD_DRAG,SYNC_PENDING,TASK_LOADING,TASK_TIMER,TIMER_PAUSED,BOARD_REVIEW,BOARD_WAITING,BOARD_APPROVED,DAY_LOADING,DAY_EMPTY,DAY_TOMORROW,DAY_WRAP state
+    class START,LOGIN,LOGIN_SENT,BOARD_LOADING,SOURCES_LOADING,BOARD_OFF,BOARD_EMPTY,BOARD_MOOD,BOARD_MOOD_SKIP,BOARD_PLAN,BOARD_COUNTER,BOARD_DRAG,SYNC_PENDING,TASK_LOADING,TASK_TIMER,TIMER_PAUSED,BOARD_REVIEW,BOARD_WAITING,BOARD_APPROVED,DAY_LOADING,DAY_EMPTY,DAY_TOMORROW,DAY_WRAP,BOARD_TIMER state
     class LOGIN_ERR,LINK_ERR,BOARD_SYNC_ERR,SOURCES_ERR,MOOD_ERR,TASK_MAT_ERR,TIMER_ERR,DAY_ERR,WRAP_ERR err
     class OK,OK_SOFT ok
 ```

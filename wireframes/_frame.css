@@ -380,3 +380,14 @@ html.nav-wide a[aria-current="page"] .count { color: #555; }
 /* ---------- Дошка: Kanban без рамки зони і підказок (рішення автора 2026-11-19) ---------- */
 .kanban-wrap { min-width: 0; }
 .kanban-wrap .kanban > section { background: #e4e4e4; }
+
+/* ---------- таймер-віджет: чекліст гортається, ▶ запускає відлік на місці (2026-11-19) ---------- */
+.tw-count { font-size: 12px; color: var(--wf-muted); }
+.tw-list { display: grid; gap: 8px; max-height: 150px; overflow-y: auto; overscroll-behavior: contain; scroll-snap-type: y proximity; padding-right: 6px; -webkit-overflow-scrolling: touch; }
+.tw-list li { scroll-snap-align: start; }
+.tw-list .tw-check input:checked + * { text-decoration: line-through; }
+.tw-all { font-size: 12px; justify-self: start; }
+.tw-play .i-pause { display: none; }
+.tw-play[aria-pressed="true"] .i-play { display: none; }
+.tw-play[aria-pressed="true"] .i-pause { display: block; }
+.timer-widget.is-running .tw-status { color: var(--wf-text); font-weight: 600; }

@@ -43,21 +43,18 @@
   </nav>
 
   <div class="app-body">
-    <header class="app-header">
-      <h1>Можливі задачі</h1>
+    <header class="app-header app-header-filters">
+      <h1 class="visually-hidden">Можливі задачі</h1>
+      <!-- Фільтр «Нові / Відхилені» у шапці замість видимої назви — як фільтр груп (рішення автора 2026-11-19); раніше — зона 1 -->
+      <div class="row" role="group" aria-label="Фільтр можливих задач">
+        <button type="button" class="chip" aria-pressed="true">Нові · 3</button>
+        <button type="button" class="chip" aria-pressed="false">Відхилені · 5</button>
+      </div>
       <p class="today">Вівторок, 17 листопада</p>
     </header>
 
     <main class="app-main">
 
-      <section class="zone" aria-labelledby="z1">
-        <p class="zone-label">Зона 1 · Фільтр — <b>головна дія: перемкнути нові і відхилені</b></p>
-        <h2 id="z1" class="visually-hidden">Фільтр</h2>
-        <div class="row" role="group" aria-label="Фільтр можливих задач">
-          <button type="button" class="chip" aria-pressed="true">Нові · 3</button>
-          <button type="button" class="chip" aria-pressed="false">Відхилені · 5</button>
-        </div>
-      </section>
       <section class="zone" aria-labelledby="z2">
         <p class="zone-label">Зона 2 · Повідомлення з Telegram без відмітки — <b>головна дія: перетворити повідомлення на задачу</b></p>
         <h2 id="z2">3 повідомлення чекають розбору</h2>

@@ -27,7 +27,7 @@ Vercel Hobby + Supabase Free: **$0/міс**. Проєкт self-hostable: фор�
 - [wireframes/_conventions.md](./wireframes/_conventions.md) — правила вайрфреймів: рамка, шапка й навігація, стани, назви файлів, переходи за flows.md
 - [wireframes/_frame.css](./wireframes/_frame.css) — сірий каркас: рамка `.device`, зони, форми, заглушки
 - [wireframes/board.html](./wireframes/board.html) — головний екран «Дошка», зразок для решти ([на сайті](https://natocheiev.github.io/crm-mmmy/wireframes/board.html))
-- [wireframes/](./wireframes/) — вайрфрейми всіх 10 екранів sitemap.md і їхніх станів (44 сторінки): Дошка, Задача, Швидке додавання, Можливі задачі, Підсумок дня, Нагороди і цілі, Ачівки і Стіна пошани, Похвали, Групи і джерела, Кольори і теми
+- [wireframes/](./wireframes/) — вайрфрейми всіх 11 екранів sitemap.md і їхніх станів (47 сторінок): Дошка, Задача, Швидке додавання, Можливі задачі, Підсумок дня, Нагороди і цілі, Ачівки і Стіна пошани, Мої бажання, Похвали, Групи і джерела, Кольори і теми
 - [index.html](./index.html) — стартова сторінка ([на сайті](https://natocheiev.github.io/crm-mmmy/))
 - [_nav/tree.js](./_nav/tree.js) — дерево сторінок навігатора
 - [research/](./research/) — дослідження

@@ -279,3 +279,9 @@ sup.u { font-size: .42em; font-weight: 500; vertical-align: super; letter-spacin
 /* ---------- хвиля голосу (E) ---------- */
 .placeholder.ph-wave { height: 56px; margin-top: 12px; background: repeating-linear-gradient(90deg, #cfcfcf 0 3px, transparent 3px 9px); color: var(--wf-text); }
 .zone td select, .zone td input:not([type="radio"]):not([type="checkbox"]) { width: 100%; max-width: 100%; padding: 6px 10px; }
+
+.stats.stats-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.mot-grid .card h3 { font-size: 14px; margin: 0; }
+.wish-row { display: grid; grid-template-columns: 1fr 110px; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--wf-card-line); }
+.wish-row .hint { grid-column: 1 / -1; margin-top: -4px; }
+.card > .tag { justify-self: start; }

@@ -107,6 +107,14 @@ window.NAV_TREE = [
             ],
           },
           {
+            title: "Мої бажання",
+            href: "wireframes/wishes.html",
+            children: [
+              { title: "Помилка", href: "wireframes/wishes-error.html" },
+              { title: "Успіх", href: "wireframes/wishes-success.html" },
+            ],
+          },
+          {
             title: "Похвали",
             href: "wireframes/praise.html",
             children: [

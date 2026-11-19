@@ -1,0 +1,201 @@
+<!doctype html>
+<!--
+  Вайрфрейм: Мої бажання (wishes.html). Група «Мотивація». Стан: базова — форма (екран введення). Вузли flows.md, J12: WISHES["Мої бажання"], WISHES_FILTER, WISHES_ADD, WISHES_OWN.
+  Job (JTBD.md): J12 (на старті вибрати з каталогу й дописати свої нагороди); J11 (поповнити список нагород). Персона: primary — автор (personas.md).
+  Звідки приходять (flows.md, J12): перший запуск, ще до входу; потім — «Нагороди і цілі» → «Вибрати з каталогу бажань».
+  Рішення автора 2026-11-19: XP — гаманець (витрачене списується, рівень рахується від «зароблено всього»); ціну ставить автор, CRM підказує за ~40 XP на день [?].
+  Порожнього і завантаження немає: каталог завжди є і вбудований (sitemap.md, колонка «Стани»).
+  Глобальна навігація — та сама розмітка, що на інших екранах (_conventions.md §3); на першому запуску до входу продукт її ховає [?].
+-->
+<html lang="uk" data-root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мої бажання — вайрфрейм</title>
+  <link rel="stylesheet" href="_frame.css">
+  <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
+  <link rel="stylesheet" href="../_nav/nav.css">
+  <script src="../_nav/tree.js" defer></script>
+  <script src="../_nav/nav.js" defer></script>
+</head>
+<body>
+<nav class="state-nav" aria-label="Стани екрана «Мої бажання»"><p>Стани екрана «Мої бажання»:</p><ul><li><a href="wishes.html" aria-current="page">Базова</a></li><li><a href="wishes-error.html">Помилка</a></li><li><a href="wishes-success.html">Успіх</a></li></ul></nav>
+<nav class="flow-next" aria-label="Далі за flow"><p>Розвилка «Список бажань збережено?» (flows.md, J12):</p><p>збережено → <a href="wishes-success.html">бажання збережено</a> · немає зʼєднання → <a href="wishes-error.html">помилка</a></p></nav>
+<div class="device">
+
+  <!-- Глобальна навігація: однакова розмітка на кожному екрані (_conventions.md §3) -->
+  <nav class="app-nav" aria-label="Глобальна навігація">
+    <p class="product">CRM-MMMY</p>
+    <a class="btn primary add" href="capture-loading.html">Додати голосом</a>
+    <ul>
+      <li><a href="board.html">Дошка</a></li>
+      <li><a href="inbox.html">Можливі задачі <span class="count">3</span></a></li>
+      <li><a href="day.html">День</a></li>
+      <li><a href="rewards.html" aria-current="page">Мотивація <span class="count">240 XP</span></a></li>
+    </ul>
+    <div class="settings">
+      <p class="settings-title">Налаштування</p>
+      <ul>
+        <li><a href="sources.html">Групи і джерела</a></li>
+        <li><a href="theme.html">Кольори і теми</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <header class="app-header">
+      <h1>Мої бажання</h1>
+      <p class="today">Вівторок, 17 листопада</p>
+    </header>
+
+    <main class="app-main">
+
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Категорії — <b>головна дія: відфільтрувати каталог</b></p>
+        <h2 id="z1">Що хочеш отримувати за виконані задачі?</h2>
+        <p class="muted">Вибери з готових варіантів або допиши своє. XP — це гаманець: витратив на одну нагороду — на іншу треба заробити знову.</p>
+        <div class="row gap-top" role="group" aria-label="Фільтр каталогу"><button type="button" class="chip" aria-pressed="true">Усі</button><button type="button" class="chip" aria-pressed="false">Розваги</button><button type="button" class="chip" aria-pressed="false">Цікаве</button><button type="button" class="chip" aria-pressed="false">Смаколики</button><button type="button" class="chip" aria-pressed="false">Речі</button><button type="button" class="chip" aria-pressed="false">Відпочинок</button></div>
+      </section>
+      <div class="split split-wide-left">
+      <section class="zone" aria-labelledby="z2">
+        <p class="zone-label">Зона 2 · Каталог бажань — <b>головна дія: додати варіант у мій список</b></p>
+        <h2 id="z2">Каталог · 15 варіантів у 5 категоріях</h2>
+        <div class="mot-grid">
+          <article class="card">
+            <h3>Квиток у кіно</h3>
+            <p class="meta"><span class="tag">Розваги</span></p>
+            <p class="note">CRM підказує ≈ 300 XP · ~8 дн.</p>
+            <span class="tag">у списку</span>
+          </article>
+          <article class="card">
+            <h3>Квест-кімната з друзями</h3>
+            <p class="meta"><span class="tag">Розваги</span></p>
+            <p class="note">CRM підказує ≈ 800 XP · ~20 дн.</p>
+            <a class="btn" href="#my">Додати</a>
+          </article>
+          <article class="card">
+            <h3>Концерт улюбленого гурту</h3>
+            <p class="meta"><span class="tag">Розваги</span></p>
+            <p class="note">CRM підказує ≈ 1200 XP · ~30 дн.</p>
+            <a class="btn" href="#my">Додати</a>
+          </article>
+          <article class="card">
+            <h3>Книжка про типографіку</h3>
+            <p class="meta"><span class="tag">Цікаве</span></p>
+            <p class="note">CRM підказує ≈ 400 XP · ~10 дн.</p>
+            <a class="btn" href="#my">Додати</a>
+          </article>
+          <article class="card">
+            <h3>Майстер-клас з кераміки</h3>
+            <p class="meta"><span class="tag">Цікаве</span></p>
+            <p class="note">CRM підказує ≈ 900 XP · ~22 дн.</p>
+            <a class="btn" href="#my">Додати</a>
+          </article>
+          <article class="card">
+            <h3>Онлайн-курс з моушн-дизайну</h3>
+            <p class="meta"><span class="tag">Цікаве</span></p>
+            <p class="note">CRM підказує ≈ 1500 XP · ~38 дн.</p>
+            <a class="btn" href="#my">Додати</a>
+          </article>
+          <article class="card">
+            <h3>Кава в улюбленій кавʼярні</h3>
+            <p class="meta"><span class="tag">Смаколики</span></p>
+            <p class="note">CRM підказує ≈ 100 XP · ~2 дн.</p>
+            <span class="tag">у списку</span>
+          </article>
+          <article class="card">
+            <h3>Десерт без приводу</h3>
+            <p class="meta"><span class="tag">Смаколики</span></p>
+            <p class="note">CRM підказує ≈ 120 XP · ~3 дн.</p>
+            <a class="btn" href="#my">Додати</a>
+          </article>
+          <article class="card">
+            <h3>Піца ввечері</h3>
+            <p class="meta"><span class="tag">Смаколики</span></p>
+            <p class="note">CRM підказує ≈ 250 XP · ~6 дн.</p>
+            <a class="btn" href="#my">Додати</a>
+          </article>
+          <article class="card">
+            <h3>Скетчбук</h3>
+            <p class="meta"><span class="tag">Речі</span></p>
+            <p class="note">CRM підказує ≈ 200 XP · ~5 дн.</p>
+            <a class="btn" href="#my">Додати</a>
+          </article>
+          <article class="card">
+            <h3>Нові навушники</h3>
+            <p class="meta"><span class="tag">Речі</span></p>
+            <p class="note">CRM підказує ≈ 1000 XP · ~25 дн.</p>
+            <span class="tag">у списку</span>
+          </article>
+          <article class="card">
+            <h3>Механічна клавіатура</h3>
+            <p class="meta"><span class="tag">Речі</span></p>
+            <p class="note">CRM підказує ≈ 1400 XP · ~35 дн.</p>
+            <a class="btn" href="#my">Додати</a>
+          </article>
+          <article class="card">
+            <h3>Вихідний без задач</h3>
+            <p class="meta"><span class="tag">Відпочинок</span></p>
+            <p class="note">CRM підказує ≈ 600 XP · ~15 дн.</p>
+            <a class="btn" href="#my">Додати</a>
+          </article>
+          <article class="card">
+            <h3>Масаж</h3>
+            <p class="meta"><span class="tag">Відпочинок</span></p>
+            <p class="note">CRM підказує ≈ 700 XP · ~18 дн.</p>
+            <a class="btn" href="#my">Додати</a>
+          </article>
+          <article class="card">
+            <h3>Поїздка за місто</h3>
+            <p class="meta"><span class="tag">Відпочинок</span></p>
+            <p class="note">CRM підказує ≈ 1500 XP · ~38 дн.</p>
+            <a class="btn" href="#my">Додати</a>
+          </article>
+        </div>
+      </section>
+      <aside class="zone" aria-labelledby="z3">
+        <p class="zone-label">Зона 3 · Мої бажання — <b>головна дія: зберегти бажання з цінами в XP</b></p>
+        <h2 id="z3">Мої бажання · 4</h2>
+        <form class="form" id="my">
+          <div class="wish-row">
+            <label for="w0">Кава в улюбленій кавʼярні</label>
+            <input id="w0" name="price0" inputmode="numeric" value="100" aria-describedby="w0h">
+            <p class="hint" id="w0h">Ціну ставиш сам. CRM підказує ≈ 100 XP — це ~2 дн. за твоїм темпом ~40 XP на день [?]</p>
+          </div>
+          <div class="wish-row">
+            <label for="w1">Квиток у кіно</label>
+            <input id="w1" name="price1" inputmode="numeric" value="300" aria-describedby="w1h">
+            <p class="hint" id="w1h">Ціну ставиш сам. CRM підказує ≈ 300 XP — це ~8 дн. за твоїм темпом ~40 XP на день [?]</p>
+          </div>
+          <div class="wish-row">
+            <label for="w2">Нові навушники</label>
+            <input id="w2" name="price2" inputmode="numeric" value="1000" aria-describedby="w2h">
+            <p class="hint" id="w2h">Ціну ставиш сам. CRM підказує ≈ 1000 XP — це ~25 дн. за твоїм темпом ~40 XP на день [?]</p>
+          </div>
+          <div class="wish-row">
+            <label for="w3">Похід у гори з друзями — своє</label>
+            <input id="w3" name="price3" inputmode="numeric" value="1500" aria-describedby="w3h">
+            <p class="hint" id="w3h">Ціну ставиш сам. CRM підказує ≈ 1500 XP — це ~38 дн. за твоїм темпом ~40 XP на день [?]</p>
+          </div>
+          <fieldset class="field gap-top">
+            <legend>Дописати своє</legend>
+            <label for="own-name">Назва</label>
+            <input id="own-name" name="own" placeholder="Що купиш собі? Наприклад, «Похід у гори з друзями»">
+            <label for="own-cat">Категорія</label>
+            <select id="own-cat" name="cat"><option>Розваги</option><option>Цікаве</option><option>Смаколики</option><option>Речі</option><option selected>Відпочинок</option></select>
+            <label for="own-price">Ціна в XP</label>
+            <input id="own-price" name="ownprice" inputmode="numeric" placeholder="Наприклад, 1500" aria-describedby="own-h">
+            <p class="hint" id="own-h">CRM підкаже ціну, щойно введеш назву: схожі варіанти коштують ≈ 1500 XP, це ~38 дн.</p>
+            <p class="row"><a class="btn" href="#my">Додати в список</a></p>
+          </fieldset>
+          <p class="row"><a class="btn primary" href="wishes-success.html">Зберегти бажання · 4</a> <a class="btn" href="board.html">Пропустити</a></p>
+          <p class="muted">Пропустити можна: бажання додаси пізніше з «Нагороди і цілі».</p>
+        </form>
+      </aside>
+      </div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

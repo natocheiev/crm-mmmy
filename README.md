@@ -32,6 +32,7 @@ Vercel Hobby + Supabase Free: **$0/міс**. Проєкт self-hostable: фор�
 - [_nav/tree.js](./_nav/tree.js) — дерево сторінок навігатора
 - [research/](./research/) — дослідження
 - [research/notes/people.md](./research/notes/people.md) — що research.md знає про людей і чого не знає
+- [research/moodboard.md](./research/moodboard.md) — мудборд: 6 референсів автора і які патерни структури беремо у вайрфрейми
 - [research/research.md](./research/research.md) — зведення дослідження: конкуренти, бенчмарк, патерни, гіпотези
 - [research/research.html](./research/research.html) — те саме односторінковою HTML-сторінкою ([на сайті](https://natocheiev.github.io/crm-mmmy/research/research.html))
 - [research/notes/03-competitors.md](./research/notes/03-competitors.md) — конкуренти: хард, софт, аспіраційні

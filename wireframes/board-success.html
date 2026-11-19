@@ -14,8 +14,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Дошка · успіх — вайрфрейм</title>
-  <link rel="stylesheet" href="_frame.css?v=20261119f">
-  <script src="_frame.js?v=20261119f" defer></script>
+  <link rel="stylesheet" href="_frame.css?v=20261119e">
+  <script src="_frame.js?v=20261119e" defer></script>
   <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
   <link rel="stylesheet" href="../_nav/nav.css">
   <script src="../_nav/tree.js" defer></script>
@@ -52,20 +52,30 @@
 
     <main class="app-main">
 
-
-      <div class="split split-wide-left board-top">
-        <div class="stack">
-        <!-- Зона 1. Перемикач груп (sitemap.md, «Перемикач») -->
-        <section class="zone" aria-labelledby="z1">
-          <p class="zone-label">Зона 1 · Перемикач груп — <b>головна дія: відфільтрувати дошку за групою</b></p>
-          <h2 id="z1" class="visually-hidden">Групи</h2>
+      <!-- Зона 1. Перемикач груп (sitemap.md, «Перемикач») -->
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Перемикач груп і таймер — <b>головна дія: відфільтрувати дошку за групою або одразу запустити таймер</b></p>
+        <h2 id="z1" class="visually-hidden">Групи і таймер</h2>
+        <div class="filter-timer">
           <div class="row" role="group" aria-label="Фільтр за групою">
             <button type="button" class="chip" aria-pressed="true">Усі · 10</button>
             <button type="button" class="chip" aria-pressed="false">Genesis · 5</button>
             <button type="button" class="chip" aria-pressed="false">Monolead · 4</button>
             <button type="button" class="chip" aria-pressed="false">Особисте · 1</button>
           </div>
-        </section>
+          <div class="mini-timer" role="group" aria-label="Таймер">
+            <div class="ring ring-sm r0" role="img" aria-label="Таймер не запущено"><div><b>0:00</b></div></div>
+            <div class="mt-body">
+              <label for="timer-task">Таймер на задачу</label>
+              <select id="timer-task" name="timer-task"><option selected>Обкладинка для статті в блог · ~1 год · перша в плані</option><option>Банер для email-розсилки · ~2 год</option><option>Записатися до стоматолога · ~15 хв</option></select>
+            </div>
+            <a class="btn primary" href="task.html">Почати</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="split split-wide-left">
+
         <!-- Зона 2. Можливі задачі і стан джерел (sitemap.md: лічильник зверху дошки; Джерело — час синхронізації [?]) -->
         <section class="zone" aria-labelledby="z2">
           <p class="zone-label">Зона 2 · Вхідне з Telegram і стан джерел — <b>головна дія: розібрати можливі задачі</b></p>
@@ -77,18 +87,7 @@
             <li><span class="tag">Telegram</span> Бот у робочому чаті бачить усі повідомлення — останнє о 09:40</li>
           </ul>
         </section>
-        </div>
-        <div class="stack">
-        <!-- Зона 5. Таймер окремою карткою праворуч від фільтра груп (рішення автора 2026-11-19; вигляд — як зона «Таймер» у task.html) -->
-        <aside class="zone" aria-labelledby="z5">
-          <p class="zone-label">Зона 5 · Таймер — <b>головна дія: вибрати задачу і запустити таймер</b></p>
-          <h2 id="z5">Таймер</h2>
-          <div class="ring r0" role="img" aria-label="Таймер не запущено, приблизно ~1 год"><div><b>0:00</b><span>з ~1 год</span></div></div>
-          <label class="field-label" for="timer-task">Задача</label>
-          <select id="timer-task" name="timer-task"><option selected>Обкладинка для статті в блог · ~1 год · перша в плані</option><option>Банер для email-розсилки · ~2 год</option><option>Записатися до стоматолога · ~15 хв</option></select>
-          <p class="row gap-top"><a class="btn primary" href="task.html">Почати</a></p>
-          <p class="muted">Поки таймер іде, його видно на всіх екранах.</p>
-        </aside>
+
         <!-- Зона 3. Що вже зроблено сьогодні (sitemap.md, «Головний екран»: «що вже зроблено сьогодні») -->
         <aside class="zone" aria-labelledby="z3">
           <p class="zone-label">Зона 3 · Сьогодні — <b>головна дія: відкрити підсумок дня</b></p>
@@ -104,7 +103,6 @@
             <a href="day-loading.html">Підсумок дня</a> · <a href="rewards-loading.html">До нагород</a>
           </footer>
         </aside>
-        </div>
       </div>
 
       <!-- Зона 4. Kanban: усі задачі разом, 4 статуси (CLAUDE.md §4; sitemap.md, сутність «Задача») -->

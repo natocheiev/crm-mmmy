@@ -10,8 +10,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Дошка · завантаження — вайрфрейм</title>
-  <link rel="stylesheet" href="_frame.css?v=20261119f">
-  <script src="_frame.js?v=20261119f" defer></script>
+  <link rel="stylesheet" href="_frame.css?v=20261119e">
+  <script src="_frame.js?v=20261119e" defer></script>
   <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
   <link rel="stylesheet" href="../_nav/nav.css">
   <script src="../_nav/tree.js" defer></script>
@@ -49,20 +49,26 @@
 
     <main class="app-main">
 
-
-      <div class="split split-wide-left board-top">
-        <div class="stack">
-        <!-- Зона 1. Перемикач груп (sitemap.md, «Перемикач») -->
-        <section class="zone" aria-labelledby="z1">
-          <p class="zone-label">Зона 1 · Перемикач груп — <b>чекаю на дані — дія «відфільтрувати дошку за групою» зʼявиться після завантаження</b></p>
-          <h2 id="z1" class="visually-hidden">Групи</h2>
+      <!-- Зона 1. Перемикач груп (sitemap.md, «Перемикач») -->
+      <section class="zone" aria-labelledby="z1">
+        <p class="zone-label">Зона 1 · Перемикач груп і таймер — <b>чекаю на дані — дії «відфільтрувати дошку» і «запустити таймер» зʼявляться після завантаження</b></p>
+        <h2 id="z1" class="visually-hidden">Групи і таймер</h2>
+        <div class="filter-timer">
           <div class="row" role="group" aria-label="Фільтр за групою">
             <span class="placeholder ph-chip" aria-hidden="true"></span>
             <span class="placeholder ph-chip" aria-hidden="true"></span>
             <span class="placeholder ph-chip" aria-hidden="true"></span>
             <span class="placeholder ph-chip" aria-hidden="true"></span>
           </div>
-        </section>
+          <div class="mini-timer" aria-hidden="true">
+            <span class="placeholder ph-ring"></span>
+            <span class="placeholder ph-field mt-ph"></span>
+          </div>
+        </div>
+      </section>
+
+      <div class="split split-wide-left">
+
         <!-- Зона 2. Можливі задачі і стан джерел (sitemap.md: лічильник зверху дошки; Джерело — час синхронізації [?]) -->
         <section class="zone" aria-labelledby="z2">
           <p class="zone-label">Зона 2 · Вхідне з Telegram і стан джерел — <b>чекаю на дані — дія «розібрати можливі задачі» зʼявиться після завантаження</b></p>
@@ -75,16 +81,7 @@
             <li><span class="tag">Telegram</span> Перевіряю бота в робочому чаті…</li>
           </ul>
         </section>
-        </div>
-        <div class="stack">
-        <!-- Зона 5. Таймер окремою карткою праворуч від фільтра груп (рішення автора 2026-11-19; вигляд — як зона «Таймер» у task.html) -->
-        <aside class="zone" aria-labelledby="z5">
-          <p class="zone-label">Зона 5 · Таймер — <b>чекаю на дані — дія «запустити таймер» зʼявиться після завантаження</b></p>
-          <h2 id="z5">Таймер</h2>
-          <span class="placeholder ph-ring-lg" aria-hidden="true"></span>
-          <p class="placeholder ph-field" aria-hidden="true"></p>
-          <p class="muted">Завантажую задачі для таймера…</p>
-        </aside>
+
         <!-- Зона 3. Що вже зроблено сьогодні (sitemap.md, «Головний екран»: «що вже зроблено сьогодні») -->
         <aside class="zone" aria-labelledby="z3">
           <p class="zone-label">Зона 3 · Сьогодні — <b>чекаю на дані — дія «відкрити підсумок дня» зʼявиться після завантаження</b></p>
@@ -93,7 +90,6 @@
           <p class="placeholder ph-line" aria-hidden="true"></p>
           <p class="placeholder ph-line short" aria-hidden="true"></p>
         </aside>
-        </div>
       </div>
 
       <!-- Зона 4. Kanban: усі задачі разом, 4 статуси (CLAUDE.md §4; sitemap.md, сутність «Задача») -->

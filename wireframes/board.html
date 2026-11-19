@@ -31,8 +31,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Дошка — вайрфрейм</title>
-  <link rel="stylesheet" href="_frame.css?v=20261119d">
-  <script src="_frame.js?v=20261119d" defer></script>
+  <link rel="stylesheet" href="_frame.css?v=20261119e">
+  <script src="_frame.js?v=20261119e" defer></script>
   <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
   <link rel="stylesheet" href="../_nav/nav.css">
   <script src="../_nav/tree.js" defer></script>
@@ -71,13 +71,23 @@
 
       <!-- Зона 1. Перемикач груп (sitemap.md, «Перемикач») -->
       <section class="zone" aria-labelledby="z1">
-        <p class="zone-label">Зона 1 · Перемикач груп — <b>головна дія: відфільтрувати дошку за групою</b></p>
-        <h2 id="z1" class="visually-hidden">Групи</h2>
-        <div class="row" role="group" aria-label="Фільтр за групою">
-          <button type="button" class="chip" aria-pressed="true">Усі · 10</button>
-          <button type="button" class="chip" aria-pressed="false">Genesis · 5</button>
-          <button type="button" class="chip" aria-pressed="false">Monolead · 4</button>
-          <button type="button" class="chip" aria-pressed="false">Особисте · 1</button>
+        <p class="zone-label">Зона 1 · Перемикач груп і таймер — <b>головна дія: відфільтрувати дошку за групою або одразу запустити таймер</b></p>
+        <h2 id="z1" class="visually-hidden">Групи і таймер</h2>
+        <div class="filter-timer">
+          <div class="row" role="group" aria-label="Фільтр за групою">
+            <button type="button" class="chip" aria-pressed="true">Усі · 10</button>
+            <button type="button" class="chip" aria-pressed="false">Genesis · 5</button>
+            <button type="button" class="chip" aria-pressed="false">Monolead · 4</button>
+            <button type="button" class="chip" aria-pressed="false">Особисте · 1</button>
+          </div>
+          <div class="mini-timer" role="group" aria-label="Таймер">
+            <div class="ring ring-sm r0" role="img" aria-label="Таймер не запущено"><div><b>0:00</b></div></div>
+            <div class="mt-body">
+              <label for="timer-task">Таймер на задачу</label>
+              <select id="timer-task" name="timer-task"><option selected>Іконки для мобільного меню · ~5 год</option><option>Допомогти програмісту з експортом SVG · ~30 хв</option><option>Банер для email-розсилки · ~2 год</option></select>
+            </div>
+            <a class="btn primary" href="task.html">Почати</a>
+          </div>
         </div>
       </section>
 

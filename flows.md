@@ -119,6 +119,7 @@ flowchart TD
     Q_APPROVE -->|так| BOARD_APPROVED(["Дошка: Approved — XP і конфеті"])
     BOARD_APPROVED --> BOARD
 
+    BOARD -->|таймер біля фільтра груп: «Почати»| TASK_TIMER
     BOARD -->|пункт «День», будь-коли| DAY_LOADING(["Підсумок дня: loading — рахую вагу і XP"])
     DAY_LOADING --> Q_DAY_OK{"Підсумок пораховано?"}
     Q_DAY_OK -->|ні| DAY_ERR(["Підсумок дня: error — не вдалося порахувати"])

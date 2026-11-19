@@ -10,8 +10,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Дошка · завантаження — вайрфрейм</title>
-  <link rel="stylesheet" href="_frame.css?v=20261119d">
-  <script src="_frame.js?v=20261119d" defer></script>
+  <link rel="stylesheet" href="_frame.css?v=20261119e">
+  <script src="_frame.js?v=20261119e" defer></script>
   <!-- Навігатор репо: службове меню зліва від рамки .device, не частина продукту -->
   <link rel="stylesheet" href="../_nav/nav.css">
   <script src="../_nav/tree.js" defer></script>
@@ -51,13 +51,19 @@
 
       <!-- Зона 1. Перемикач груп (sitemap.md, «Перемикач») -->
       <section class="zone" aria-labelledby="z1">
-        <p class="zone-label">Зона 1 · Перемикач груп — <b>чекаю на дані — дія «відфільтрувати дошку за групою» зʼявиться після завантаження</b></p>
-        <h2 id="z1" class="visually-hidden">Групи</h2>
-        <div class="row" role="group" aria-label="Фільтр за групою">
-          <span class="placeholder ph-chip" aria-hidden="true"></span>
-          <span class="placeholder ph-chip" aria-hidden="true"></span>
-          <span class="placeholder ph-chip" aria-hidden="true"></span>
-          <span class="placeholder ph-chip" aria-hidden="true"></span>
+        <p class="zone-label">Зона 1 · Перемикач груп і таймер — <b>чекаю на дані — дії «відфільтрувати дошку» і «запустити таймер» зʼявляться після завантаження</b></p>
+        <h2 id="z1" class="visually-hidden">Групи і таймер</h2>
+        <div class="filter-timer">
+          <div class="row" role="group" aria-label="Фільтр за групою">
+            <span class="placeholder ph-chip" aria-hidden="true"></span>
+            <span class="placeholder ph-chip" aria-hidden="true"></span>
+            <span class="placeholder ph-chip" aria-hidden="true"></span>
+            <span class="placeholder ph-chip" aria-hidden="true"></span>
+          </div>
+          <div class="mini-timer" aria-hidden="true">
+            <span class="placeholder ph-ring"></span>
+            <span class="placeholder ph-field mt-ph"></span>
+          </div>
         </div>
       </section>
 

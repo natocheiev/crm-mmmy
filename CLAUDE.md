@@ -222,7 +222,7 @@
 
 **Стиль сторінок** — спільна світла тема `_nav/theme.css` (шрифт Inter Tight з Google Fonts), підключається після `<style>` сторінки.
 
-**Вайрфрейми** — `wireframes/`, правила в `wireframes/_conventions.md`: сірі, кожен стан окремою сторінкою, переходи тільки за `flows.md` і тільки на наявні сторінки.
+**Вайрфрейми** — `wireframes/`, правила в `wireframes/_conventions.md`: сірі, кожен стан окремою сторінкою, переходи тільки за `flows.md` і тільки на наявні сторінки. Фільтр груп (Усі · Genesis · Monolead · Особисте) на кожному екрані, де він є, стоїть угорі, у шапці.
 
 **User flows на сайті** — `user-flows.html` генерується з `flows.md`, `sitemap.md` і `wireframes/`; після зміни будь-якого з них перезбери: `cd tools/flows && npm install && node build.mjs`.
 
